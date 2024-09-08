@@ -13,7 +13,8 @@ config_version=5
 config/name="brackeys-jam-2024.2"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.0807834, 0.0807833, 0.0807833, 1)
+boot_splash/image="res://assets/ui/logo.png"
 
 [editor]
 
@@ -24,3 +25,4 @@ version_control/autoload_on_startup=true
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.0823529, 0.0823529, 0.0823529, 1)

@@ -1,4 +1,24 @@
-[gd_scene format=3 uid="uid://c380vbxqv0udv"]
+[gd_scene load_steps=9 format=3 uid="uid://c380vbxqv0udv"]
+
+[ext_resource type="Texture2D" uid="uid://c7heiblu3a45n" path="res://assets/ui/panel-border-031.png" id="1_37xfb"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_664mw"]
+[ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="1_xe5mc"]
+[ext_resource type="Script" path="res://scenes/ui/focus_button.gd" id="4_n34ov"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqpw7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6c4tn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfyih"]
+texture = ExtResource("1_37xfb")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bdt0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,20 +27,70 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_664mw")
 
-[node name="Button" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -25.0
-offset_right = 75.0
-offset_bottom = 25.0
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.584314, 0.584314, 0.584314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_color = Color(0.869088, 0.88041, 0.881158, 1)
+theme_override_fonts/font = ExtResource("1_xe5mc")
 theme_override_font_sizes/font_size = 30
-text = "PLAY"
-flat = true
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqpw7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6c4tn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
+disabled = true
+text = "Continue"
+
+[node name="New Game" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.584314, 0.584314, 0.584314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_color = Color(0.773896, 0.792271, 0.793493, 1)
+theme_override_fonts/font = ExtResource("1_xe5mc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqpw7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6c4tn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
+text = "New Game"
+script = ExtResource("4_n34ov")
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.584314, 0.584314, 0.584314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_color = Color(0.869088, 0.88041, 0.881158, 1)
+theme_override_fonts/font = ExtResource("1_xe5mc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqpw7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6c4tn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
+text = "Options"
+
+[connection signal="button_down" from="VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
+[connection signal="visibility_changed" from="VBoxContainer/New Game" to="VBoxContainer/New Game" method="_on_visibility_changed"]
