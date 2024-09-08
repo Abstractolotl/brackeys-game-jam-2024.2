@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c7heiblu3a45n" path="res://assets/ui/panel-border-031.png" id="1_37xfb"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_664mw"]
 [ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="1_xe5mc"]
-[ext_resource type="Script" path="res://scenes/ui/focus_button.gd" id="4_n34ov"]
+[ext_resource type="Script" path="res://scripts/ui/focus_button.gd" id="4_n34ov"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqpw7"]
 
