@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://csn3x0tpuv25t"]
+
+[ext_resource type="Texture2D" uid="uid://dxojeh6kq1w5m" path="res://assets/bullet.png" id="1_c382i"]
+[ext_resource type="Texture2D" uid="uid://ce0qcb407mfwg" path="res://assets/bullet_glow.png" id="2_nuelx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fakyq"]
+radius = 4.0
+
+[node name="bullet" type="RigidBody2D"]
+modulate = Color(0.00784314, 0.34902, 0.866667, 1)
+collision_layer = 4
+collision_mask = 6
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_c382i")
+
+[node name="glow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.294118)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nuelx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fakyq")

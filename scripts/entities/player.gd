@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var dash_multiplier = 2
 @export var dash_time = 0.1
 
+@export var bullet: PackedScene
+
 var dash_charge = 1
 var dashing = false
 
@@ -21,9 +23,9 @@ func _physics_process(delta):
 	if is_moving():
 		if dash_charge < 1:
 			dash_charge += 0.01
-		$AnimatedSprite2D.play("walking")
+		$sprite.play("walking")
 	else:
-		$AnimatedSprite2D.play("idle")
+		$sprite.play("idle")
 	
 	move_and_slide()
 
@@ -47,3 +49,18 @@ func is_moving():
 		return true
 	if Input.is_action_pressed("move_down"):
 		return true
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("fire")	:
+		shoot()
+
+func shoot():
+	var mouse_position = get_global_mouse_position()
+	var direction = (mouse_position - global_position).normalized()
+	
+	var b: RigidBody2D = bullet.instantiate()
+	b.position = position
+	b.rotation = direction.angle()
+	b.linear_velocity = direction * 500
+	
+	get_parent().add_child(b)
