@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxvu6i0n3nbb2"]
+
+[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
+[ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/placeholder/Sprite-0004.png" id="2_7l8jn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pusqk"]
+atlas = ExtResource("2_7l8jn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdldb"]
+atlas = ExtResource("2_7l8jn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk1hi"]
+atlas = ExtResource("2_7l8jn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2hu5"]
+atlas = ExtResource("2_7l8jn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp3os"]
+atlas = ExtResource("2_7l8jn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eppqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pusqk")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdldb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk1hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2hu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp3os")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r4cs"]
+size = Vector2(28, 30)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(586, 297)
+script = ExtResource("1_meqr6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, -6)
+sprite_frames = SubResource("SpriteFrames_eppqp")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -5)
+shape = SubResource("RectangleShape2D_3r4cs")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-586, -297)
+anchor_mode = 0
