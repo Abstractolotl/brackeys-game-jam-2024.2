@@ -1156,6 +1156,7 @@ sources/1 = SubResource("TileSetAtlasSource_y6jjc")
 [node name="IngameHud" parent="CanvasLayer" instance=ExtResource("4_isaj7")]
 offset_top = -1.0
 offset_bottom = -1.0
+scale = Vector2(1.00407, 1)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

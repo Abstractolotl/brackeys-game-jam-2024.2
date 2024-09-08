@@ -9,4 +9,3 @@ func _on_visibility_changed() -> void:
 
 func focus_button():
 	self.grab_focus()
-	
