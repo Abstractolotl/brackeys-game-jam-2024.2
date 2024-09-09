@@ -20,7 +20,7 @@ axis_stretch_vertical = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bdt0"]
 
-[node name="Control" type="Control"]
+[node name="menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_664mw")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="box" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2"]
+[node name="title" type="RichTextLabel" parent="box"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
 theme_override_font_sizes/normal_font_size = 50
@@ -52,12 +61,12 @@ bbcode_enabled = true
 text = "[center]Cult Of Sheep[/center]"
 fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+[node name="box" type="VBoxContainer" parent="box"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Continue" type="Button" parent="VBoxContainer2/VBoxContainer"]
+[node name="continue" type="Button" parent="box/box"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -75,7 +84,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 disabled = true
 text = "Continue"
 
-[node name="New Game" type="Button" parent="VBoxContainer2/VBoxContainer"]
+[node name="new game" type="Button" parent="box/box"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -93,7 +102,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "New Game"
 script = ExtResource("4_n34ov")
 
-[node name="Options" type="Button" parent="VBoxContainer2/VBoxContainer"]
+[node name="options" type="Button" parent="box/box"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -110,5 +119,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Options"
 
-[connection signal="button_down" from="VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
-[connection signal="visibility_changed" from="VBoxContainer2/VBoxContainer/New Game" to="VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
+[connection signal="button_down" from="box/box/new game" to="." method="_on_new_game_button_down"]
+[connection signal="visibility_changed" from="box/box/new game" to="box/box/new game" method="_on_visibility_changed"]

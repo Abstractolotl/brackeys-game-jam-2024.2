@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxvu6i0n3nbb2"]
+[gd_scene load_steps=13 format=3 uid="uid://dxvu6i0n3nbb2"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/placeholder/Sprite-0004.png" id="2_7l8jn"]
 [ext_resource type="PackedScene" uid="uid://csn3x0tpuv25t" path="res://entities/bullet.tscn" id="2_hwf6v"]
-[ext_resource type="PackedScene" uid="uid://cvcppfmu75p4d" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
+[ext_resource type="PackedScene" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
+[ext_resource type="Script" path="res://scripts/bullet_emitter.gd" id="5_l2s0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pusqk"]
 atlas = ExtResource("2_7l8jn")
@@ -53,23 +54,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r4cs"]
-size = Vector2(24, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qd31t"]
+radius = 12.0
 
 [node name="player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_meqr6")
 bullet = ExtResource("2_hwf6v")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_eppqp")
 animation = &"idle"
 
 [node name="shape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3r4cs")
+shape = SubResource("CircleShape2D_qd31t")
 
 [node name="camera" type="Camera2D" parent="."]
-position = Vector2(-586, -297)
+offset = Vector2(-288, -162)
 anchor_mode = 0
-position_smoothing_enabled = true
+zoom = Vector2(1.75, 1.75)
 
 [node name="indicator" parent="." instance=ExtResource("3_t3yoh")]
+
+[node name="emitter" type="Node2D" parent="."]
+script = ExtResource("5_l2s0a")
+bullet_scene = ExtResource("2_hwf6v")
