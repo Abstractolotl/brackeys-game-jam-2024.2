@@ -75,6 +75,7 @@ shape = SubResource("CircleShape2D_qd31t")
 
 [node name="camera" type="Camera2D" parent="."]
 zoom = Vector2(1.75, 1.75)
+position_smoothing_enabled = true
 script = ExtResource("4_0yynb")
 noise = SubResource("FastNoiseLite_5yqxx")
 
