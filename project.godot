@@ -19,7 +19,7 @@ boot_splash/fullsize=false
 
 [autoload]
 
-BulletSpawner="*res://scripts/bullet_spawner.gd"
+GameScene="*res://scripts/game_scene.gd"
 
 [dotnet]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxvu6i0n3nbb2"]
+[gd_scene load_steps=15 format=3 uid="uid://dxvu6i0n3nbb2"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/placeholder/Sprite-0004.png" id="2_7l8jn"]
 [ext_resource type="PackedScene" uid="uid://csn3x0tpuv25t" path="res://entities/bullet.tscn" id="2_hwf6v"]
 [ext_resource type="PackedScene" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
+[ext_resource type="Script" path="res://scripts/shaking_camera.gd" id="4_0yynb"]
 [ext_resource type="Script" path="res://scripts/bullet_emitter.gd" id="5_l2s0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pusqk"]
@@ -57,6 +58,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qd31t"]
 radius = 12.0
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5yqxx"]
+
 [node name="player" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_meqr6")
@@ -71,12 +74,13 @@ animation = &"idle"
 shape = SubResource("CircleShape2D_qd31t")
 
 [node name="camera" type="Camera2D" parent="."]
-offset = Vector2(-288, -162)
-anchor_mode = 0
 zoom = Vector2(1.75, 1.75)
+script = ExtResource("4_0yynb")
+noise = SubResource("FastNoiseLite_5yqxx")
 
 [node name="indicator" parent="." instance=ExtResource("3_t3yoh")]
 
 [node name="emitter" type="Node2D" parent="."]
+rotation = 0.785398
 script = ExtResource("5_l2s0a")
 bullet_scene = ExtResource("2_hwf6v")
