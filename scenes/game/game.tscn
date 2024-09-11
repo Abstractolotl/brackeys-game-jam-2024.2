@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=13 format=4 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="PackedScene" uid="uid://3ormw6huch01" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
 [ext_resource type="Texture2D" uid="uid://c7uc704unfyli" path="res://assets/placeholder/roguelikeDungeon_transparent.png" id="2_qlh2g"]
 [ext_resource type="Texture2D" uid="uid://b0u4ckkbyhnui" path="res://assets/placeholder/roguelikeIndoor_transparent.png" id="3_6rh10"]
 [ext_resource type="PackedScene" uid="uid://dxvu6i0n3nbb2" path="res://entities/player.tscn" id="4_4h4at"]
 [ext_resource type="Texture2D" uid="uid://mm0ld6t52j31" path="res://assets/placeholder/tilemap_packed.png" id="4_ujd26"]
+[ext_resource type="PackedScene" uid="uid://dixpu63gxvf0y" path="res://entities/chest.tscn" id="6_fpu15"]
+[ext_resource type="PackedScene" uid="uid://djji8kx38byid" path="res://entities/collectible_firerate.tscn" id="7_f8tlo"]
+[ext_resource type="PackedScene" uid="uid://bc7nphewe46at" path="res://entities/collectible_projectile.tscn" id="8_e37lg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ptj3d"]
 texture = ExtResource("2_qlh2g")
@@ -1213,3 +1216,24 @@ tile_set = SubResource("TileSet_gw378")
 z_index = 100
 position = Vector2(201, 29)
 collision_mask = 2
+
+[node name="chest" parent="." instance=ExtResource("6_fpu15")]
+position = Vector2(428, -46)
+
+[node name="collectible" parent="." instance=ExtResource("7_f8tlo")]
+position = Vector2(199, -42)
+
+[node name="collectible2" parent="." instance=ExtResource("7_f8tlo")]
+position = Vector2(56, -35)
+
+[node name="collectible3" parent="." instance=ExtResource("7_f8tlo")]
+position = Vector2(114, -90)
+
+[node name="collectible4" parent="." instance=ExtResource("8_e37lg")]
+position = Vector2(352, 117)
+
+[node name="collectible5" parent="." instance=ExtResource("8_e37lg")]
+position = Vector2(162, 146)
+
+[node name="collectible6" parent="." instance=ExtResource("8_e37lg")]
+position = Vector2(370, 12)

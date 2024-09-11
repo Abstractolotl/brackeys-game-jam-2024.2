@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed = 400
 @export var dash_multiplier = 2
@@ -6,10 +7,13 @@ extends CharacterBody2D
 
 @export var bullet: PackedScene
 
+var emitter: BulletEmitter
+
 var dash_charge = 1
 var dashing = false
 
 func _ready() -> void:
+    emitter = $emitter
     GameScene.player = self
 
 func _physics_process(_delta):

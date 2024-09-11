@@ -24,8 +24,11 @@ func shoot(_origin: Vector2, _target: Vector2, direction: Vector2, _speed: float
 
 func on_collision_body(body: Node2D):
     queue_free()
-    if body.has_node("health"):
-        body.get_node("health").hit(1)
+
+    var health_component = GameScene.find_health_component(body)
+
+    if health_component:
+        health_component.hit(1)
         if body is RigidBody2D:
             body.apply_impulse(Vector2.from_angle(rotation) * 1000, Vector2(0, 0))
         

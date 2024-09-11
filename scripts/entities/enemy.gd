@@ -3,8 +3,9 @@ class_name Enemy
 
 @export var player: Node2D
 @export var speed: float = 100
+@export var explosion: PackedScene
 
-var animation: AnimationPlayer;
+var animation: AnimationPlayer
 var health: HealthComponent
 var sprite: Sprite2D
 var flash: Sprite2D
@@ -38,14 +39,23 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 func _on_hit(_amount: float, new_health: float):
     if dead:
+        if new_health < -5:
+            if randf() < 0.5:
+                var instance = explosion.instantiate()
+                instance.global_position = global_position
+                GameScene.spawn_bullet(instance)
+
+            queue_free()
         return
 
-    animation.play("hit")
-    GameScene.shake.emit(0.2, 0.5)
     if new_health <= 0:
+        animation.play("death", 0)
         dead = true
+        GameScene.shake.emit(1, 0)
         call_deferred("on_death")
+    else:
+        animation.play("hit")
+        GameScene.shake.emit(0.2, 0.5)
 
 func on_death():
-    GameScene.shake.emit(1, 1)
     lock_rotation = false

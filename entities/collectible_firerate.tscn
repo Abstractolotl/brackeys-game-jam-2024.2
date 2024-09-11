@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://djji8kx38byid"]
+
+[ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_0txbg"]
+[ext_resource type="Texture2D" uid="uid://c6uuds2y3okh5" path="res://assets/placeholder/Treasure+.png" id="1_addpq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tofxt"]
+radius = 20.0
+
+[node name="collectible" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_0txbg")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(2, 2)
+scale = Vector2(3, 3)
+texture = ExtResource("1_addpq")
+hframes = 16
+vframes = 16
+frame = 164
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tofxt")
+
+[connection signal="body_entered" from="." to="." method="on_collision_fire_rate"]

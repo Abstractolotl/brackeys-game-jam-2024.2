@@ -67,6 +67,7 @@ bullet = ExtResource("2_hwf6v")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_eppqp")
 animation = &"idle"
 
@@ -74,8 +75,9 @@ animation = &"idle"
 shape = SubResource("CircleShape2D_qd31t")
 
 [node name="camera" type="Camera2D" parent="."]
-zoom = Vector2(1.75, 1.75)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 script = ExtResource("4_0yynb")
 noise = SubResource("FastNoiseLite_5yqxx")
 
