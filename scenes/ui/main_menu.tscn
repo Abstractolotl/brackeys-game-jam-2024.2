@@ -55,39 +55,38 @@ layout_mode = 2
 texture = ExtResource("3_te7ni")
 stretch_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-offset_left = 435.0
-offset_top = 135.0
-offset_right = 585.0
-offset_bottom = 585.0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("4_bk5v8")
 
-[node name="CenterContainer2" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_left = 508.0
-offset_top = 181.0
-offset_right = 958.0
-offset_bottom = 541.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_bottom = 75
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/VBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Cult Of Sheep[/center]"
-fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="New Game" type="Button" parent="CenterContainer2/VBoxContainer2/VBoxContainer"]
+[node name="New Game" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -105,7 +104,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Start Game"
 script = ExtResource("4_n34ov")
 
-[node name="Options" type="Button" parent="CenterContainer2/VBoxContainer2/VBoxContainer"]
+[node name="Options" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -122,7 +121,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Options"
 
-[node name="Exit" type="Button" parent="CenterContainer2/VBoxContainer2/VBoxContainer"]
+[node name="Exit" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -139,5 +138,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Exit"
 
-[connection signal="button_down" from="CenterContainer2/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
-[connection signal="visibility_changed" from="CenterContainer2/VBoxContainer2/VBoxContainer/New Game" to="CenterContainer2/VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
+[connection signal="button_down" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
+[connection signal="visibility_changed" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" to="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
