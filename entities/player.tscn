@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxvu6i0n3nbb2"]
+[gd_scene load_steps=16 format=3 uid="uid://dxvu6i0n3nbb2"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/placeholder/Sprite-0004.png" id="2_7l8jn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cvcppfmu75p4d" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
 [ext_resource type="Script" path="res://scripts/components/shaking_camera.gd" id="4_0yynb"]
 [ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="5_l2s0a"]
+[ext_resource type="Texture2D" uid="uid://b5rstsf26htl4" path="res://assets/placeholder/circle_512.png" id="7_5bdh8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pusqk"]
 atlas = ExtResource("2_7l8jn")
@@ -87,3 +88,9 @@ noise = SubResource("FastNoiseLite_5yqxx")
 rotation = 0.785398
 script = ExtResource("5_l2s0a")
 bullet_scene = ExtResource("2_hwf6v")
+
+[node name="light" type="PointLight2D" parent="."]
+visible = false
+scale = Vector2(0.25, 0.25)
+energy = 0.76
+texture = ExtResource("7_5bdh8")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvcppfmu75p4d"]
 
 [ext_resource type="Script" path="res://scripts/ui/indicator.gd" id="1_1qas1"]
-[ext_resource type="Texture2D" uid="uid://cces3i30dgomv" path="res://assets/ui/indicator.png" id="1_fsm13"]
+[ext_resource type="Texture2D" uid="uid://b7kgg857aljwc" path="res://assets/placeholder/tile_0087.png" id="2_b2gi0"]
 
 [node name="indicator" type="Control"]
 layout_mode = 3
@@ -16,5 +16,5 @@ offset_right = -6.99999
 offset_bottom = 6.0
 rotation = -2.35619
 pivot_offset = Vector2(40, 0)
-texture = ExtResource("1_fsm13")
+texture = ExtResource("2_b2gi0")
 expand_mode = 1
