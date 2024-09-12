@@ -119,4 +119,5 @@ libraries = {
 }
 speed_scale = 3.0
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="health_changed" from="health" to="." method="_on_hit"]

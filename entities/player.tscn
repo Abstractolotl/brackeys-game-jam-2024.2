@@ -119,7 +119,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qd31t"]
-radius = 12.0
+radius = 21.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5yqxx"]
 

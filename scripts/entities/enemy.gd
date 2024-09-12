@@ -59,3 +59,10 @@ func _on_hit(_amount: float, new_health: float):
 
 func on_death():
 	lock_rotation = false
+
+
+func _on_body_entered(body: Node) -> void:
+	print_debug("body entered")
+	if body is Player:
+		print_debug("damage player")
+		body.damage(0.25)
