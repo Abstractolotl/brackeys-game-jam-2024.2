@@ -1,65 +1,65 @@
 extends CharacterBody2D
 class_name Player
 
-@export var speed = 400
-@export var dash_multiplier = 2
-@export var dash_time = 0.1
+@export var speed: int = 400
+@export var dash_multiplier: float = 2.0
+@export var dash_time: float = 0.1
 
 @export var bullet: PackedScene
 
 var emitter: BulletEmitter
 
-var dash_charge = 1
-var dashing = false
+var dash_charge: float = 1
+var dashing: bool    = false
 
 func _ready() -> void:
-    emitter = $emitter
-    GameScene.player = self
+	emitter = $emitter
 
-func _physics_process(_delta):
-    var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-    
-    if dashing:
-        return
-    
-    if Input.is_action_pressed("move_dash") && dash_charge > 0:
-        dash(direction)
-    else:
-        velocity = direction * speed
-    
-    if is_moving():
-        if dash_charge < 1:
-            dash_charge += 0.01
-        $sprite.play("walking")
-    else:
-        $sprite.play("idle")
-    
-    move_and_slide()
+func _physics_process(_delta) -> void:
+	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if dashing:
+		return
+	
+	if Input.is_action_pressed("move_dash") && dash_charge > 0:
+		dash(direction)
+	else:
+		velocity = direction * speed
+	
+	if is_moving():
+		if dash_charge < 1.0:
+			dash_charge += 0.01
+		$sprite.play("walking")
+	else:
+		$sprite.play("idle")
+	
+	move_and_slide()
 
-func dash(direction):
-    if dash_charge <= 0:
-        return
-    
-    dash_charge -= 1
-    velocity = direction * (speed * dash_multiplier) * 5
-    move_and_slide()
-    
-    await get_tree().create_timer(dash_time).timeout
-    dashing = false
+func dash(direction) -> void:
+	if dash_charge <= 0:
+		return
+	
+	dash_charge -= 1
+	velocity = direction * (speed * dash_multiplier) * 5
+	move_and_slide()
+	
+	await get_tree().create_timer(dash_time).timeout
+	dashing = false
 
-func is_moving():
-    if Input.is_action_pressed("move_right"):
-        return true
-    if Input.is_action_pressed("move_left"):
-        return true
-    if Input.is_action_pressed("move_up"):
-        return true
-    if Input.is_action_pressed("move_down"):
-        return true
-
+func is_moving() -> bool:
+	if Input.is_action_pressed("move_right"):
+		return true
+	if Input.is_action_pressed("move_left"):
+		return true
+	if Input.is_action_pressed("move_up"):
+		return true
+	if Input.is_action_pressed("move_down"):
+		return true
+	return false
+	
 func _process(_delta: float) -> void:
-    if Input.is_action_pressed("fire")	:
-        shoot()
+	if Input.is_action_pressed("fire")	:
+		shoot()
 
 func shoot():
-    $emitter.shoot(get_global_mouse_position())    
+	$emitter.shoot(get_global_mouse_position())    

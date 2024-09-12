@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/placeholder/Sprite-0004.png" id="2_7l8jn"]
 [ext_resource type="PackedScene" uid="uid://csn3x0tpuv25t" path="res://entities/bullet.tscn" id="2_hwf6v"]
-[ext_resource type="PackedScene" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
-[ext_resource type="Script" path="res://scripts/shaking_camera.gd" id="4_0yynb"]
-[ext_resource type="Script" path="res://scripts/bullet_emitter.gd" id="5_l2s0a"]
+[ext_resource type="PackedScene" uid="uid://cvcppfmu75p4d" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
+[ext_resource type="Script" path="res://scripts/components/shaking_camera.gd" id="4_0yynb"]
+[ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="5_l2s0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pusqk"]
 atlas = ExtResource("2_7l8jn")

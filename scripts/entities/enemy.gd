@@ -13,49 +13,49 @@ var flash: Sprite2D
 var dead = false
 
 func _ready():
-    animation = $animation_player
-    health = $health
-    sprite = $sprite
-    flash = $flash
+	animation = $animation_player
+	health = $health
+	sprite = $sprite
+	flash = $flash
 
 func _process(_delta):
-    if health.health <= 0:
-        return
-        
-    if linear_velocity.x > 0:
-        sprite.flip_h = true
-        flash.flip_h = true
-    else:
-        sprite.flip_h = false
-        flash.flip_h = false
+	if health.health <= 0:
+		return
+		
+	if linear_velocity.x > 0:
+		sprite.flip_h = true
+		flash.flip_h = true
+	else:
+		sprite.flip_h = false
+		flash.flip_h = false
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-    if health.health <= 0:
-        return
+	if health.health <= 0:
+		return
 
-    var direction = (player.global_position - global_position).normalized()
-    state.linear_velocity = direction * speed
-    pass
+	var direction = (player.global_position - global_position).normalized()
+	state.linear_velocity = direction * speed
+	pass
 
 func _on_hit(_amount: float, new_health: float):
-    if dead:
-        if new_health < -5:
-            if randf() < 0.5:
-                var instance = explosion.instantiate()
-                instance.global_position = global_position
-                GameScene.spawn_bullet(instance)
+	if dead:
+		if new_health < -5:
+			if randf() < 0.5:
+				var instance = explosion.instantiate()
+				instance.global_position = global_position
+				get_tree().get_current_scene().add_child(instance)
 
-            queue_free()
-        return
+			queue_free()
+		return
 
-    if new_health <= 0:
-        animation.play("death", 0)
-        dead = true
-        GameScene.shake.emit(1, 0)
-        call_deferred("on_death")
-    else:
-        animation.play("hit")
-        GameScene.shake.emit(0.2, 0.5)
+	if new_health <= 0:
+		animation.play("death", 0)
+		dead = true
+		get_tree().get_current_scene().shake.emit(1, 0)
+		call_deferred("on_death")
+	else:
+		animation.play("hit")#
+		get_tree().get_current_scene().shake.emit(0.2, 0.5)
 
 func on_death():
-    lock_rotation = false
+	lock_rotation = false
