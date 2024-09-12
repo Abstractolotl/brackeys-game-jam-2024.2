@@ -43,7 +43,7 @@ func _on_hit(_amount: float, new_health: float):
 			if randf() < 0.5:
 				var instance = explosion.instantiate()
 				instance.global_position = global_position
-				get_tree().get_current_scene().add_child(instance)
+				get_tree().get_current_scene().call_deferred("add_child", instance)
 
 			queue_free()
 		return
