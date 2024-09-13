@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://hrkyp6kgor5l"]
+[gd_scene load_steps=43 format=4 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Texture2D" uid="uid://8f0g426rngsg" path="res://assets/placeholder/rain.png" id="1_4x37e"]
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
@@ -6,21 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://dxvu6i0n3nbb2" path="res://entities/player.tscn" id="4_4h4at"]
 [ext_resource type="Texture2D" uid="uid://cr8hvp1tdvbou" path="res://assets/map/ground_overview.png" id="5_bxq0d"]
 [ext_resource type="Texture2D" uid="uid://s2dd68rmo2bw" path="res://assets/map/water.png" id="6_cfhkj"]
-[ext_resource type="PackedScene" path="res://entities/destructables/barrel.tscn" id="6_fpu15"]
+[ext_resource type="PackedScene" uid="uid://dixpu63gxvf0y" path="res://entities/destructables/barrel.tscn" id="6_fpu15"]
 [ext_resource type="Script" path="res://TileMapDual.gd" id="7_3keph"]
 [ext_resource type="Texture2D" uid="uid://57p0d8m5q14x" path="res://assets/map/grass.png" id="8_mwb7q"]
 [ext_resource type="Texture2D" uid="uid://kqp0gq4ofyxv" path="res://assets/map/grass_variants.png" id="9_27vxb"]
-[ext_resource type="PackedScene" path="res://entities/destructables/tree.tscn" id="9_hn4x7"]
+[ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="9_hn4x7"]
 [ext_resource type="Texture2D" uid="uid://b77hfl57b4fvb" path="res://assets/map/stone.png" id="10_e4qf6"]
 [ext_resource type="Texture2D" uid="uid://cogvi1mtkg7fj" path="res://assets/map/stone_variant.png" id="11_q7igb"]
 [ext_resource type="Texture2D" uid="uid://d2xxmeivyt1i4" path="res://assets/map/dirt.png" id="12_ib6gs"]
 [ext_resource type="PackedScene" uid="uid://djji8kx38byid" path="res://entities/collectible_firerate.tscn" id="13_iki0u"]
-[ext_resource type="PackedScene" path="res://entities/destructables/box.tscn" id="14_cppcm"]
-[ext_resource type="PackedScene" uid="uid://bq3flirrfiwep" path="res://entities/destructables/chest.tscn" id="15_x1rkv"]
+[ext_resource type="PackedScene" uid="uid://d11qjn0wl4i2a" path="res://entities/destructables/box.tscn" id="14_cppcm"]
+[ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="15_x1rkv"]
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="16_nucw6"]
-[ext_resource type="PackedScene" path="res://entities/destructables/sign.tscn" id="16_qa56t"]
-[ext_resource type="PackedScene" path="res://entities/destructables/vase.tscn" id="18_nke70"]
-[ext_resource type="PackedScene" path="res://entities/destructables/waypointer.tscn" id="19_x4kr4"]
+[ext_resource type="PackedScene" uid="uid://uq3g40cetn3y" path="res://entities/destructables/sign.tscn" id="16_qa56t"]
+[ext_resource type="PackedScene" uid="uid://bltpe62v8m6ht" path="res://entities/destructables/vase.tscn" id="18_nke70"]
+[ext_resource type="PackedScene" uid="uid://dqnthy2jx7juo" path="res://entities/destructables/waypointer.tscn" id="19_x4kr4"]
 
 [sub_resource type="Animation" id="Animation_gkjo3"]
 resource_name = "night"
@@ -252,6 +252,7 @@ libraries = {
 environment = SubResource("Environment_kj3vu")
 
 [node name="rain" type="CPUParticles2D" parent="enviroment"]
+visible = false
 z_index = 1000
 position = Vector2(213, -171)
 amount = 50
@@ -270,6 +271,7 @@ angle_max = -10.0
 color_ramp = SubResource("Gradient_twmhm")
 
 [node name="splashes" type="CPUParticles2D" parent="enviroment"]
+visible = false
 material = SubResource("CanvasItemMaterial_o4sta")
 position = Vector2(271, 16)
 amount = 150
