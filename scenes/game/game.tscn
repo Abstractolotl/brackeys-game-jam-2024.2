@@ -1201,6 +1201,8 @@ script = ExtResource("1_ga03w")
 player = NodePath("player")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.40919, 0.11773, 0.265678, 1)
 
 [node name="hud-layer" type="CanvasLayer" parent="."]
 

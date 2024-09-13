@@ -6,7 +6,6 @@ class_name Player
 @export var dash_time: float = 0.1
 
 @export var bullet: PackedScene
-@export var health: float = 10.0
 
 var emitter: BulletEmitter
 
@@ -68,13 +67,10 @@ func is_moving() -> bool:
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("fire")	:
 		shoot()
-
-func damage(damage: float) -> void:
-	if health - damage > 0:
-		health = health - damage
-	else:
-		health = 0
-	player_damaged.emit(health)
 	
 func shoot():
 	$emitter.shoot(get_global_mouse_position())    
+
+
+func _on_health_component_health_changed(amount: float, new_health: float) -> void:
+	player_damaged.emit(new_health)
