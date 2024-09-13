@@ -12,11 +12,14 @@ var emitter: BulletEmitter
 var dash_charge: float = 1
 var dashing: bool    = false
 
+var camera: Camera2D
+
 signal player_damaged(health: float)
 signal bullet_update(projectiles: int, fire_rate: float)
 
 func _ready() -> void:
 	emitter = $emitter
+	camera = $camera
 
 func _physics_process(_delta) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
