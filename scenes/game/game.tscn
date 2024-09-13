@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=42 format=4 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
 [ext_resource type="PackedScene" uid="uid://bwva31xchx53y" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://uq3g40cetn3y" path="res://entities/destructables/sign.tscn" id="16_qa56t"]
 [ext_resource type="PackedScene" uid="uid://bltpe62v8m6ht" path="res://entities/destructables/vase.tscn" id="18_nke70"]
 [ext_resource type="PackedScene" uid="uid://dqnthy2jx7juo" path="res://entities/destructables/waypointer.tscn" id="19_x4kr4"]
+[ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="21_6cjdh"]
 
 [sub_resource type="Gradient" id="Gradient_bk4he"]
 
@@ -338,5 +339,13 @@ position = Vector2(836, 423)
 
 [node name="tree3" parent="." instance=ExtResource("9_hn4x7")]
 position = Vector2(651, 549)
+
+[node name="enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_6cjdh")]
+position = Vector2(871, 423)
+player = NodePath("../player")
+
+[node name="enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_6cjdh")]
+position = Vector2(789, 323)
+player = NodePath("../player")
 
 [connection signal="night_start" from="." to="player" method="start_rain"]

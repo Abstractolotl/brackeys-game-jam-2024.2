@@ -50,7 +50,7 @@ func blend_textures(texture1: Texture2D, texture2: Texture2D, alpha: float) -> T
 
 var last_blend = 0.0;
 var blend_stepts = 150.0;
-var day_time = 60.0;
+var day_time = 6.0;
 
 func _ready() -> void:
     env = $enviroment/world
@@ -73,6 +73,9 @@ func _process(delta: float) -> void:
 
     hud._on_time_progress(progress)
 
+    if last_blend < 1.0:
+        return
+
     if fmod(timer, 5) < delta:
         spawn_rate += 1
         spawn_time = 1.0 / spawn_rate
@@ -83,4 +86,4 @@ func _process(delta: float) -> void:
         var enemy: Enemy = enemy_scene.instantiate()
         enemy.player = player
         enemy.global_position = Vector2(randi() % 800, randi() % 600)
-        #$enemies.add_child(enemy)
+        $enemies.add_child(enemy)
