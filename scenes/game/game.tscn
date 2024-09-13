@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=44 format=4 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Texture2D" uid="uid://8f0g426rngsg" path="res://assets/placeholder/rain.png" id="1_4x37e"]
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
@@ -44,15 +44,14 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_1ny53"]
-offsets = PackedFloat32Array(0.00630252, 1)
-colors = PackedColorArray(0.122975, 0.129011, 0.420566, 1, 0.498412, 0.465313, 0.419837, 1)
+colors = PackedColorArray(0.121569, 0.129412, 0.419608, 1, 0.498412, 0.465313, 0.419837, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_o64lb"]
 gradient = SubResource("Gradient_1ny53")
 
 [sub_resource type="Environment" id="Environment_kj3vu"]
 background_mode = 3
-ambient_light_color = Color(1, 0, 0, 1)
+background_color = Color(0.93979, 0.866875, 0.957427, 1)
 tonemap_white = 1.4
 glow_enabled = true
 glow_intensity = 0.96
@@ -79,6 +78,8 @@ particles_animation = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fwm4j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l7ck2"]
 texture = ExtResource("5_bxq0d")
@@ -235,11 +236,12 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_sjqkm")
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("player", "hud")]
 y_sort_enabled = true
 position = Vector2(0, 1)
 script = ExtResource("1_ga03w")
 player = NodePath("player")
+hud = NodePath("hud-layer/IngameHud")
 
 [node name="enviroment" type="Node" parent="."]
 
@@ -252,6 +254,7 @@ libraries = {
 environment = SubResource("Environment_kj3vu")
 
 [node name="rain" type="CPUParticles2D" parent="enviroment"]
+visible = false
 z_index = 1000
 position = Vector2(213, -171)
 amount = 50
@@ -270,6 +273,7 @@ angle_max = -10.0
 color_ramp = SubResource("Gradient_twmhm")
 
 [node name="splashes" type="CPUParticles2D" parent="enviroment"]
+visible = false
 material = SubResource("CanvasItemMaterial_o4sta")
 position = Vector2(271, 16)
 amount = 150
@@ -293,6 +297,7 @@ size_flags_vertical = 4
 [node name="player" parent="." instance=ExtResource("4_4h4at")]
 z_index = 25
 y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_fwm4j")
 position = Vector2(201, 29)
 collision_mask = 2
 
@@ -375,3 +380,5 @@ position = Vector2(836, 423)
 
 [node name="tree3" parent="." instance=ExtResource("9_hn4x7")]
 position = Vector2(651, 549)
+
+[node name="SubViewport" type="SubViewport" parent="."]
