@@ -662,4 +662,6 @@ text = "Credits
 [connection signal="button_up" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_up"]
 [connection signal="visibility_changed" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" to="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
 [connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_button_down"]
+[connection signal="button_up" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_button_up"]
 [connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Credits" to="." method="_on_credits_button_down"]
+[connection signal="button_up" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Credits" to="." method="_on_credits_button_up"]
