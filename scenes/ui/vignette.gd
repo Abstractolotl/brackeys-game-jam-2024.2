@@ -19,7 +19,6 @@ func _process(_delta: float) -> void:
         print(camera.global_position)
     
 
-    var target = get_tree().get_current_scene().get_node("tree")
     var offset = camera.get_global_transform().basis_xform(player.global_position) - camera.global_position
     offset = Vector2(offset.x / get_viewport_rect().size.x, offset.y / get_viewport_rect().size.y)
     material.set_shader_parameter("player_coords", offset)

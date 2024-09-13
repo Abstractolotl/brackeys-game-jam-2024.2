@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dxvu6i0n3nbb2"]
+[gd_scene load_steps=46 format=3 uid="uid://dxvu6i0n3nbb2"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/character/front_walking.png" id="2_7l8jn"]
@@ -262,9 +262,9 @@ bullet = ExtResource("2_hwf6v")
 clip_children = 2
 use_parent_material = true
 position = Vector2(0, -16)
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_eppqp")
 animation = &"walking_side"
+speed_scale = 3.0
 
 [node name="flash" type="ColorRect" parent="sprite"]
 modulate = Color(1, 1, 1, 0)
