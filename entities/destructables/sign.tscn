@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://uq3g40cetn3y"]
+
+[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_eucxq"]
+[ext_resource type="Resource" uid="uid://siwt1x50kwlf" path="res://entities/drops/drop_nothing_90.tres" id="2_cx60o"]
+[ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_fqhgu"]
+[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://entities/drops/drop_projectiles_5.tres" id="3_7cnq0"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_bf3lb"]
+[ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://entities/drops/drop_firerate_5.tres" id="4_o65n8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a0r7"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_u1mmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
+}
+
+[sub_resource type="Animation" id="Animation_et5sq"]
+resource_name = "death"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [52, 53, 54, 54]
+}
+
+[sub_resource type="Animation" id="Animation_u1t17"]
+resource_name = "hit"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [50, 49, 51, 49]
+}
+
+[sub_resource type="Animation" id="Animation_cgs3m"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28j5f"]
+_data = {
+"RESET": SubResource("Animation_u1mmq"),
+"death": SubResource("Animation_et5sq"),
+"hit": SubResource("Animation_u1t17"),
+"idle": SubResource("Animation_cgs3m")
+}
+
+[node name="destructable" type="StaticBody2D"]
+z_index = 25
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_eucxq")
+drops = Array[Object]([ExtResource("2_cx60o"), ExtResource("3_7cnq0"), ExtResource("4_o65n8")])
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-5, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fqhgu")
+hframes = 7
+vframes = 12
+frame = 49
+
+[node name="health" type="Node" parent="."]
+script = ExtResource("3_bf3lb")
+health = 3.0
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7a0r7")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28j5f")
+}
+
+[connection signal="health_changed" from="health" to="." method="hit"]

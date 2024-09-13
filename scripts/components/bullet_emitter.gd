@@ -2,7 +2,7 @@ extends Node2D
 class_name BulletEmitter
 
 @export var bullet_scene: PackedScene
-@export var start_fire_rate: float = 30.0
+@export var start_fire_rate: float = 3.0
 
 var _fire_rate: float = start_fire_rate
 var _fire_time: float = 1.0 / _fire_rate
