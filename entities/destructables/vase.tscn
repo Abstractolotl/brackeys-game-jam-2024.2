@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [35]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_et5sq"]
 resource_name = "death"
@@ -36,6 +48,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [38, 39, 40, 41]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_u1t17"]
 resource_name = "hit"
@@ -51,6 +75,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [36, 35, 37, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cgs3m"]
@@ -85,12 +121,20 @@ script = ExtResource("1_2nfdq")
 drops = null
 
 [node name="sprite" type="Sprite2D" parent="."]
+clip_children = 2
 position = Vector2(-3, 2)
 scale = Vector2(2, 2)
 texture = ExtResource("2_twrpb")
 hframes = 7
 vframes = 12
 frame = 35
+
+[node name="flash" type="ColorRect" parent="sprite"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 22.0
+offset_bottom = 26.0
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_c3h8n")
