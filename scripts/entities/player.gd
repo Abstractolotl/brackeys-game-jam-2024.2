@@ -14,6 +14,7 @@ var dash_charge: float = 1
 var dashing: bool    = false
 
 signal player_damaged(health: float)
+signal bullet_update(projectiles: int, fire_rate: float)
 
 func _ready() -> void:
 	emitter = $emitter

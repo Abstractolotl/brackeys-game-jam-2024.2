@@ -2,8 +2,9 @@ extends Node2D
 class_name BulletEmitter
 
 @export var bullet_scene: PackedScene
+@export var start_fire_rate: float = 30.0
 
-var _fire_rate: float = 30.0
+var _fire_rate: float = start_fire_rate
 var _fire_time: float = 1.0 / _fire_rate
 var _fire_speed: float = 500.0
 
@@ -19,6 +20,9 @@ var time_since_last_fire: float = _fire_time
 func set_fire_rate(rate: float) -> void:
 	_fire_rate = rate
 	_fire_time = 1.0 / _fire_rate
+
+func add_projectile() -> void:
+	num_projectiles = num_projectiles + 1
 
 var firing: bool = false
 func shoot(target: Vector2) -> void:

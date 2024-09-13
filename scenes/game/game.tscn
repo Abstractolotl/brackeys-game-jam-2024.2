@@ -1220,7 +1220,6 @@ tile_set = SubResource("TileSet_gw378")
 [node name="player" parent="." instance=ExtResource("4_4h4at")]
 z_index = 100
 position = Vector2(201, 29)
-collision_layer = 1
 collision_mask = 2
 
 [node name="collectibles" type="Node" parent="."]
@@ -1250,4 +1249,5 @@ position = Vector2(370, 12)
 
 [node name="lights" type="Node" parent="."]
 
+[connection signal="bullet_update" from="player" to="hud-layer/IngameHud" method="_on_player_bullet_update"]
 [connection signal="player_damaged" from="player" to="hud-layer/IngameHud" method="_on_player_player_damaged"]
