@@ -17,3 +17,20 @@ func _on_options_button_down() -> void:
 
 func _on_options_button_up() -> void:
 	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
+	$AnimationPlayer.play("show_options")
+
+func _on_credits_button_down() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
+	$AnimationPlayer.play("back_to_start")
+	$Menu.visible = false
+	$Credits.visible = true
+	
+	$AnimationPlayer.play("credits")
+	await $AnimationPlayer.animation_finished
+	
+	$Credits.visible = false
+	$Menu.visibl
+
+
+func _on_credits_button_up() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")

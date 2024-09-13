@@ -34,7 +34,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(6, 134)]
+"values": [Vector2(0, 74)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -51,6 +51,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_awomu"]
 resource_name = "death"
+step = 0.0333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -61,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, -1.23046]
+"values": [0.0, -1.81358]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,17 +74,17 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 74), Vector2(-50, 84)]
+"values": [Vector2(0, 74), Vector2(-32, 88)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("sprites/sprite_top:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.366667, 1),
+"transitions": PackedFloat32Array(1.93187, 1.68179),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
@@ -171,7 +172,7 @@ hframes = 2
 frame = 1
 
 [node name="sprite_top" type="Sprite2D" parent="sprites"]
-position = Vector2(6, 134)
+position = Vector2(0, 74)
 scale = Vector2(2, 2)
 texture = ExtResource("5_5oppm")
 offset = Vector2(0, -35)
