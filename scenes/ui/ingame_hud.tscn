@@ -74,6 +74,7 @@ layout_mode = 2
 
 [node name="Levelbar" type="HBoxContainer" parent="Control/Bottom/MarginContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 script = ExtResource("3_rqouv")
 bullet_levels = Array[Texture2D]([ExtResource("3_7etx6"), ExtResource("5_guou4"), ExtResource("6_h86da"), ExtResource("7_nf4o3")])
 
