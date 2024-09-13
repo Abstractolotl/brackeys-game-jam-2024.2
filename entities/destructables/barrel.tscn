@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=3 uid="uid://dixpu63gxvf0y"]
+
+[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_sxe5i"]
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_6qpgf"]
+[ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_b36x4"]
+[ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://entities/drops/drop_firerate_5.tres" id="3_dvsrx"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_tn4vf"]
+[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://entities/drops/drop_projectiles_5.tres" id="4_vnbf1"]
+[ext_resource type="Resource" uid="uid://siwt1x50kwlf" path="res://entities/drops/drop_nothing_90.tres" id="5_yqpvh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qwgpl"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_u1mmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shape:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite/flash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_et5sq"]
+resource_name = "death"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shape:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_u1t17"]
+resource_name = "hit"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 2, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cgs3m"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28j5f"]
+_data = {
+"RESET": SubResource("Animation_u1mmq"),
+"death": SubResource("Animation_et5sq"),
+"hit": SubResource("Animation_u1t17"),
+"idle": SubResource("Animation_cgs3m")
+}
+
+[node name="destructable" type="StaticBody2D"]
+z_index = 25
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_sxe5i")
+drops = Array[ExtResource("2_6qpgf")]([ExtResource("3_dvsrx"), ExtResource("4_vnbf1"), ExtResource("5_yqpvh")])
+
+[node name="sprite" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(-3, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("2_b36x4")
+hframes = 7
+vframes = 12
+
+[node name="flash" type="ColorRect" parent="sprite"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -18.5
+offset_top = -14.5
+offset_right = 21.5
+offset_bottom = 25.5
+
+[node name="health" type="Node" parent="."]
+script = ExtResource("3_tn4vf")
+health = 6.0
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_qwgpl")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28j5f")
+}
+
+[connection signal="health_changed" from="health" to="." method="hit"]
