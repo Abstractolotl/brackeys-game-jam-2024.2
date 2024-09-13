@@ -158,7 +158,7 @@ scale = Vector2(0.25, 0.25)
 energy = 0.76
 texture = ExtResource("7_5bdh8")
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="health" type="Node" parent="."]
 script = ExtResource("9_hlaq6")
 
-[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="health" to="." method="_on_health_component_health_changed"]
