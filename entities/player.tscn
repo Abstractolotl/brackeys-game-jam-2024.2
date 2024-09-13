@@ -133,7 +133,7 @@ bullet = ExtResource("2_hwf6v")
 position = Vector2(0, -16)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_eppqp")
-animation = &"walking_back"
+animation = &"idle"
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
