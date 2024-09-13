@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwacb16lphaww"
-path="res://.godot/imported/panel-031.png-a1885c804659636f39b3b5667ee2f378.ctex"
+uid="uid://bapiake7hxktn"
+path="res://.godot/imported/menu_background.png-e2a82d4388885ee7325732f682a9713b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/panel-031.png"
-dest_files=["res://.godot/imported/panel-031.png-a1885c804659636f39b3b5667ee2f378.ctex"]
+source_file="res://assets/ui/menu_background.png"
+dest_files=["res://.godot/imported/menu_background.png-e2a82d4388885ee7325732f682a9713b.ctex"]
 
 [params]
 
@@ -30,5 +30,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=32
-detect_3d/compress_to=0
+process/size_limit=0
+detect_3d/compress_to=1

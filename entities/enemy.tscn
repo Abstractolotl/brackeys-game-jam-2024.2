@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://chbd7bp1q46o6"]
+
+[ext_resource type="Texture2D" uid="uid://co8y1eicqwbe2" path="res://assets/placeholder/sheep_white.png" id="1_bwy7i"]
+[ext_resource type="Texture2D" uid="uid://efaaxamb3eqp" path="res://assets/placeholder/Sheep.png" id="1_ciu25"]
+[ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_vr8am"]
+[ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_hai0q"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_lxm64"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_5wxjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qhq3b"]
+resource_name = "dead"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.41598, 0.41598, 0.41598, 0.855)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rxfgc"]
+resource_name = "hiz"
+length = 0.500003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dram2"]
+_data = {
+"RESET": SubResource("Animation_5wxjw"),
+"death": SubResource("Animation_qhq3b"),
+"hit": SubResource("Animation_rxfgc")
+}
+
+[node name="enemy" type="RigidBody2D"]
+z_index = 50
+collision_layer = 8
+collision_mask = 15
+lock_rotation = true
+linear_damp = 3.0
+angular_damp = 3.0
+script = ExtResource("1_vr8am")
+explosion = ExtResource("2_hai0q")
+
+[node name="flash" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_bwy7i")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ciu25")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_2s3n4")
+
+[node name="health" type="Node" parent="."]
+script = ExtResource("3_lxm64")
+health = 3.0
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dram2")
+}
+speed_scale = 3.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="health_changed" from="health" to="." method="_on_hit"]
