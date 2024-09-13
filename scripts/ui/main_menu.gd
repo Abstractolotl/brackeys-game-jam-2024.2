@@ -7,13 +7,10 @@ func _on_new_game_button_down() -> void:
 
 
 func _on_options_button_down() -> void:
-	$Menu/TextureRect/HBoxContainer/Default.visible = false
-	$Menu/TextureRect/HBoxContainer/Options.visible = true
+	$AnimationPlayer.play("show_options")
 
 func _on_back_button_down() -> void:
-	$Menu/TextureRect/HBoxContainer/Options.visible = false
-	$Menu/TextureRect/HBoxContainer/Default.visible = true
-
+	$AnimationPlayer.play("back_to_start")
 
 func _on_credits_button_down() -> void:
 	$Menu.visible = false
