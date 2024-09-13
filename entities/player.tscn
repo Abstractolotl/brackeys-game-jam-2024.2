@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cvcppfmu75p4d" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
 [ext_resource type="Script" path="res://scripts/components/shaking_camera.gd" id="4_0yynb"]
 [ext_resource type="Texture2D" uid="uid://b74xs5a8cyrli" path="res://assets/character/back_walking.png" id="4_ktx18"]
+[ext_resource type="Texture2D" uid="uid://u4vjpstit333" path="res://assets/character/side_walking.png" id="5_i23s8"]
 [ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="5_l2s0a"]
 [ext_resource type="Texture2D" uid="uid://b5rstsf26htl4" path="res://assets/placeholder/circle_512.png" id="7_5bdh8"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="9_hlaq6"]
@@ -65,6 +66,38 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_7l8jn")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy0pb"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ccj"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bposp"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pahxg"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmiu4"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m5b8"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ydls"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h4bl"]
+atlas = ExtResource("5_i23s8")
+region = Rect2(224, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_eppqp"]
 animations = [{
 "frames": [{
@@ -119,6 +152,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy0pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1ccj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bposp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pahxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmiu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m5b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ydls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h4bl")
+}],
+"loop": true,
+"name": &"walking_side",
 "speed": 5.0
 }]
 
@@ -202,7 +264,7 @@ use_parent_material = true
 position = Vector2(0, -16)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_eppqp")
-animation = &"idle"
+animation = &"walking_side"
 
 [node name="flash" type="ColorRect" parent="sprite"]
 modulate = Color(1, 1, 1, 0)
