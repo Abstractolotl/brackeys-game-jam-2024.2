@@ -1,5 +1,4 @@
 extends Node2D
-class_name Util
 
 signal shake(amount: float, min: float)
 signal night_start()
@@ -64,7 +63,6 @@ func _process(delta: float) -> void:
     time_since_last_spawn += delta
     timer += delta
 
-
     var progress = min(floor((timer / day_time) * blend_stepts) / blend_stepts, 1.0)
     if progress != last_blend:
         if progress == 1.0:
@@ -89,9 +87,3 @@ func _process(delta: float) -> void:
         enemy.player = player
         enemy.global_position = Vector2(randi() % 800, randi() % 600)
         $enemies.add_child(enemy)
-
-static func find_health_component(node: Node) -> HealthComponent:
-    for n in node.get_children():
-        if n is HealthComponent:
-            return n
-    return null

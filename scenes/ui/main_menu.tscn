@@ -12,34 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://ddx87fiqtok2p" path="res://assets/ui/checkbox_enabled.png" id="6_ssti5"]
 [ext_resource type="Texture2D" uid="uid://noij8vw2eo2x" path="res://assets/ui/checkbox_disabled.png" id="7_7ie7h"]
 
-[sub_resource type="Animation" id="Animation_308n8"]
-resource_name = "credits"
-length = 15.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Credits/Logo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 3.03333, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(440, 761), Vector2(440, 142), Vector2(440, 142), Vector2(440, -517)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Credits/Credits:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(3.03333, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(382.5, 804), Vector2(382.5, -358)]
-}
-
 [sub_resource type="Animation" id="Animation_cbv8n"]
 length = 0.001
 tracks/0/type = "value"
@@ -103,45 +75,6 @@ tracks/4/keys = {
 "values": [Vector2(126, -45)]
 }
 
-[sub_resource type="Animation" id="Animation_ajqqs"]
-resource_name = "show_options"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/Border/Clip Mask/Default:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(190, -45), Vector2(638, -45)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Menu/Border/Clip Mask/Options:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-452, -45), Vector2(0, -45)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Menu/Border/Splitter:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.333593, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(126, -45), Vector2(126, -45), Vector2(458, -45)]
-}
-
 [sub_resource type="Animation" id="Animation_gw5r2"]
 resource_name = "back_to_start"
 tracks/0/type = "value"
@@ -179,6 +112,73 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(458, -45), Vector2(126, -45), Vector2(126, -45)]
+}
+
+[sub_resource type="Animation" id="Animation_308n8"]
+resource_name = "credits"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3.03333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(440, 761), Vector2(440, 142), Vector2(440, 142), Vector2(440, -517)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits/Credits:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.03333, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(382.5, 804), Vector2(382.5, -358)]
+}
+
+[sub_resource type="Animation" id="Animation_ajqqs"]
+resource_name = "show_options"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/Border/Clip Mask/Default:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(190, -45), Vector2(638, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Border/Clip Mask/Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-452, -45), Vector2(0, -45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/Border/Splitter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333593, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(126, -45), Vector2(126, -45), Vector2(458, -45)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34mun"]
@@ -248,7 +248,7 @@ anchor_bottom = 0.5
 offset_left = -200.0
 offset_top = 401.0
 offset_right = 200.0
-offset_bottom = 837.0
+offset_bottom = 1477.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -275,7 +275,7 @@ anchor_bottom = 0.5
 offset_left = -257.5
 offset_top = 444.0
 offset_right = 257.5
-offset_bottom = 771.0
+offset_bottom = 1096.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
@@ -659,6 +659,9 @@ text = "Credits
 
 [connection signal="button_down" from="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer/Back" to="." method="_on_back_button_down"]
 [connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
+[connection signal="button_up" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_up"]
 [connection signal="visibility_changed" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" to="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
 [connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_button_down"]
+[connection signal="button_up" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_button_up"]
 [connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Credits" to="." method="_on_credits_button_down"]
+[connection signal="button_up" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Credits" to="." method="_on_credits_button_up"]

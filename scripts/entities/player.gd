@@ -18,9 +18,9 @@ signal player_damaged(health: float)
 signal bullet_update(projectiles: int, fire_rate: float)
 
 func _ready() -> void:
-    emitter = $emitter
-    camera = $camera
-    print("stfu", bullet_update)
+	emitter = $emitter
+	camera = $camera
+	print("stfu", bullet_update)
 
 func _physics_process(_delta) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -61,42 +61,42 @@ func _physics_process(_delta) -> void:
 	move_and_slide()
 
 func dash(direction) -> void:
-    if dash_charge <= 0:
-        return
-    
-    dash_charge -= 1
-    velocity = direction * (speed * dash_multiplier) * 5
-    move_and_slide()
-    
-    await get_tree().create_timer(dash_time).timeout
-    dashing = false
+	if dash_charge <= 0:
+		return
+	
+	dash_charge -= 1
+	velocity = direction * (speed * dash_multiplier) * 5
+	move_and_slide()
+	
+	await get_tree().create_timer(dash_time).timeout
+	dashing = false
 
 func is_moving() -> bool:
-    if Input.is_action_pressed("move_right"):
-        return true
-    if Input.is_action_pressed("move_left"):
-        return true
-    if Input.is_action_pressed("move_up"):
-        return true
-    if Input.is_action_pressed("move_down"):
-        return true
-    return false
+	if Input.is_action_pressed("move_right"):
+		return true
+	if Input.is_action_pressed("move_left"):
+		return true
+	if Input.is_action_pressed("move_up"):
+		return true
+	if Input.is_action_pressed("move_down"):
+		return true
+	return false
 
 
 func start_rain():
-    print("Rain started")
-    $rain.visible = true
-    
+	print("Rain started")
+	$rain.visible = true
+	
 func _process(_delta: float) -> void:
-    if Input.is_action_pressed("fire")	:
-        shoot()
-    
+	if Input.is_action_pressed("fire")	:
+		shoot()
+	
 func shoot():
-    $emitter.shoot(get_global_mouse_position())    
+	$emitter.shoot(get_global_mouse_position())    
 
 
 func _on_health_component_health_changed(_amount: float, new_health: float) -> void:
-    print("Player health: ", new_health)
-    player_damaged.emit(new_health)
-    $animation.play("hit")
-    get_tree().get_current_scene().shake.emit(0, 1)
+	print("Player health: ", new_health)
+	player_damaged.emit(new_health)
+	$animation.play("hit")
+	get_tree().get_current_scene().shake.emit(0, 1)

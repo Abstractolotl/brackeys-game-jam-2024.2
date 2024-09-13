@@ -3,16 +3,25 @@ extends Control
 @export var game_scene: PackedScene
 
 func _on_new_game_button_down() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
+
+
+func _on_new_game_button_up() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
 	get_tree().change_scene_to_file(game_scene.resource_path)
 
 
 func _on_options_button_down() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
+
+
+func _on_options_button_up() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
 	$AnimationPlayer.play("show_options")
 
-func _on_back_button_down() -> void:
-	$AnimationPlayer.play("back_to_start")
-
 func _on_credits_button_down() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
+	$AnimationPlayer.play("back_to_start")
 	$Menu.visible = false
 	$Credits.visible = true
 	
@@ -20,4 +29,8 @@ func _on_credits_button_down() -> void:
 	await $AnimationPlayer.animation_finished
 	
 	$Credits.visible = false
-	$Menu.visible = true
+	$Menu.visibl
+
+
+func _on_credits_button_up() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
