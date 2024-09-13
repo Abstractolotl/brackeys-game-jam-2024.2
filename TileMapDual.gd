@@ -20,7 +20,6 @@ extends TileMapLayer
 ## Stop any incoming updates of the dual tilemap,
 ## freezing it in its current state.
 @export var freeze: bool = false
-## Print debug messages. Lots of them.
 @export var debug: bool = false
 
 
@@ -108,9 +107,6 @@ func _ready() -> void:
 	if freeze:
 		return
 	
-	if debug:
-		print('Updating in-game is activated')
-	
 	update_tileset()
 
 
@@ -126,18 +122,7 @@ func update_tileset() -> void:
 	rng.seed = seed
 	
 	if world_tilemap == null:
-		if debug:
-			print('WARNING: No TileMapLayer connected!')
 		return
-	
-	if debug:
-		print('tile_set.tile_shape = ' + str(world_tilemap.tile_set.tile_shape))
-	
-	#if output_tileset != null:
-	#	print('set self.tile_set to ' + str(output_tileset))
-	#	self.tile_set = output_tileset
-	#else:
-	#	self.tile_set = world_tilemap.tile_set
 	
 	if self.tile_set.tile_shape == 1:
 		is_isometric = true
@@ -153,8 +138,6 @@ func update_tileset() -> void:
 ## Update all displayed tiles from the dual grid.
 ## It will only process fully-filled tiles from the world grid.
 func _update_tiles() -> void:
-	if debug:
-		print('Updating tiles....................')
 	
 	self.clear()
 	checked_cells = [true]
@@ -175,9 +158,6 @@ func update_tile(world_cell: Vector2i) -> void:
 	# Get the atlas ID of this world cell before
 	# updating the corresponding tiles
 	_atlas_id = 0 #world_tilemap.get_cell_source_id(world_cell)
-	
-	if debug:
-		print('  Updating displayed cells around world cell ' + str(world_cell) + ' with atlas ID ' + str(_atlas_id) + '...')
 	
 	if is_isometric:
 		_update_tile_isometric(world_cell)
@@ -200,9 +180,6 @@ func _update_displayed_tile(_display_cell: Vector2i) -> void:
 		if _display_cell in checked_cells:
 			return
 		checked_cells.append(_display_cell)
-	
-	if debug:
-		print('    Checking display tile ' + str(_display_cell) + '...')
 	
 	# INFO: To get the world cells from the dual grid, we apply the opposite vectors
 	var _top_left = _display_cell - NEIGHBOURS[location.LOW_RIGHT]  # - (1,1)
@@ -232,8 +209,6 @@ func _update_displayed_tile(_display_cell: Vector2i) -> void:
 		self.set_cell(_display_cell, 1, source.get_tile_id(my_random_number_2))
 	else:
 		self.set_cell(_display_cell, _atlas_id, _coords_atlas)
-	if debug:
-		print('    Display tile ' + str(_display_cell) + ' updated with key ' + str(_tile_key))
 
 
 ## Takes a world cell, and updates the
@@ -263,9 +238,6 @@ func _update_displayed_tile_isometric(_display_cell: Vector2i) -> void:
 			return
 		checked_cells.append(_display_cell)
 	
-	if debug:
-		print('    Checking display tile ' + str(_display_cell) + '...')
-	
 	# If _display_cell.y is odd, displace by (+1,0) the low_left and top_right cells
 	var isometric_fix: Vector2i = Vector2i(0,0)
 	if abs(_display_cell.y) % 2 == 1:
@@ -291,8 +263,6 @@ func _update_displayed_tile_isometric(_display_cell: Vector2i) -> void:
 	
 	var _coords_atlas: Vector2i = NEIGHBOURS_TO_ATLAS[_tile_key]
 	self.set_cell(_display_cell, _atlas_id, _coords_atlas)
-	if debug:
-		print('    Display tile ' + str(_display_cell) + ' updated with key ' + str(_tile_key))
 
 
 func _is_world_tile_sketched(_world_cell: Vector2i) -> bool:
@@ -304,17 +274,11 @@ func _is_world_tile_sketched(_world_cell: Vector2i) -> bool:
 		return true
 	
 	if _atlas_coords == full_tile:
-		if debug:
-			print('      World cell ' + str(_world_cell) + ' IS sketched with atlas coords ' + str(_atlas_coords))
 		return true
 	else:
 		# If the cell is empty, get_cell_atlas_coords() returns (-1,-1)
 		if Vector2(_atlas_coords) == Vector2(-1,-1):
-			if debug:
-				print('      World cell ' + str(_world_cell) + ' Is EMPTY')
 			return false
-		if debug:
-			print('      World cell ' + str(_world_cell) + ' Is NOT sketched with atlas coords ' + str(_atlas_coords))
 		return false
 
 
@@ -324,8 +288,6 @@ func fill_tile(world_cell, atlas_id=0) -> void:
 		return
 	
 	if world_tilemap == null:
-		if debug:
-			print('WARNING: No TileMapLayer connected!')
 		return
 		
 	world_tilemap.set_cell(world_cell, atlas_id, full_tile)
@@ -338,8 +300,6 @@ func erase_tile(world_cell, atlas_id=0) -> void:
 		return
 	
 	if world_tilemap == null:
-		if debug:
-			print('WARNING: No TileMapLayer connected!')
 		return
 	
 	world_tilemap.set_cell(world_cell, atlas_id, empty_tile)

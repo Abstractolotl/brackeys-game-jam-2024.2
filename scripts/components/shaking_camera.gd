@@ -13,29 +13,30 @@ var trauma_pwr := 3 #Trauma exponent. Use [2,3]
 var trauma_raised : bool = false
 
 func _ready():
-	randomize()
-	noise.seed = randi()
-	get_tree().get_current_scene().shake.connect(add_trauma)
+    randomize()
+    noise.seed = randi()
+    get_tree().get_current_scene().shake.connect(add_trauma)
 
 func add_trauma(amount : float, minimum_trauma: float):
-	trauma = min(max(amount + trauma, minimum_trauma), 1.0)
-	trauma_raised = true
+    trauma = min(max(amount + trauma, minimum_trauma), 1.0)
+    trauma_raised = true
 
 func _process(delta):
-	var mouse_position: Vector2 = get_global_mouse_position()
-	var direction: Vector2      = (mouse_position - global_position).normalized()
-	position = direction * 35
+    var mouse_position: Vector2 = get_global_mouse_position()
+    var direction: Vector2      = (mouse_position - global_position)
+    if direction.length() > 35:
+        position = direction.normalized() * 35
 
-	if trauma:
-		shake()
-		if !trauma_raised:
-			trauma = max(trauma - decay * delta, 0)
-		else:
-			trauma_raised = false
+    if trauma:
+        shake()
+        if !trauma_raised:
+            trauma = max(trauma - decay * delta, 0)
+        else:
+            trauma_raised = false
 
 func shake(): 
-	var amt = pow(trauma, trauma_pwr)
-	noise_y += 1
-	rotation = max_roll * amt * noise.get_noise_2d(0.5, noise_y)
-	offset.x = max_offset.x * amt * noise.get_noise_2d(0, noise_y)
-	offset.y = max_offset.y * amt * noise.get_noise_2d(1,noise_y)
+    var amt = pow(trauma, trauma_pwr)
+    noise_y += 1
+    rotation = max_roll * amt * noise.get_noise_2d(0.5, noise_y)
+    offset.x = max_offset.x * amt * noise.get_noise_2d(0, noise_y)
+    offset.y = max_offset.y * amt * noise.get_noise_2d(1,noise_y)

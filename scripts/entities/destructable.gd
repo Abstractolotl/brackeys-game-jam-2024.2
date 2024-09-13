@@ -25,9 +25,7 @@ func on_death():
     for drop: Drop in drops:
         current_weight += drop.weight
         if random <= current_weight:
-            print("Spawning drop:", drop)
             if drop.scene == null:
-                print("Error: drop is null", drops)
                 return
             var drop_instance = drop.scene.instantiate()
             get_parent().add_child(drop_instance)
@@ -39,6 +37,8 @@ func hit(amount: float, new_health: float):
         return
 
     if new_health <= 0:
+        if animation.current_animation == "hit":
+            await animation.animation_finished
         animation.play("death")
         dead = true
         call_deferred("on_death")

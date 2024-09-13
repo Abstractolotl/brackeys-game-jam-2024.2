@@ -5,7 +5,7 @@ var animation: AnimationPlayer
 func _ready():
 	animation = $animation
 	animation.play("explosion")
-	get_tree().get_current_scene().shake.emit(1, 1)
+	get_tree().get_current_scene().shake.emit(0, 0.5)
 
 func _on_animation_finished(_name: StringName):
 	queue_free()

@@ -8,7 +8,6 @@ class_name Enemy
 var animation: AnimationPlayer
 var health: HealthComponent
 var sprite: Sprite2D
-var flash: Sprite2D
 
 var dead = false
 
@@ -16,7 +15,6 @@ func _ready():
 	animation = $animation_player
 	health = $health
 	sprite = $sprite
-	flash = $flash
 
 func _process(_delta):
 	if health.health <= 0:
@@ -24,10 +22,8 @@ func _process(_delta):
 		
 	if linear_velocity.x > 0:
 		sprite.flip_h = true
-		flash.flip_h = true
 	else:
 		sprite.flip_h = false
-		flash.flip_h = false
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if health.health <= 0:
@@ -51,18 +47,16 @@ func _on_hit(_amount: float, new_health: float):
 	if new_health <= 0:
 		animation.play("death", 0)
 		dead = true
-		get_tree().get_current_scene().shake.emit(1, 0)
+		get_tree().get_current_scene().shake.emit(0, 0.5)
 		call_deferred("on_death")
 	else:
-		animation.play("hit")#
-		get_tree().get_current_scene().shake.emit(0.2, 0.5)
+		animation.play("hit")
+		get_tree().get_current_scene().shake.emit(0.0, 0.2)
 
 func on_death():
 	lock_rotation = false
 
 
 func _on_body_entered(body: Node) -> void:
-	print_debug("body entered")
 	if body is Player:
-		print_debug("damage player")
-		body.damage(0.25)
+		print("Player entered")
