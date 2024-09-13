@@ -1,11 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://uq3g40cetn3y"]
+[gd_scene load_steps=11 format=3 uid="uid://uq3g40cetn3y"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_eucxq"]
-[ext_resource type="Resource" uid="uid://siwt1x50kwlf" path="res://entities/drops/drop_nothing_90.tres" id="2_cx60o"]
+[ext_resource type="Resource" uid="uid://diwcfr23ilbi7" path="res://drops/base_pool.tres" id="2_6kvvy"]
 [ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_fqhgu"]
-[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://entities/drops/drop_projectiles_5.tres" id="3_7cnq0"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_bf3lb"]
-[ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://entities/drops/drop_firerate_5.tres" id="4_o65n8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7a0r7"]
 radius = 8.0
@@ -36,6 +34,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_et5sq"]
 resource_name = "death"
@@ -63,6 +73,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_u1t17"]
@@ -122,7 +144,7 @@ z_index = 25
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_eucxq")
-drops = Array[Object]([ExtResource("2_cx60o"), ExtResource("3_7cnq0"), ExtResource("4_o65n8")])
+pool = ExtResource("2_6kvvy")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
