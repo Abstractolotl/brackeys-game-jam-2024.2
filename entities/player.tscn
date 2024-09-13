@@ -202,7 +202,7 @@ use_parent_material = true
 position = Vector2(0, -16)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_eppqp")
-animation = &"walking_back"
+animation = &"idle"
 
 [node name="flash" type="ColorRect" parent="sprite"]
 modulate = Color(1, 1, 1, 0)

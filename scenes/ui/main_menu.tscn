@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c380vbxqv0udv"]
+[gd_scene load_steps=21 format=3 uid="uid://c380vbxqv0udv"]
 
 [ext_resource type="Texture2D" uid="uid://c7heiblu3a45n" path="res://assets/ui/panel-border-031.png" id="1_37xfb"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_664mw"]
@@ -7,7 +7,187 @@
 [ext_resource type="PackedScene" uid="uid://d1n0wucsi6d0" path="res://scenes/game/game.tscn" id="2_hp3u6"]
 [ext_resource type="Texture2D" uid="uid://x0lkwr6nm8dp" path="res://assets/ui/menu_border.png" id="3_te7ni"]
 [ext_resource type="Texture2D" uid="uid://bwn1tnisgwslh" path="res://assets/ui/menu_slider.png" id="4_bk5v8"]
+[ext_resource type="Texture2D" uid="uid://cuvmikuwaj71f" path="res://assets/logo.png" id="4_dknl3"]
 [ext_resource type="Script" path="res://scripts/ui/focus_button.gd" id="4_n34ov"]
+[ext_resource type="Texture2D" uid="uid://ddx87fiqtok2p" path="res://assets/ui/checkbox_enabled.png" id="6_ssti5"]
+[ext_resource type="Texture2D" uid="uid://noij8vw2eo2x" path="res://assets/ui/checkbox_disabled.png" id="7_7ie7h"]
+
+[sub_resource type="Animation" id="Animation_308n8"]
+resource_name = "credits"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3.03333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(440, 761), Vector2(440, 142), Vector2(440, 142), Vector2(440, -517)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits/Credits:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.03333, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(382.5, 804), Vector2(382.5, -358)]
+}
+
+[sub_resource type="Animation" id="Animation_cbv8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 761)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits/Credits:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(382.5, 804)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/Border/Clip Mask/Default:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(190, -45)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu/Border/Clip Mask/Options:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-447, -37.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu/Border/Splitter:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(126, -45)]
+}
+
+[sub_resource type="Animation" id="Animation_ajqqs"]
+resource_name = "show_options"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/Border/Clip Mask/Default:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(190, -45), Vector2(638, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Border/Clip Mask/Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-452, -45), Vector2(0, -45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/Border/Splitter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333593, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(126, -45), Vector2(126, -45), Vector2(458, -45)]
+}
+
+[sub_resource type="Animation" id="Animation_gw5r2"]
+resource_name = "back_to_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/Border/Clip Mask/Default:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(638, -45), Vector2(190, -45)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Border/Clip Mask/Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -45), Vector2(-452, -45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/Border/Splitter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(458, -45), Vector2(126, -45), Vector2(126, -45)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34mun"]
+_data = {
+"RESET": SubResource("Animation_cbv8n"),
+"back_to_start": SubResource("Animation_gw5r2"),
+"credits": SubResource("Animation_308n8"),
+"show_options": SubResource("Animation_ajqqs")
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqpw7"]
 
@@ -44,7 +224,13 @@ grow_vertical = 2
 texture = ExtResource("2_0cnwb")
 expand_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_34mun")
+}
+
+[node name="Credits" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,30 +238,360 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+[node name="Logo" type="VBoxContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 401.0
+offset_right = 200.0
+offset_bottom = 837.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Credits/Logo"]
 layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_dknl3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Logo"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]An Abstractolotl Game[/center]"
+fit_content = true
+
+[node name="Credits" type="VBoxContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.5
+offset_top = 444.0
+offset_right = 257.5
+offset_bottom = 771.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Graphics" type="HBoxContainer" parent="Credits/Credits"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Graphics"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Graphic Designers"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Graphics"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]Lissyali
+"
+fit_content = true
+
+[node name="Programmer" type="HBoxContainer" parent="Credits/Credits"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Programmer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Programmers"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Programmer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]NouCake
+pax
+Ancozockt
+"
+fit_content = true
+
+[node name="Music" type="VBoxContainer" parent="Credits/Credits"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Credits/Music"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Music[/center]"
+fit_content = true
+
+[node name="Menu" type="HBoxContainer" parent="Credits/Credits/Music"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Menu"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Menu"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Menu"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Slaleky
+"
+fit_content = true
+
+[node name="Assets" type="VBoxContainer" parent="Credits/Credits"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Credits/Assets"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Assets[/center]"
+fit_content = true
+
+[node name="DualGridTileMap" type="HBoxContainer" parent="Credits/Credits/Assets"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Assets/DualGridTileMap"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]DualGridTileMap
+"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Assets/DualGridTileMap"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by pablogila
+"
+fit_content = true
+
+[node name="Fonts" type="VBoxContainer" parent="Credits/Credits"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Credits/Fonts"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Fonts[/center]"
+fit_content = true
+
+[node name="Junge-Regular" type="HBoxContainer" parent="Credits/Credits/Fonts"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Fonts/Junge-Regular"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Junge"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Fonts/Junge-Regular"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Cyreal Google Fonts
+"
+fit_content = true
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_te7ni")
 stretch_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CenterContainer/HBoxContainer"]
-layout_mode = 2
+[node name="Splitter" type="TextureRect" parent="Menu/Border"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -225.0
+offset_right = -144.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_bk5v8")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
-layout_mode = 2
+[node name="Clip Mask" type="ColorRect" parent="Menu/Border"]
+clip_children = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Options" type="MarginContainer" parent="Menu/Border/Clip Mask"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -447.0
+offset_top = -217.5
+offset_right = 3.0
+offset_bottom = 232.5
+grow_vertical = 2
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 75
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Border/Clip Mask/Options"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Border/Clip Mask/Options/VBoxContainer2"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Options[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Border/Clip Mask/Options/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Music" type="CheckBox" parent="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xe5mc")
+theme_override_font_sizes/font_size = 25
+theme_override_icons/checked = ExtResource("6_ssti5")
+theme_override_icons/unchecked = ExtResource("7_7ie7h")
+button_pressed = true
+text = "Music"
+alignment = 1
+
+[node name="Rain Effects" type="CheckBox" parent="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xe5mc")
+theme_override_font_sizes/font_size = 25
+theme_override_icons/checked = ExtResource("6_ssti5")
+theme_override_icons/unchecked = ExtResource("7_7ie7h")
+button_pressed = true
+text = "Rain Effect"
+alignment = 1
+
+[node name="Explosions" type="CheckBox" parent="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xe5mc")
+theme_override_font_sizes/font_size = 25
+theme_override_icons/checked = ExtResource("6_ssti5")
+theme_override_icons/unchecked = ExtResource("7_7ie7h")
+button_pressed = true
+text = "Blood"
+alignment = 1
+
+[node name="Back" type="Button" parent="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0.584314, 0.584314, 0.584314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_color = Color(0.690196, 0.713726, 0.713726, 1)
+theme_override_fonts/font = ExtResource("1_xe5mc")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqpw7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6c4tn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
+text = "Back To Start"
+
+[node name="Default" type="MarginContainer" parent="Menu/Border/Clip Mask"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -225.0
+offset_bottom = 225.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_bottom = 75
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Border/Clip Mask/Default"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Border/Clip Mask/Default/VBoxContainer2"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
@@ -83,12 +599,12 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Cult Of Sheep[/center]"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Border/Clip Mask/Default/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="New Game" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="New Game" type="Button" parent="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -106,7 +622,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Start Game"
 script = ExtResource("4_n34ov")
 
-[node name="Options" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="Options" type="Button" parent="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -123,7 +639,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Options"
 
-[node name="Exit" type="Button" parent="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="Credits" type="Button" parent="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -138,7 +654,11 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_6c4tn")
 theme_override_styles/hover = SubResource("StyleBoxTexture_yfyih")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_yfyih")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
-text = "Exit"
+text = "Credits
+"
 
-[connection signal="button_down" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
-[connection signal="visibility_changed" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" to="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
+[connection signal="button_down" from="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer/Back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
+[connection signal="visibility_changed" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" to="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
+[connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_button_down"]
+[connection signal="button_down" from="Menu/Border/Clip Mask/Default/VBoxContainer2/VBoxContainer/Credits" to="." method="_on_credits_button_down"]
