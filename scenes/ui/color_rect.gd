@@ -16,5 +16,5 @@ func _process(delta: float) -> void:
 		print("NO CAMERA")
 		return
 	
-	var offset = player.global_position - camera.global_position
+	var offset = (player.global_position - camera.global_position) * 1
 	material.set_shader_parameter("player_coords", Vector2(offset.x / DisplayServer.screen_get_size().x, offset.y / DisplayServer.screen_get_size().y))

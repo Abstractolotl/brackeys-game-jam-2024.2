@@ -23,8 +23,9 @@ func add_trauma(amount : float, minimum_trauma: float):
 
 func _process(delta):
 	var mouse_position: Vector2 = get_global_mouse_position()
-	var direction: Vector2      = (mouse_position - global_position).normalized()
-	position = direction * 35
+	var direction: Vector2      = (mouse_position - global_position)
+	if direction.length() > 35:
+		position = direction.normalized() * 35
 
 	if trauma:
 		shake()

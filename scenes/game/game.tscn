@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=43 format=4 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Texture2D" uid="uid://8f0g426rngsg" path="res://assets/placeholder/rain.png" id="1_4x37e"]
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://djji8kx38byid" path="res://entities/collectible_firerate.tscn" id="13_iki0u"]
 [ext_resource type="PackedScene" uid="uid://d11qjn0wl4i2a" path="res://entities/destructables/box.tscn" id="14_cppcm"]
 [ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="15_x1rkv"]
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="16_4rjob"]
 [ext_resource type="PackedScene" uid="uid://uq3g40cetn3y" path="res://entities/destructables/sign.tscn" id="16_qa56t"]
 [ext_resource type="PackedScene" uid="uid://bltpe62v8m6ht" path="res://entities/destructables/vase.tscn" id="18_nke70"]
 [ext_resource type="PackedScene" uid="uid://dqnthy2jx7juo" path="res://entities/destructables/waypointer.tscn" id="19_x4kr4"]
@@ -350,20 +351,21 @@ position = Vector2(477, 146)
 
 [node name="destructable2" parent="." instance=ExtResource("14_cppcm")]
 position = Vector2(472, 222)
+drops = Array[ExtResource("16_4rjob")]([])
 
 [node name="destructable3" parent="." instance=ExtResource("15_x1rkv")]
 position = Vector2(477, 316)
-drops = null
 
 [node name="destructable4" parent="." instance=ExtResource("16_qa56t")]
 position = Vector2(472, 407)
 
 [node name="tree" parent="." instance=ExtResource("9_hn4x7")]
 position = Vector2(751, 218)
-drops = null
+drops = Array[ExtResource("16_4rjob")]([])
 
 [node name="destructable5" parent="." instance=ExtResource("18_nke70")]
 position = Vector2(477, 495)
+drops = Array[ExtResource("16_4rjob")]([])
 
 [node name="destructable6" parent="." instance=ExtResource("19_x4kr4")]
 position = Vector2(480, 69)
