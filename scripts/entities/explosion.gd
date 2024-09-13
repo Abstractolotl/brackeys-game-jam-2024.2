@@ -19,4 +19,4 @@ func on_collision(body: Node2D):
 
 	if body is RigidBody2D:
 		var direction = (body.global_position - global_position).normalized()
-		body.apply_impulse(direction * 2000, Vector2(0, 0))
+		#body.apply_impulse(direction * 2000, Vector2(0, 0))

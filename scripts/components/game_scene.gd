@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		var enemy: Enemy = enemy_scene.instantiate()
 		enemy.player = player
 		enemy.global_position = Vector2(randi() % 800, randi() % 600)
-		$enemies.add_child(enemy)
+		#$enemies.add_child(enemy)
 
 static func find_health_component(node: Node) -> HealthComponent:
 	for n in node.get_children():

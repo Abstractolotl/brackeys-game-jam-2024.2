@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://7cv31xrwlhpd"]
+[gd_scene load_steps=12 format=3 uid="uid://c346hw01e8u83"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_uw3bg"]
 [ext_resource type="Texture2D" uid="uid://bdbajnsghf5qi" path="res://assets/placeholder/tree.png" id="2_by715"]
+[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://entities/drops/drop_projectiles_5.tres" id="2_jwnly"]
+[ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://entities/drops/drop_firerate_5.tres" id="3_0tfrc"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_1m64a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u80m1"]
-size = Vector2(40, 80)
+[sub_resource type="CircleShape2D" id="CircleShape2D_2dkih"]
+radius = 16.1245
 
 [sub_resource type="Animation" id="Animation_g8ue1"]
 length = 0.001
@@ -149,11 +151,16 @@ _data = {
 }
 
 [node name="tree" type="StaticBody2D"]
+z_index = 25
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_uw3bg")
+drops = Array[Object]([ExtResource("2_jwnly"), ExtResource("3_0tfrc")])
 
 [node name="sprites" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -45)
 scale = Vector2(0.5, 0.5)
 
 [node name="sprite_base" type="Sprite2D" parent="sprites"]
@@ -171,11 +178,10 @@ hframes = 2
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_1m64a")
-health = 3.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 45)
-shape = SubResource("RectangleShape2D_u80m1")
+position = Vector2(4, 30)
+shape = SubResource("CircleShape2D_2dkih")
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {

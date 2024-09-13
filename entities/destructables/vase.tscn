@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://bltpe62v8m6ht"]
+
+[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_2nfdq"]
+[ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_twrpb"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_c3h8n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ky2m7"]
+
+[sub_resource type="Animation" id="Animation_u1mmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [35]
+}
+
+[sub_resource type="Animation" id="Animation_et5sq"]
+resource_name = "death"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_u1t17"]
+resource_name = "hit"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [36, 35, 37, 35]
+}
+
+[sub_resource type="Animation" id="Animation_cgs3m"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28j5f"]
+_data = {
+"RESET": SubResource("Animation_u1mmq"),
+"death": SubResource("Animation_et5sq"),
+"hit": SubResource("Animation_u1t17"),
+"idle": SubResource("Animation_cgs3m")
+}
+
+[node name="destructable" type="StaticBody2D"]
+z_index = 25
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_2nfdq")
+drops = null
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-3, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("2_twrpb")
+hframes = 7
+vframes = 12
+frame = 35
+
+[node name="health" type="Node" parent="."]
+script = ExtResource("3_c3h8n")
+health = 3.0
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_ky2m7")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28j5f")
+}
+
+[connection signal="health_changed" from="health" to="." method="hit"]
