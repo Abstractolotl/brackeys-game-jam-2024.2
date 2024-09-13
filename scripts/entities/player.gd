@@ -67,6 +67,11 @@ func is_moving() -> bool:
     if Input.is_action_pressed("move_down"):
         return true
     return false
+
+
+func start_rain():
+    print("Rain started")
+    $rain.visible = true
     
 func _process(_delta: float) -> void:
     if Input.is_action_pressed("fire")	:

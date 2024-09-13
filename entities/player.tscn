@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dxvu6i0n3nbb2"]
+[gd_scene load_steps=37 format=3 uid="uid://dxvu6i0n3nbb2"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/character/front_walking.png" id="2_7l8jn"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="5_l2s0a"]
 [ext_resource type="Texture2D" uid="uid://b5rstsf26htl4" path="res://assets/placeholder/circle_512.png" id="7_5bdh8"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="9_hlaq6"]
+[ext_resource type="Shader" path="res://scenes/game/vignette.gdshader" id="10_mtgdq"]
+[ext_resource type="Script" path="res://scenes/ui/vignette.gd" id="11_0wyci"]
+[ext_resource type="Texture2D" uid="uid://8f0g426rngsg" path="res://assets/placeholder/rain.png" id="12_c2wvm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pusqk"]
 atlas = ExtResource("2_7l8jn")
@@ -160,6 +163,34 @@ _data = {
 "hit": SubResource("Animation_a86oy")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekcr5"]
+shader = ExtResource("10_mtgdq")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 0.31
+shader_parameter/vignette_strength = 1.0
+shader_parameter/dither_strength = 0.05
+shader_parameter/vignette_color = null
+shader_parameter/player_coords = null
+
+[sub_resource type="Gradient" id="Gradient_nbebw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.214047, 0.651508, 0.823102, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8hyq"]
+gradient = SubResource("Gradient_nbebw")
+width = 2
+height = 24
+
+[sub_resource type="Gradient" id="Gradient_is6pi"]
+offsets = PackedFloat32Array(0, 0.15102, 0.808163, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ugo6y"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="player" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_meqr6")
@@ -167,6 +198,7 @@ bullet = ExtResource("2_hwf6v")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 clip_children = 2
+use_parent_material = true
 position = Vector2(0, -16)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_eppqp")
@@ -184,9 +216,7 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_qd31t")
 
 [node name="camera" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+position_smoothing_speed = 0.1
 script = ExtResource("4_0yynb")
 noise = SubResource("FastNoiseLite_5yqxx")
 
@@ -211,5 +241,49 @@ libraries = {
 "": SubResource("AnimationLibrary_8y1of")
 }
 speed_scale = 2.0
+
+[node name="light2" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="vignette" type="ColorRect" parent="light2"]
+material = SubResource("ShaderMaterial_ekcr5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("11_0wyci")
+
+[node name="rain" type="Node2D" parent="."]
+visible = false
+
+[node name="rain" type="CPUParticles2D" parent="rain"]
+z_index = 1000
+position = Vector2(0, -200)
+amount = 50
+lifetime = 0.7
+preprocess = 3.0
+texture = SubResource("GradientTexture2D_f8hyq")
+emission_shape = 3
+emission_rect_extents = Vector2(512, 250)
+direction = Vector2(-0.25, 1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 600.0
+angle_min = -15.0
+angle_max = -10.0
+color_ramp = SubResource("Gradient_is6pi")
+
+[node name="splashes" type="CPUParticles2D" parent="rain"]
+material = SubResource("CanvasItemMaterial_ugo6y")
+amount = 150
+texture = ExtResource("12_c2wvm")
+emission_shape = 3
+emission_rect_extents = Vector2(500, 300)
+gravity = Vector2(0, 0)
+anim_speed_min = 3.0
+anim_speed_max = 3.0
 
 [connection signal="health_changed" from="health" to="." method="_on_health_component_health_changed"]

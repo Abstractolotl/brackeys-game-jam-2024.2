@@ -1,6 +1,5 @@
-[gd_scene load_steps=44 format=4 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=41 format=4 uid="uid://d1n0wucsi6d0"]
 
-[ext_resource type="Texture2D" uid="uid://8f0g426rngsg" path="res://assets/placeholder/rain.png" id="1_4x37e"]
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
 [ext_resource type="PackedScene" uid="uid://bwva31xchx53y" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
 [ext_resource type="PackedScene" uid="uid://dxvu6i0n3nbb2" path="res://entities/player.tscn" id="4_4h4at"]
@@ -21,6 +20,13 @@
 [ext_resource type="PackedScene" uid="uid://uq3g40cetn3y" path="res://entities/destructables/sign.tscn" id="16_qa56t"]
 [ext_resource type="PackedScene" uid="uid://bltpe62v8m6ht" path="res://entities/destructables/vase.tscn" id="18_nke70"]
 [ext_resource type="PackedScene" uid="uid://dqnthy2jx7juo" path="res://entities/destructables/waypointer.tscn" id="19_x4kr4"]
+
+[sub_resource type="Gradient" id="Gradient_bk4he"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5als6"]
+gradient = SubResource("Gradient_bk4he")
+width = 256
+height = 1
 
 [sub_resource type="Animation" id="Animation_gkjo3"]
 resource_name = "night"
@@ -56,28 +62,10 @@ tonemap_white = 1.4
 glow_enabled = true
 glow_intensity = 0.96
 glow_bloom = 0.34
+adjustment_enabled = true
 adjustment_contrast = 0.8
 adjustment_saturation = 1.82
 adjustment_color_correction = SubResource("GradientTexture1D_o64lb")
-
-[sub_resource type="Gradient" id="Gradient_nbebw"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.214047, 0.651508, 0.823102, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c8sis"]
-gradient = SubResource("Gradient_nbebw")
-width = 2
-height = 24
-
-[sub_resource type="Gradient" id="Gradient_twmhm"]
-offsets = PackedFloat32Array(0, 0.15102, 0.808163, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o4sta"]
-particles_animation = true
-particles_anim_h_frames = 5
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fwm4j"]
 
@@ -240,6 +228,7 @@ sources/0 = SubResource("TileSetAtlasSource_sjqkm")
 y_sort_enabled = true
 position = Vector2(0, 1)
 script = ExtResource("1_ga03w")
+base = SubResource("GradientTexture2D_5als6")
 player = NodePath("player")
 hud = NodePath("hud-layer/IngameHud")
 
@@ -252,37 +241,6 @@ libraries = {
 
 [node name="world" type="WorldEnvironment" parent="enviroment"]
 environment = SubResource("Environment_kj3vu")
-
-[node name="rain" type="CPUParticles2D" parent="enviroment"]
-visible = false
-z_index = 1000
-position = Vector2(213, -171)
-amount = 50
-lifetime = 0.7
-preprocess = 3.0
-texture = SubResource("GradientTexture2D_c8sis")
-emission_shape = 3
-emission_rect_extents = Vector2(512, 250)
-direction = Vector2(-0.25, 1)
-spread = 5.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 400.0
-initial_velocity_max = 600.0
-angle_min = -15.0
-angle_max = -10.0
-color_ramp = SubResource("Gradient_twmhm")
-
-[node name="splashes" type="CPUParticles2D" parent="enviroment"]
-visible = false
-material = SubResource("CanvasItemMaterial_o4sta")
-position = Vector2(271, 16)
-amount = 150
-texture = ExtResource("1_4x37e")
-emission_shape = 3
-emission_rect_extents = Vector2(500, 300)
-gravity = Vector2(0, 0)
-anim_speed_min = 3.0
-anim_speed_max = 3.0
 
 [node name="hud-layer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -381,4 +339,4 @@ position = Vector2(836, 423)
 [node name="tree3" parent="." instance=ExtResource("9_hn4x7")]
 position = Vector2(651, 549)
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[connection signal="night_start" from="." to="player" method="start_rain"]

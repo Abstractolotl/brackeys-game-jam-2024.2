@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bwva31xchx53y"]
+[gd_scene load_steps=51 format=3 uid="uid://bwva31xchx53y"]
 
 [ext_resource type="Script" path="res://scripts/ui/ingame_hud.gd" id="1_wqdty"]
 [ext_resource type="Script" path="res://scripts/ui/animated_texture_rect.gd" id="2_0l26t"]
@@ -15,6 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://dgjjsrholk0xf" path="res://assets/ui/pause_background.png" id="13_ll5g8"]
 [ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="14_k517a"]
 [ext_resource type="Texture2D" uid="uid://c7heiblu3a45n" path="res://assets/ui/panel-border-031.png" id="15_0obi7"]
+[ext_resource type="Shader" path="res://scenes/game/vignette.gdshader" id="16_tifuj"]
+[ext_resource type="Script" path="res://scenes/ui/vignette.gd" id="17_yfvvk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1h818"]
+shader = ExtResource("16_tifuj")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 0.5
+shader_parameter/vignette_strength = 1.0
+shader_parameter/dither_strength = 0.03
+shader_parameter/vignette_color = null
+shader_parameter/player_coords = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pksd1"]
 atlas = ExtResource("3_hv2m4")
@@ -301,6 +312,16 @@ script = ExtResource("1_wqdty")
 level_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Levelbar")
 health_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Healthbar")
 time_bar = NodePath("HUD/Top/VBoxContainer/TimeBar")
+
+[node name="vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1h818")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_yfvvk")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 1
