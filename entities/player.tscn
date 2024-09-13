@@ -216,7 +216,6 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_qd31t")
 
 [node name="camera" type="Camera2D" parent="."]
-position_smoothing_speed = 0.1
 script = ExtResource("4_0yynb")
 noise = SubResource("FastNoiseLite_5yqxx")
 
