@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c346hw01e8u83"]
+[gd_scene load_steps=13 format=3 uid="uid://c346hw01e8u83"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_uw3bg"]
-[ext_resource type="Texture2D" uid="uid://bdbajnsghf5qi" path="res://assets/placeholder/tree.png" id="2_by715"]
 [ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://entities/drops/drop_projectiles_5.tres" id="2_jwnly"]
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_voutc"]
 [ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://entities/drops/drop_firerate_5.tres" id="3_0tfrc"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_1m64a"]
+[ext_resource type="Texture2D" uid="uid://xyd6bhoihqbk" path="res://assets/map/objects/tree_destructible.png" id="5_5oppm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dkih"]
 radius = 16.1245
@@ -72,11 +73,11 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(6, 134), Vector2(-50, 134)]
+"values": [Vector2(0, 74), Vector2(-50, 84)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("sprites/sprite_top:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -156,31 +157,32 @@ y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_uw3bg")
-drops = Array[Object]([ExtResource("2_jwnly"), ExtResource("3_0tfrc")])
+drops = Array[ExtResource("2_voutc")]([ExtResource("2_jwnly"), ExtResource("3_0tfrc")])
 
 [node name="sprites" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -45)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -94)
 
 [node name="sprite_base" type="Sprite2D" parent="sprites"]
+position = Vector2(0, 4)
 scale = Vector2(2, 2)
-texture = ExtResource("2_by715")
+texture = ExtResource("5_5oppm")
 hframes = 2
 frame = 1
 
 [node name="sprite_top" type="Sprite2D" parent="sprites"]
 position = Vector2(6, 134)
 scale = Vector2(2, 2)
-texture = ExtResource("2_by715")
-offset = Vector2(-3, -65)
+texture = ExtResource("5_5oppm")
+offset = Vector2(0, -35)
 hframes = 2
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_1m64a")
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(4, 30)
+visible = false
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_2dkih")
 
 [node name="animation" type="AnimationPlayer" parent="."]
