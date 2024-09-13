@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csrtv4wjftrld" path="res://assets/zombie_schaf2.png" id="4_nqvnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]
-radius = 20.0
+radius = 9.0
 
 [sub_resource type="Animation" id="Animation_5wxjw"]
 length = 0.001
@@ -130,7 +130,6 @@ explosion = ExtResource("2_hai0q")
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
 position = Vector2(0, -18)
-scale = Vector2(2, 2)
 texture = ExtResource("4_nqvnl")
 hframes = 6
 
@@ -143,8 +142,7 @@ offset_bottom = 20.0
 metadata/_edit_use_anchors_ = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 1)
+position = Vector2(2, -11)
 shape = SubResource("CircleShape2D_2s3n4")
 
 [node name="health" type="Node" parent="."]

@@ -45,7 +45,7 @@ func _on_player_bullet_update(projectiles: int, fire_rate: float) -> void:
 
 func _on_time_progress(percentage: float) -> void:
 	var frame_amount = 23
-	var frame = int(round(frame_amount * percentage))
+	var frame = min(int(round(frame_amount * percentage)), frame_amount-1)
 	time_bar.go_to_frame(frame)
 
 
