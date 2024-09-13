@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_664mw"]
 [ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="1_xe5mc"]
 [ext_resource type="Texture2D" uid="uid://bapiake7hxktn" path="res://assets/ui/menu_background.png" id="2_0cnwb"]
-[ext_resource type="PackedScene" uid="uid://hrkyp6kgor5l" path="res://scenes/game/game.tscn" id="2_hp3u6"]
+[ext_resource type="PackedScene" uid="uid://d1n0wucsi6d0" path="res://scenes/game/game.tscn" id="2_hp3u6"]
 [ext_resource type="Texture2D" uid="uid://x0lkwr6nm8dp" path="res://assets/ui/menu_border.png" id="3_te7ni"]
 [ext_resource type="Texture2D" uid="uid://bwn1tnisgwslh" path="res://assets/ui/menu_slider.png" id="4_bk5v8"]
 [ext_resource type="Script" path="res://scripts/ui/focus_button.gd" id="4_n34ov"]
@@ -141,4 +141,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Exit"
 
 [connection signal="button_down" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_down"]
+[connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" to="." method="_on_new_game_button_up"]
 [connection signal="visibility_changed" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" to="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/New Game" method="_on_visibility_changed"]
+[connection signal="button_down" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_button_down"]
+[connection signal="button_up" from="CenterContainer/HBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_button_up"]

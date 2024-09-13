@@ -373,3 +373,5 @@ position = Vector2(836, 423)
 
 [node name="tree3" parent="." instance=ExtResource("9_hn4x7")]
 position = Vector2(651, 549)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -23,13 +23,20 @@ func shoot(_origin: Vector2, _target: Vector2, direction: Vector2, _speed: float
 	
 func on_collision_body(body: Node2D):
 	queue_free()
-
+	
+	_play_hit_sound()
+	
 	var health_component = Util.find_health_component(body)
 
 	if health_component:
 		health_component.hit(1)
 		if body is RigidBody2D:
 			body.apply_impulse(Vector2.from_angle(rotation) * 1000, Vector2(0, 0))
+			
+func _play_hit_sound():
+	var distance = (position - origin).length()
+	var volume_modifier = - (Util.clamped_range_mapping(distance, 150, 500) * 10)
+	AudioManager.play_sound(load("res://assets/audio/hit.mp3"), "Effects", volume_modifier)
 		
 func _physics_process(delta: float) -> void:
 	flightTime += delta

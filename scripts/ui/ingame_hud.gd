@@ -37,3 +37,21 @@ func _on_time_progress(percentage: float) -> void:
 	var frame_amount = 23
 	var frame = int(round(frame_amount * percentage))
 	$Control/Top/VBoxContainer/TimeBar.go_to_frame(frame)
+
+
+func _on_resume_button_down() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
+
+
+func _on_resume_button_up() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
+	resume()
+
+
+func _on_back_to_menu_button_down() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
+
+
+func _on_back_to_menu_button_up() -> void:
+	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
+	exit_to_menu()
