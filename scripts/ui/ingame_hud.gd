@@ -5,11 +5,13 @@ class_name IngameHud
 @export var health_bar: HealthBar
 @export var time_bar: AnimatedTextureRect
 
+@export var damage_number: PackedScene
+
 var vignette: Vignette
 
 func _ready() -> void:
 	vignette = $vignette
-	_on_time_progress(0.5)
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -17,6 +19,12 @@ func _process(_delta: float) -> void:
 			resume()
 		else:
 			pause()
+
+func show_damage_number(position: Vector2, damage: float):
+	var damageNumber = damage_number.instantiate()
+	damageNumber.damage = damage
+	damageNumber.damage_position = position
+	$"HUD/DamageNumbers".add_child(damageNumber)
 
 func pause():
 	$Pause.visible = true
