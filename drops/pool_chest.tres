@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DropPool" load_steps=11 format=3 uid="uid://drghdm0meqa1m"]
+
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_wal8b"]
+[ext_resource type="PackedScene" uid="uid://djji8kx38byid" path="res://entities/collectible_firerate.tscn" id="2_bat3n"]
+[ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="2_c1cdg"]
+[ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="3_7sdw7"]
+[ext_resource type="PackedScene" uid="uid://bc7nphewe46at" path="res://entities/collectible_projectile.tscn" id="3_geg2l"]
+[ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="4_el62x"]
+
+[sub_resource type="Resource" id="Resource_jnkdl"]
+script = ExtResource("1_wal8b")
+weight = 25.0
+scene = ExtResource("2_bat3n")
+
+[sub_resource type="Resource" id="Resource_4sbvy"]
+script = ExtResource("1_wal8b")
+weight = 25.0
+scene = ExtResource("3_geg2l")
+
+[sub_resource type="Resource" id="Resource_76twx"]
+script = ExtResource("1_wal8b")
+weight = 15.0
+scene = ExtResource("2_c1cdg")
+
+[sub_resource type="Resource" id="Resource_esrv1"]
+script = ExtResource("1_wal8b")
+weight = 15.0
+scene = ExtResource("4_el62x")
+
+[resource]
+script = ExtResource("3_7sdw7")
+drops = Array[ExtResource("1_wal8b")]([SubResource("Resource_jnkdl"), SubResource("Resource_4sbvy"), SubResource("Resource_76twx"), SubResource("Resource_esrv1")])

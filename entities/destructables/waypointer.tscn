@@ -1,12 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqnthy2jx7juo"]
+[gd_scene load_steps=10 format=3 uid="uid://dqnthy2jx7juo"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_dnekd"]
-[ext_resource type="Resource" uid="uid://siwt1x50kwlf" path="res://drops/drop_nothing_90.tres" id="2_1ihxq"]
 [ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_jxdvo"]
-[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_xajrw"]
-[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://drops/drop_projectiles_5.tres" id="3_eakly"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_gysg5"]
-[ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://drops/drop_firerate_5.tres" id="4_yeqve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etj62"]
 radius = 13.0
@@ -123,7 +119,6 @@ z_index = 25
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_dnekd")
-drops = Array[ExtResource("2_xajrw")]([ExtResource("2_1ihxq"), ExtResource("3_eakly"), ExtResource("4_yeqve")])
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2

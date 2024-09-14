@@ -115,7 +115,7 @@ _data = {
 }
 
 [node name="destructable" type="StaticBody2D"]
-z_index = 25
+z_index = 24
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_v0ujl")
