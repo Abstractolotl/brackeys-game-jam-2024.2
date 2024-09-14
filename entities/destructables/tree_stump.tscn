@@ -213,6 +213,8 @@ hframes = 2
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("4_0ji4r")
+health = 25.0
+max_health = 25.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)

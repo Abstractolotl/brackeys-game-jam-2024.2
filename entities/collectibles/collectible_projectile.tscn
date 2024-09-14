@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bc7nphewe46at"]
 
 [ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_6da1w"]
-[ext_resource type="Texture2D" uid="uid://c6uuds2y3okh5" path="res://assets/placeholder/Treasure+.png" id="2_vn7r0"]
+[ext_resource type="Texture2D" uid="uid://pju16ojkunww" path="res://assets/collectibles/collectible_projectiles.png" id="2_2uja6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tofxt"]
 radius = 24.0
@@ -51,10 +51,7 @@ type = 7
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("2_vn7r0")
-hframes = 16
-vframes = 16
-frame = 165
+texture = ExtResource("2_2uja6")
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tofxt")

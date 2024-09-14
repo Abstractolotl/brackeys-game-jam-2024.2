@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="3_7sdw7"]
 [ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://drops/drop_projectiles_5.tres" id="3_pqk6n"]
 [ext_resource type="Resource" uid="uid://b8ria10880wa8" path="res://drops/drop_enemy_5.tres" id="4_axu58"]
-[ext_resource type="Resource" path="res://drops/drop_explosion_5.tres" id="5_36ubd"]
+[ext_resource type="Resource" uid="uid://ughqu6lgbepk" path="res://drops/drop_explosion_5.tres" id="5_36ubd"]
 
 [resource]
 script = ExtResource("3_7sdw7")

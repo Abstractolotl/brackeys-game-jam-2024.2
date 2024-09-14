@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwgiycrv55qk3"]
 
 [ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_svds2"]
-[ext_resource type="Texture2D" uid="uid://dtv5cfme0mg4v" path="res://assets/placeholder/pierce_up.png" id="2_aa4ap"]
+[ext_resource type="Texture2D" uid="uid://cpo70p6n4ve6a" path="res://assets/collectibles/collectible_pierce.png" id="2_4071e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tofxt"]
 radius = 24.0
@@ -51,7 +51,7 @@ type = 5
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("2_aa4ap")
+texture = ExtResource("2_4071e")
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tofxt")

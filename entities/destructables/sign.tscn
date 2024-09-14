@@ -164,7 +164,8 @@ offset_bottom = 26.0
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_bf3lb")
-health = 3.0
+health = 5.0
+max_health = 5.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

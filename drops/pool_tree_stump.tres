@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="DropPool" load_steps=5 format=3 uid="uid://cfjbrm68t2jxy"]
+[gd_resource type="Resource" script_class="DropPool" load_steps=6 format=3 uid="uid://cfjbrm68t2jxy"]
 
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_ej70o"]
 [ext_resource type="Resource" uid="uid://siwt1x50kwlf" path="res://drops/drop_nothing_90.tres" id="3_rtmog"]
+[ext_resource type="Resource" uid="uid://dpsy66mathnr6" path="res://drops/drop_movespeed_5.tres" id="4_bry5x"]
 [ext_resource type="Resource" uid="uid://b2rkmj6fkaua" path="res://drops/drop_light_5.tres" id="7_g7xse"]
 [ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="8_taecq"]
 
 [resource]
 script = ExtResource("8_taecq")
-drops = Array[ExtResource("1_ej70o")]([ExtResource("7_g7xse"), ExtResource("3_rtmog")])
+drops = Array[ExtResource("1_ej70o")]([ExtResource("7_g7xse"), ExtResource("3_rtmog"), ExtResource("4_bry5x")])

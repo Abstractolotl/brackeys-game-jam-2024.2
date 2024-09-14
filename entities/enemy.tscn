@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://chbd7bp1q46o6"]
+[gd_scene load_steps=25 format=3 uid="uid://chbd7bp1q46o6"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_vr8am"]
 [ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_hai0q"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_lxm64"]
+[ext_resource type="AudioStream" uid="uid://bvqcebfry6t0c" path="res://assets/audio/sheep.mp3" id="3_t5b25"]
+[ext_resource type="AudioStream" uid="uid://b5fdl0wdqktpu" path="res://assets/audio/hit.mp3" id="4_4qnd6"]
 [ext_resource type="Texture2D" uid="uid://csrtv4wjftrld" path="res://assets/zombie_schaf2.png" id="4_nqvnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]
@@ -185,7 +187,6 @@ animation = &"RESET"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_w1yvx"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7p0nh"]
-graph_offset = Vector2(-684, -24)
 "nodes/Animation Death/node" = SubResource("AnimationNodeAnimation_w4ppi")
 "nodes/Animation Death/position" = Vector2(320, 740)
 "nodes/Animation Hurt/node" = SubResource("AnimationNodeAnimation_kdfbw")
@@ -219,6 +220,8 @@ linear_damp = 3.0
 angular_damp = 3.0
 script = ExtResource("1_vr8am")
 explosion = ExtResource("2_hai0q")
+audio_dead = ExtResource("3_t5b25")
+audio_hit = ExtResource("4_4qnd6")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2

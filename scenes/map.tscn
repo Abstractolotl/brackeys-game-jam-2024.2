@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dixpu63gxvf0y" path="res://entities/destructables/barrel.tscn" id="11_34j5k"]
 [ext_resource type="PackedScene" uid="uid://bhmbjoyq5bse7" path="res://entities/scenerie/bush.tscn" id="11_bv3cp"]
 [ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="12_0rauq"]
-[ext_resource type="PackedScene" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
+[ext_resource type="PackedScene" uid="uid://717sy8ext5ee" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
 [ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="13_cmst0"]
-[ext_resource type="Resource" uid="uid://bsjyo8htu7crr" path="res://drops/pool_chest.tres" id="14_yeear"]
+[ext_resource type="PackedScene" uid="uid://c1h7msdrad287" path="res://entities/destructables/bush.tscn" id="14_btk5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l7ck2"]
 texture = ExtResource("1_c645q")
@@ -293,7 +293,7 @@ world_tilemap = NodePath("../BaseLayer")
 recognized_tile_position = Vector2i(2, 0)
 random_detail_chance = 0.9
 
-[node name="SpawnAreas" type="Node" parent="."]
+[node name="SpawnAreas" type="Node2D" parent="."]
 
 [node name="Trees" type="Node" parent="SpawnAreas"]
 
@@ -563,7 +563,7 @@ offset_bottom = 127.0
 border_color = Color(0, 0, 1, 1)
 border_width = 2.0
 script = ExtResource("10_fkp5y")
-to_spawn = ExtResource("11_bv3cp")
+to_spawn = ExtResource("14_btk5i")
 min_amount = 6
 max_amount = 12
 min_distance = 150.0
@@ -576,7 +576,7 @@ offset_bottom = 1758.0
 border_color = Color(0, 0, 1, 1)
 border_width = 2.0
 script = ExtResource("10_fkp5y")
-to_spawn = ExtResource("11_bv3cp")
+to_spawn = ExtResource("14_btk5i")
 min_amount = 10
 max_amount = 15
 min_distance = 150.0
@@ -589,7 +589,7 @@ offset_bottom = 2638.0
 border_color = Color(0, 0, 1, 1)
 border_width = 2.0
 script = ExtResource("10_fkp5y")
-to_spawn = ExtResource("11_bv3cp")
+to_spawn = ExtResource("14_btk5i")
 min_amount = 10
 max_amount = 15
 min_distance = 150.0
@@ -602,7 +602,7 @@ offset_bottom = 1694.0
 border_color = Color(0, 0, 1, 1)
 border_width = 2.0
 script = ExtResource("10_fkp5y")
-to_spawn = ExtResource("11_bv3cp")
+to_spawn = ExtResource("14_btk5i")
 min_amount = 5
 max_amount = 10
 min_distance = 150.0
@@ -615,7 +615,7 @@ offset_bottom = 115.0
 border_color = Color(0, 0, 1, 1)
 border_width = 2.0
 script = ExtResource("10_fkp5y")
-to_spawn = ExtResource("11_bv3cp")
+to_spawn = ExtResource("14_btk5i")
 min_amount = 6
 max_amount = 12
 min_distance = 150.0
@@ -695,7 +695,7 @@ to_spawn = ExtResource("11_34j5k")
 max_amount = 3
 min_distance = 150.0
 
-[node name="Island" type="Node" parent="SpawnAreas"]
+[node name="Island" type="Node2D" parent="SpawnAreas"]
 
 [node name="tree_spawm_area9" type="ReferenceRect" parent="SpawnAreas/Island"]
 offset_left = 1615.0
@@ -748,9 +748,8 @@ min_distance = 300.0
 
 [node name="chest" parent="SpawnAreas/Island" instance=ExtResource("13_cmst0")]
 position = Vector2(1812, 2532)
-pool = ExtResource("14_yeear")
 
-[node name="HiddenArea" type="Node" parent="SpawnAreas"]
+[node name="HiddenArea" type="Node2D" parent="SpawnAreas"]
 
 [node name="bush_spawn_area" type="ReferenceRect" parent="SpawnAreas/HiddenArea"]
 offset_left = 5071.0
@@ -931,4 +930,3 @@ min_distance = 300.0
 
 [node name="chest" parent="SpawnAreas/HiddenArea" instance=ExtResource("13_cmst0")]
 position = Vector2(5107, 1991)
-pool = ExtResource("14_yeear")

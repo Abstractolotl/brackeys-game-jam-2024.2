@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bh0nyar03jk3k"]
 
 [ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_j1jfk"]
-[ext_resource type="Texture2D" uid="uid://8vqpof7pm60g" path="res://assets/placeholder/light.png" id="2_suy4k"]
+[ext_resource type="Texture2D" uid="uid://butme8188lqc6" path="res://assets/collectibles/collectible_light.png" id="2_fnw8h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tofxt"]
 radius = 24.0
@@ -51,7 +51,7 @@ type = 8
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("2_suy4k")
+texture = ExtResource("2_fnw8h")
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tofxt")
