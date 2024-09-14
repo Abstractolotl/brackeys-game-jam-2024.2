@@ -46,13 +46,9 @@ func instantiate_bullet() -> void:
 	if teta * radius * num_projectiles > max_spread:
 		teta = max_spread / radius / num_projectiles
 
-	var offset_y = cos(teta * num_projectiles * 0.5) * radius
 
 	var split_angle = 90.0 / (num_projectiles + 1)
 	for i in range(num_projectiles):
-		var child_x = sin(teta * i - teta * num_projectiles * 0.5) * radius
-		var child_y = cos(teta * i - teta * num_projectiles * 0.5) * radius
-		
 		var bullet  = bullet_scene.instantiate()
 		get_tree().get_root().add_child(bullet)
 

@@ -39,7 +39,7 @@ func _on_player_player_damaged(health: float) -> void:
 	health_bar.update(health)
 
 
-func _on_player_bullet_update(projectiles: int, fire_rate: float) -> void:
+func _on_player_bullet_update(projectiles: int, _fire_rate: float) -> void:
 	level_bar.update_bullet_level(projectiles)
 
 

@@ -1,9 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c346hw01e8u83"]
+[gd_scene load_steps=11 format=3 uid="uid://c346hw01e8u83"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_uw3bg"]
-[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://entities/drops/drop_projectiles_5.tres" id="2_jwnly"]
-[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_voutc"]
-[ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://entities/drops/drop_firerate_5.tres" id="3_0tfrc"]
+[ext_resource type="Resource" uid="uid://dg7i671erk6m0" path="res://drops/pool_tree.tres" id="2_7bkjy"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_1m64a"]
 [ext_resource type="Texture2D" uid="uid://xyd6bhoihqbk" path="res://assets/map/objects/tree_destructible.png" id="5_5oppm"]
 
@@ -158,7 +156,7 @@ y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_uw3bg")
-drops = Array[ExtResource("2_voutc")]([ExtResource("2_jwnly"), ExtResource("3_0tfrc")])
+pool = ExtResource("2_7bkjy")
 
 [node name="sprites" type="Node2D" parent="."]
 y_sort_enabled = true

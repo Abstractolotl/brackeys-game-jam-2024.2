@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://uq3g40cetn3y"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_eucxq"]
-[ext_resource type="Resource" uid="uid://diwcfr23ilbi7" path="res://drops/base_pool.tres" id="2_6kvvy"]
+[ext_resource type="Resource" uid="uid://diwcfr23ilbi7" path="res://drops/pool_base.tres" id="2_6kvvy"]
 [ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_fqhgu"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_bf3lb"]
 
