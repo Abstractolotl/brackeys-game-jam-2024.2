@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="DropPool" load_steps=9 format=3 uid="uid://dg7i671erk6m0"]
+[gd_resource type="Resource" script_class="DropPool" load_steps=8 format=3 uid="uid://dg7i671erk6m0"]
 
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_dijq5"]
 [ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="2_cwv2l"]
 [ext_resource type="Resource" uid="uid://fafbs4n64d65" path="res://drops/drop_damage_5.tres" id="2_xfb2s"]
-[ext_resource type="Resource" path="res://drops/drop_explosion_5.tres" id="3_3bc4a"]
 [ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://drops/drop_firerate_5.tres" id="4_yk4ic"]
 [ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://drops/drop_projectiles_5.tres" id="5_7dbfs"]
-[ext_resource type="Resource" path="res://drops/drop_hpup_5.tres" id="6_f0u6r"]
-[ext_resource type="Resource" uid="uid://0pgre133okkk" path="res://drops/drop_nothing_40.tres" id="7_h532m"]
+[ext_resource type="Resource" uid="uid://ld8m2oav7k3r" path="res://drops/drop_hpup_5.tres" id="6_f0u6r"]
+[ext_resource type="Resource" uid="uid://drvomgmp43qnf" path="res://drops/drop_nothing_20.tres" id="6_ts6f4"]
 
 [resource]
 script = ExtResource("2_cwv2l")
-drops = Array[ExtResource("1_dijq5")]([ExtResource("2_xfb2s"), ExtResource("3_3bc4a"), ExtResource("4_yk4ic"), ExtResource("5_7dbfs"), ExtResource("6_f0u6r"), ExtResource("7_h532m")])
+drops = Array[ExtResource("1_dijq5")]([ExtResource("2_xfb2s"), ExtResource("4_yk4ic"), ExtResource("5_7dbfs"), ExtResource("6_f0u6r"), ExtResource("6_ts6f4")])
