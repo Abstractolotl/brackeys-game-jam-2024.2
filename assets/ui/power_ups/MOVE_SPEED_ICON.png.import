@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw7xym8n8gmwr"
-path="res://.godot/imported/bullet_2.png-c1d70b284b56ad12d2b42d3234e20cea.ctex"
+uid="uid://bjpqo34w6v1c7"
+path="res://.godot/imported/MOVE_SPEED_ICON.png-4ebac4989e62909056b3b49fdceacf19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/bullet_2.png"
-dest_files=["res://.godot/imported/bullet_2.png-c1d70b284b56ad12d2b42d3234e20cea.ctex"]
+source_file="res://assets/ui/power_ups/MOVE_SPEED_ICON.png"
+dest_files=["res://.godot/imported/MOVE_SPEED_ICON.png-4ebac4989e62909056b3b49fdceacf19.ctex"]
 
 [params]
 

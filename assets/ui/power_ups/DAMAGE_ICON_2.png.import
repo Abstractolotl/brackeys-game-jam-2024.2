@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv67prp8yfjpo"
-path="res://.godot/imported/time_day.png-78a6c0aa6ab7138d5f9cd383d2863687.ctex"
+uid="uid://bhe57kuyg7f0t"
+path="res://.godot/imported/DAMAGE_ICON_2.png-b6c8a3a77b77f7a2d639631ede17a8aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/time_day.png"
-dest_files=["res://.godot/imported/time_day.png-78a6c0aa6ab7138d5f9cd383d2863687.ctex"]
+source_file="res://assets/ui/power_ups/DAMAGE_ICON_2.png"
+dest_files=["res://.godot/imported/DAMAGE_ICON_2.png-b6c8a3a77b77f7a2d639631ede17a8aa.ctex"]
 
 [params]
 

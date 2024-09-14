@@ -47,7 +47,7 @@ _data = {
 z_index = 30
 collision_layer = 16
 script = ExtResource("1_xpj4i")
-type = 5
+type = 2
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)

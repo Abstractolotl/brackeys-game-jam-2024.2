@@ -17,7 +17,7 @@ var health: HealthComponent
 @export var is_hud = false
 
 signal player_health_changed(max_health: float, health: float)
-signal bullet_update(projectiles: int, fire_rate: float)
+signal power_up(power_up_type: int)
 
 func _ready() -> void:
 	if is_hud:
@@ -28,7 +28,7 @@ func _ready() -> void:
 	sprite2 = $foot_mask/sprite
 	emitter = $emitter
 	health = $health
-	if bullet_update:
+	if power_up:
 		pass # so the compiler stops complaining
 
 func _physics_process(_delta) -> void:

@@ -47,11 +47,11 @@ _data = {
 z_index = 30
 collision_layer = 16
 script = ExtResource("1_j1jfk")
-type = 4
+type = 8
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("2_fnw8h")
+texture = ExtResource("2_suy4k")
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tofxt")
