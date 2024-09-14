@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csrtv4wjftrld"
-path="res://.godot/imported/zombie_schaf2.png-3269f8f41ac3cc01f560ca3cd5b9d981.ctex"
+uid="uid://dtgnhtxccyo18"
+path="res://.godot/imported/ranged_sheep_up.png-509b0fc1a5f328058b5138f9e21492b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/zombie_schaf2.png"
-dest_files=["res://.godot/imported/zombie_schaf2.png-3269f8f41ac3cc01f560ca3cd5b9d981.ctex"]
+source_file="res://assets/enemies/ranged_sheep_up.png"
+dest_files=["res://.godot/imported/ranged_sheep_up.png-509b0fc1a5f328058b5138f9e21492b7.ctex"]
 
 [params]
 

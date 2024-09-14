@@ -1,14 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://chbd7bp1q46o6"]
+[gd_scene load_steps=32 format=3 uid="uid://kdnjehrf013m"]
 
-[ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_vr8am"]
-[ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_hai0q"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_lxm64"]
-[ext_resource type="Texture2D" uid="uid://d3onlgklqrg67" path="res://assets/enemies/sheep_up.png" id="4_5nk17"]
-[ext_resource type="Texture2D" uid="uid://csrtv4wjftrld" path="res://assets/enemies/sheep_side.png" id="4_nqvnl"]
-[ext_resource type="Texture2D" uid="uid://hw7kw1yxl8ma" path="res://assets/enemies/sheep_down.png" id="5_wdp1l"]
-[ext_resource type="AudioStream" uid="uid://bvqcebfry6t0c" path="res://assets/audio/sheep.mp3" id="3_t5b25"]
-[ext_resource type="AudioStream" uid="uid://b5fdl0wdqktpu" path="res://assets/audio/hit.mp3" id="4_4qnd6"]
-[ext_resource type="Texture2D" uid="uid://csrtv4wjftrld" path="res://assets/zombie_schaf2.png" id="4_nqvnl"]
+[ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_1eb5w"]
+[ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_iwh0h"]
+[ext_resource type="Texture2D" uid="uid://csrtv4wjftrld" path="res://assets/enemies/sheep_side.png" id="3_nfsrs"]
+[ext_resource type="Texture2D" uid="uid://d3onlgklqrg67" path="res://assets/enemies/sheep_up.png" id="4_kg3cm"]
+[ext_resource type="Texture2D" uid="uid://hw7kw1yxl8ma" path="res://assets/enemies/sheep_down.png" id="5_pl2u8"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="6_wcy7f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]
 radius = 9.0
@@ -61,7 +58,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(4, 4)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -115,7 +112,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.1258),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
+"values": [Vector2(4.2, 4.2), Vector2(3.8, 3.8), Vector2(4, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_rxfgc"]
@@ -143,7 +140,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.133333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
+"values": [Vector2(4.2, 4.2), Vector2(3.8, 3.8), Vector2(4, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_dqoso"]
@@ -377,22 +374,21 @@ z_index = 25
 y_sort_enabled = true
 collision_layer = 8
 collision_mask = 15
+mass = 10.0
 lock_rotation = true
 linear_damp = 3.0
 angular_damp = 3.0
-script = ExtResource("1_vr8am")
-speed = 400.0
-explosion = ExtResource("2_hai0q")
-side_texture = ExtResource("4_nqvnl")
-up_texture = ExtResource("4_5nk17")
-down_texture = ExtResource("5_wdp1l")
-audio_dead = ExtResource("3_t5b25")
-audio_hit = ExtResource("4_4qnd6")
+script = ExtResource("1_1eb5w")
+explosion = ExtResource("2_iwh0h")
+side_texture = ExtResource("3_nfsrs")
+up_texture = ExtResource("4_kg3cm")
+down_texture = ExtResource("5_pl2u8")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
 position = Vector2(0, -18)
-texture = ExtResource("4_nqvnl")
+scale = Vector2(4, 4)
+texture = ExtResource("3_nfsrs")
 flip_h = true
 hframes = 6
 
@@ -406,11 +402,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(2, -11)
+scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_2s3n4")
 
 [node name="health" type="Node" parent="."]
-script = ExtResource("3_lxm64")
-health = 15.0
+script = ExtResource("6_wcy7f")
+health = 100.0
+max_health = 100.0
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {
