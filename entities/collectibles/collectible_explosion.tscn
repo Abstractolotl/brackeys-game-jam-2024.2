@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvau4386qo02v"]
+
+[ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_tg5ja"]
+[ext_resource type="Texture2D" uid="uid://dk8wdd0a071af" path="res://assets/placeholder/explosion_up.png" id="2_utoxb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tofxt"]
+radius = 24.0
+
+[node name="collectible" type="Area2D"]
+z_index = 30
+collision_layer = 16
+script = ExtResource("1_tg5ja")
+type = 7
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("2_utoxb")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tofxt")
+
+[connection signal="body_entered" from="." to="." method="on_collision"]

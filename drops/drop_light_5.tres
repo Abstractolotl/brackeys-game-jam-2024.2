@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://bapeyfbibn1r6"]
+
+[ext_resource type="PackedScene" uid="uid://bh0nyar03jk3k" path="res://entities/collectibles/collectible_light.tscn" id="1_bmgmf"]
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_rj4gu"]
+
+[resource]
+script = ExtResource("2_rj4gu")
+weight = 5.0
+scene = ExtResource("1_bmgmf")

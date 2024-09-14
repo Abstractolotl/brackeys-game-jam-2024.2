@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://bkwkrqcoowskj"]
 
-[ext_resource type="PackedScene" uid="uid://djji8kx38byid" path="res://entities/collectible_firerate.tscn" id="1_cpssv"]
+[ext_resource type="PackedScene" uid="uid://djji8kx38byid" path="res://entities/collectibles/collectible_firerate.tscn" id="1_cpssv"]
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_l2r0v"]
 
 [resource]
