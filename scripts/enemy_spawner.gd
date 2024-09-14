@@ -15,7 +15,6 @@ var wave_counter: int = 0
 
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !is_night:
@@ -29,27 +28,31 @@ func _process(delta: float) -> void:
 		spawn_wave(wave)
 
 
+func _ready() -> void:
+	pass
+
+
 func spawn_wave(wave: SpawnWave):
 	if wave.enemy == null:
-		print("skipped wave")
+		print("wave " + str(wave_counter) + ": skipped")
 		return
 	
 	var amount = random.randi_range(wave.amount_min, wave.amount_max)
 	
 	if amount == 0:
-		print("skipped wave")
+		print("wave " + str(wave_counter) + ": skipped")
 		return
 		
 	if wave.spacing == Util.Spacing.EVEN:
-		print("even wave")
+		print("wave " + str(wave_counter) + ": even")
 		_spawn_wave_even(wave, amount)
 		
 	if wave.spacing == Util.Spacing.RANDOM:
-		print("random wave")
+		print("wave " + str(wave_counter) + ": random")
 		_spawn_wave_random(wave, amount)
 		
 	if wave.spacing == Util.Spacing.GROUPED:
-		print("grouped wave")
+		print("wave " + str(wave_counter) + ": grouped")
 		_spawn_wave_grouped(wave, amount)
 
 
@@ -62,15 +65,18 @@ func _choose_wave(wave_number: int):
 			continue
 		if wave.max_wave != -1 and wave.max_wave <= wave_number:
 			continue
+		if wave.weight == 0:
+			continue
+		
 		total_weight += wave.weight
 		available_waves.append(wave)
 
-	var chosen_weight = random.randi_range(0, total_weight)
+	var chosen_weight = random.randi_range(0, total_weight - 1)
 
-	var current_weight = 0.0
+	var current_weight = 0
 	for wave in available_waves:
 		current_weight += wave.weight
-		if chosen_weight <= current_weight:
+		if chosen_weight < current_weight:
 			return wave
 
 	return null
