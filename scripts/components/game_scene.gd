@@ -52,7 +52,7 @@ func blend_textures(texture1: Texture2D, texture2: Texture2D, alpha: float) -> T
 
 var last_blend = 0.0;
 var blend_stepts = 150.0;
-var day_time = 90.0;
+var day_time = 30.0;
 
 func _ready() -> void:
 	if shake:
@@ -64,7 +64,7 @@ func _ready() -> void:
 	night_saturation = env.environment.adjustment_saturation
 	env.environment.adjustment_color_correction = blend_textures(base, night, 0)
 	hud.vignette.update_vignette(0)
-	#player.global_position = Vector2(1, 1) * (randf() * 3900 + 50)
+	player.global_position = Vector2(1, 1) * (randf() * 3900 + 50)
 	get_viewport().get_camera_2d().global_position = player.global_position
 
 var timer: float = 0.0;

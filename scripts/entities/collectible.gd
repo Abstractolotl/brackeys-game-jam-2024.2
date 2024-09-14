@@ -73,4 +73,4 @@ func _increase_pierce(player: Player) -> void:
 	player.emitter.pierce += 1
 
 func _increase_explosion(player: Player) -> void:
-	player.emitter.explosion_chance += 0.025
+	player.emitter.explosion_chance += 0.01

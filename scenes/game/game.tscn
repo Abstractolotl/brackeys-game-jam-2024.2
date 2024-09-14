@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=30 format=3 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
 [ext_resource type="PackedScene" uid="uid://bwva31xchx53y" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
@@ -11,14 +11,7 @@
 [ext_resource type="PackedScene" path="res://entities/tnt_sheep.tscn" id="8_v71sb"]
 [ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="8_xvp2e"]
 [ext_resource type="PackedScene" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
-[ext_resource type="PackedScene" uid="uid://dixpu63gxvf0y" path="res://entities/destructables/barrel.tscn" id="9_hqitx"]
-[ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="9_mumr7"]
-[ext_resource type="PackedScene" uid="uid://d11qjn0wl4i2a" path="res://entities/destructables/box.tscn" id="10_qg1f4"]
-[ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="11_553xu"]
 [ext_resource type="PackedScene" uid="uid://kdnjehrf013m" path="res://entities/big_sheep.tscn" id="11_c4uil"]
-[ext_resource type="PackedScene" uid="uid://uq3g40cetn3y" path="res://entities/destructables/sign.tscn" id="12_ncxaf"]
-[ext_resource type="PackedScene" uid="uid://bltpe62v8m6ht" path="res://entities/destructables/vase.tscn" id="13_toqro"]
-[ext_resource type="PackedScene" uid="uid://dqnthy2jx7juo" path="res://entities/destructables/waypointer.tscn" id="14_yb61s"]
 
 [sub_resource type="Gradient" id="Gradient_bk4he"]
 
@@ -194,6 +187,7 @@ position = Vector2(436, 254)
 collision_mask = 2
 
 [node name="Map" parent="." instance=ExtResource("5_b502t")]
+position = Vector2(25, -30)
 
 [node name="camera" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
 zoom = Vector2(1.5, 1.5)
@@ -206,31 +200,6 @@ script = ExtResource("6_l7ubj")
 player = NodePath("../player")
 spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60")])
 spawn_radius = 500.0
-
-[node name="tree" parent="." instance=ExtResource("9_mumr7")]
-position = Vector2(717, 429)
-hit_sound = null
-
-[node name="destructable" parent="." instance=ExtResource("9_hqitx")]
-position = Vector2(421, 241)
-
-[node name="destructable2" parent="." instance=ExtResource("10_qg1f4")]
-position = Vector2(423, 320)
-
-[node name="destructable3" parent="." instance=ExtResource("11_553xu")]
-position = Vector2(732, 317)
-
-[node name="destructable4" parent="." instance=ExtResource("12_ncxaf")]
-position = Vector2(574, 368)
-
-[node name="destructable5" parent="." instance=ExtResource("13_toqro")]
-position = Vector2(466, 422)
-
-[node name="destructable6" parent="." instance=ExtResource("14_yb61s")]
-position = Vector2(500, 179)
-
-[node name="enemy" parent="." instance=ExtResource("8_v71sb")]
-position = Vector2(536, 259)
 
 [connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]

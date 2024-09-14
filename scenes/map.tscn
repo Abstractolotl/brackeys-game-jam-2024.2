@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="12_0rauq"]
 [ext_resource type="PackedScene" uid="uid://717sy8ext5ee" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
 [ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="13_cmst0"]
-[ext_resource type="PackedScene" path="res://entities/destructables/bush.tscn" id="14_btk5i"]
+[ext_resource type="PackedScene" uid="uid://ivs0etnbitk6" path="res://entities/destructables/bush.tscn" id="14_btk5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l7ck2"]
 texture = ExtResource("1_c645q")
@@ -309,6 +309,54 @@ to_spawn = ExtResource("12_0rauq")
 max_amount = 2
 min_distance = 300.0
 
+[node name="tree_spawm_area13" type="ReferenceRect" parent="SpawnAreas/Trees"]
+offset_left = 3068.0
+offset_top = 2412.0
+offset_right = 3314.0
+offset_bottom = 2751.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("12_0rauq")
+max_amount = 2
+min_distance = 300.0
+
+[node name="tree_spawm_area14" type="ReferenceRect" parent="SpawnAreas/Trees"]
+offset_left = 2757.0
+offset_top = 2892.0
+offset_right = 3003.0
+offset_bottom = 3231.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("12_0rauq")
+max_amount = 2
+min_distance = 300.0
+
+[node name="tree_spawm_area15" type="ReferenceRect" parent="SpawnAreas/Trees"]
+offset_left = 3713.0
+offset_top = 1103.0
+offset_right = 3959.0
+offset_bottom = 1442.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("12_0rauq")
+max_amount = 2
+min_distance = 300.0
+
+[node name="tree_spawm_area16" type="ReferenceRect" parent="SpawnAreas/Trees"]
+offset_left = 1942.0
+offset_top = 877.0
+offset_right = 2188.0
+offset_bottom = 1216.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("12_0rauq")
+max_amount = 2
+min_distance = 300.0
+
 [node name="tree_spawm_area2" type="ReferenceRect" parent="SpawnAreas/Trees"]
 offset_left = 980.0
 offset_top = 173.0
@@ -560,6 +608,97 @@ offset_left = 60.0
 offset_top = -9.0
 offset_right = 1294.0
 offset_bottom = 127.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
+[node name="bush_spawn_area6" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 478.0
+offset_top = 148.0
+offset_right = 1224.0
+offset_bottom = 449.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
+[node name="bush_spawn_area7" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 1190.0
+offset_top = 738.0
+offset_right = 1936.0
+offset_bottom = 1039.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
+[node name="bush_spawn_area8" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 832.0
+offset_top = 1142.0
+offset_right = 1578.0
+offset_bottom = 1443.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
+[node name="bush_spawn_area9" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 31.0
+offset_top = 925.0
+offset_right = 525.0
+offset_bottom = 1331.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
+[node name="bush_spawn_area10" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 120.0
+offset_top = 1729.0
+offset_right = 614.0
+offset_bottom = 2135.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
+[node name="bush_spawn_area11" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 2848.0
+offset_top = 2311.0
+offset_right = 3342.0
+offset_bottom = 2823.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
+[node name="bush_spawn_area12" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 2634.0
+offset_top = 2936.0
+offset_right = 3168.0
+offset_bottom = 3284.0
 border_color = Color(0, 0, 1, 1)
 border_width = 2.0
 script = ExtResource("10_fkp5y")

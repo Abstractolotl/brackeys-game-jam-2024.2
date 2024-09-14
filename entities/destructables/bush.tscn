@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1h7msdrad287"]
+[gd_scene load_steps=15 format=3 uid="uid://ivs0etnbitk6"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_1xawk"]
 [ext_resource type="Texture2D" uid="uid://7tnu7msw1t5k" path="res://assets/map/objects/bush1.png" id="2_65mhy"]
-[ext_resource type="Resource" uid="uid://iwvfa860ygfc" path="res://drops/pool_bush.tres" id="2_76cuv"]
+[ext_resource type="Resource" uid="uid://bml2foleteepl" path="res://drops/pool_bush.tres" id="2_76cuv"]
 [ext_resource type="Script" path="res://scripts/components/random_texture.gd" id="3_20gew"]
 [ext_resource type="AudioStream" uid="uid://b8wbjdh03n0ws" path="res://assets/audio/bush_hit.mp3" id="3_nsswl"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_yse8w"]
