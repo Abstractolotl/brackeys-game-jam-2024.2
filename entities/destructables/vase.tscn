@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_c3h8n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ky2m7"]
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_u1mmq"]
 length = 0.001
@@ -121,8 +122,8 @@ script = ExtResource("1_2nfdq")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
-position = Vector2(-3, 2)
-scale = Vector2(2, 2)
+position = Vector2(-2, -9)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_twrpb")
 hframes = 7
 vframes = 12
@@ -140,7 +141,7 @@ script = ExtResource("3_c3h8n")
 health = 3.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_ky2m7")
 
 [node name="animation" type="AnimationPlayer" parent="."]

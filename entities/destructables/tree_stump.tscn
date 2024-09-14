@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c346hw01e8u83"]
+[gd_scene load_steps=11 format=3 uid="uid://dr2q0u7koleii"]
 
-[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_wkw0m"]
-[ext_resource type="Resource" uid="uid://dg7i671erk6m0" path="res://drops/pool_tree.tres" id="2_2fs8t"]
-[ext_resource type="PackedScene" uid="uid://dr2q0u7koleii" path="res://entities/destructables/tree_stump.tscn" id="3_7p5d4"]
+[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_uw3bg"]
+[ext_resource type="Resource" uid="uid://cfjbrm68t2jxy" path="res://drops/pool_tree_stump.tres" id="2_voisy"]
 [ext_resource type="Texture2D" uid="uid://xyd6bhoihqbk" path="res://assets/map/objects/tree_destructible.png" id="3_papfv"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="4_0ji4r"]
 
@@ -47,9 +46,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprites/sprite_base/flash:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_awomu"]
 resource_name = "death"
+length = 0.001
 step = 0.0333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -102,6 +114,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 0.0872665, -0.0872665, 0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("sprites/sprite_base/flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ges2x"]
 resource_name = "idle"
@@ -151,27 +175,36 @@ _data = {
 "idle": SubResource("Animation_ges2x")
 }
 
-[node name="tree" type="StaticBody2D"]
+[node name="tree_stump" type="StaticBody2D"]
 z_index = 25
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_wkw0m")
-pool = ExtResource("2_2fs8t")
-leftover = ExtResource("3_7p5d4")
+script = ExtResource("1_uw3bg")
+pool = ExtResource("2_voisy")
+remain = false
 
 [node name="sprites" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -94)
 
 [node name="sprite_base" type="Sprite2D" parent="sprites"]
+clip_children = 2
 position = Vector2(0, 4)
 scale = Vector2(2, 2)
 texture = ExtResource("3_papfv")
 hframes = 2
 frame = 1
 
+[node name="flash" type="ColorRect" parent="sprites/sprite_base"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -19.5
+offset_top = 16.0
+offset_right = 20.5
+offset_bottom = 56.0
+
 [node name="sprite_top" type="Sprite2D" parent="sprites"]
+visible = false
 position = Vector2(0, 74)
 scale = Vector2(2, 2)
 texture = ExtResource("3_papfv")
@@ -180,8 +213,6 @@ hframes = 2
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("4_0ji4r")
-health = 50.0
-max_health = 50.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)

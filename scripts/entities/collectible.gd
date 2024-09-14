@@ -74,5 +74,5 @@ func _increase_pierce(player: Player) -> void:
 	player.bullet_update.emit(player.emitter.num_projectiles, (player.emitter._fire_rate - player.emitter.start_fire_rate) / 2)
 
 func _increase_explosion(player: Player) -> void:
-	player.emitter.explosion_chance += 0.1
+	player.emitter.explosion_chance += 0.025
 	player.bullet_update.emit(player.emitter.num_projectiles, (player.emitter._fire_rate - player.emitter.start_fire_rate) / 2)

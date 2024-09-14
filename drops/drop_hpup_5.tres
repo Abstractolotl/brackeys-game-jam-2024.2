@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://d4jkrs5p1m33i"]
+[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://ld8m2oav7k3r"]
 
 [ext_resource type="PackedScene" uid="uid://dggtr6gsyikpk" path="res://entities/collectibles/collectible_health.tscn" id="1_lub14"]
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_4sxfn"]

@@ -16,7 +16,7 @@ var max_spread_angle = 300.0
 var fire_target: Vector2 = Vector2()
 
 var spread_angle: float = 0.01
-var spread_offset: float = 50
+var spread_offset: float = 25
 
 var num_projectiles: int = 1
 

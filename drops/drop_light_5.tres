@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://bapeyfbibn1r6"]
+[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://b2rkmj6fkaua"]
 
 [ext_resource type="PackedScene" uid="uid://bh0nyar03jk3k" path="res://entities/collectibles/collectible_light.tscn" id="1_bmgmf"]
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_rj4gu"]

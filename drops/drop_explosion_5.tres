@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://cdcimhwujpsum"]
+[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://ughqu6lgbepk"]
 
 [ext_resource type="PackedScene" uid="uid://cvau4386qo02v" path="res://entities/collectibles/collectible_explosion.tscn" id="1_twg7n"]
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_4f1jh"]
