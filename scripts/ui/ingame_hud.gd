@@ -1,7 +1,7 @@
 extends Control
 class_name IngameHud
 
-@export var level_bar: LevelBar
+@export var power_ups: PowerUpBar
 @export var health_bar: HealthBar
 @export var time_bar: AnimatedTextureRect
 
@@ -52,12 +52,13 @@ func exit_to_menu() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
+
+func _on_player_power_up(type: int):
+	power_ups.add_power_up(type)
+
+
 func _on_player_player_damaged(max_health: float, health: float) -> void:
 	health_bar.update(max_health, health)
-
-
-func _on_player_bullet_update(projectiles: int, _fire_rate: float) -> void:
-	level_bar.update_bullet_level(projectiles)
 
 
 func _on_time_progress(percentage: float) -> void:

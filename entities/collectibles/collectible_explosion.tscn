@@ -47,7 +47,7 @@ _data = {
 z_index = 30
 collision_layer = 16
 script = ExtResource("1_tg5ja")
-type = 7
+type = 1
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(1, 1)

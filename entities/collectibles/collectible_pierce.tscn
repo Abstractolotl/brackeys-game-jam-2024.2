@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwgiycrv55qk3"]
+[gd_scene load_steps=7 format=3 uid="uid://bwgiycrv55qk3"]
 
 [ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_svds2"]
 [ext_resource type="Texture2D" uid="uid://dtv5cfme0mg4v" path="res://assets/placeholder/pierce_up.png" id="2_aa4ap"]
@@ -47,9 +47,10 @@ _data = {
 z_index = 30
 collision_layer = 16
 script = ExtResource("1_svds2")
-type = 6
+type = 5
 
 [node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("2_aa4ap")
 
 [node name="shape" type="CollisionShape2D" parent="."]

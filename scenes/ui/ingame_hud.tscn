@@ -1,21 +1,26 @@
-[gd_scene load_steps=53 format=3 uid="uid://bwva31xchx53y"]
+[gd_scene load_steps=58 format=3 uid="uid://bwva31xchx53y"]
 
 [ext_resource type="Script" path="res://scripts/ui/ingame_hud.gd" id="1_wqdty"]
 [ext_resource type="Script" path="res://scripts/ui/animated_texture_rect.gd" id="2_0l26t"]
 [ext_resource type="PackedScene" uid="uid://w4uhvou4x3k8" path="res://scenes/ui/damage_number.tscn" id="2_t8bg2"]
-[ext_resource type="Texture2D" uid="uid://b4jefrr16j2u5" path="res://assets/ui/bullet_1.png" id="3_7etx6"]
 [ext_resource type="Texture2D" uid="uid://bpdw4838k8wie" path="res://assets/ui/time_animated.png" id="3_hv2m4"]
 [ext_resource type="Script" path="res://scripts/ui/health_bar.gd" id="3_k02ls"]
 [ext_resource type="Script" path="res://scripts/ui/level_bar.gd" id="3_rqouv"]
 [ext_resource type="Texture2D" uid="uid://dla3ug2fgyo5i" path="res://assets/ui/heart_full.png" id="4_67ldf"]
-[ext_resource type="Texture2D" uid="uid://bw7xym8n8gmwr" path="res://assets/ui/bullet_2.png" id="5_guou4"]
 [ext_resource type="Texture2D" uid="uid://cyg23bfejy1xl" path="res://assets/ui/heart_half.png" id="5_n1vqy"]
-[ext_resource type="Texture2D" uid="uid://cjjsn4a7od8q5" path="res://assets/ui/bullet_3.png" id="6_h86da"]
 [ext_resource type="Texture2D" uid="uid://deccd6qd60cdc" path="res://assets/ui/heart_empty.png" id="6_ye6n2"]
-[ext_resource type="Texture2D" uid="uid://bb454sudqiau8" path="res://assets/ui/bullet_4.png" id="7_nf4o3"]
+[ext_resource type="Texture2D" uid="uid://bhe57kuyg7f0t" path="res://assets/ui/power_ups/DAMAGE_ICON_2.png" id="8_1k3y3"]
+[ext_resource type="Texture2D" uid="uid://crnrydcl7jj7q" path="res://assets/ui/power_ups/EXPLOSION_ICON.png" id="9_j6oyo"]
+[ext_resource type="Texture2D" uid="uid://cjbowmsr4nv0h" path="res://assets/ui/power_ups/HP_ICON.png" id="10_is16u"]
+[ext_resource type="Texture2D" uid="uid://dntg6w4kmp8ui" path="res://assets/ui/power_ups/LIFE_GEN_ICON.png" id="11_pny1g"]
+[ext_resource type="Texture2D" uid="uid://sqirlrthwm54" path="res://assets/ui/power_ups/LIGHT_ICON.png" id="12_2pyig"]
+[ext_resource type="Texture2D" uid="uid://bjpqo34w6v1c7" path="res://assets/ui/power_ups/MOVE_SPEED_ICON.png" id="13_byunk"]
 [ext_resource type="Texture2D" uid="uid://dgjjsrholk0xf" path="res://assets/ui/pause_background.png" id="13_ll5g8"]
+[ext_resource type="Texture2D" uid="uid://crcnn8dqsjcij" path="res://assets/ui/power_ups/PIERCE_ICON.png" id="14_0pjq1"]
 [ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="14_k517a"]
 [ext_resource type="Texture2D" uid="uid://c7heiblu3a45n" path="res://assets/ui/panel-border-031.png" id="15_0obi7"]
+[ext_resource type="Texture2D" uid="uid://mu118qcsip6j" path="res://assets/ui/power_ups/FIRE_RATE_ICON.png" id="15_3ehjm"]
+[ext_resource type="Texture2D" uid="uid://57gv7pcnyeje" path="res://assets/ui/power_ups/PROJECTILES_ICON.png" id="16_fjvje"]
 [ext_resource type="Shader" path="res://scenes/game/vignette.gdshader" id="16_tifuj"]
 [ext_resource type="Script" path="res://scripts/components/vignette.gd" id="17_yfvvk"]
 
@@ -355,7 +360,7 @@ axis_stretch_vertical = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ixrl"]
 
-[node name="IngameHud" type="Control" node_paths=PackedStringArray("level_bar", "health_bar", "time_bar")]
+[node name="IngameHud" type="Control" node_paths=PackedStringArray("power_ups", "health_bar", "time_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -363,7 +368,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wqdty")
-level_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Levelbar")
+power_ups = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/PowerUpBar")
 health_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Healthbar")
 time_bar = NodePath("HUD/Top/VBoxContainer/TimeBar")
 damage_number = ExtResource("2_t8bg2")
@@ -426,11 +431,11 @@ theme_override_constants/margin_bottom = 30
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/Bottom/MarginContainer"]
 layout_mode = 2
 
-[node name="Levelbar" type="HBoxContainer" parent="HUD/Bottom/MarginContainer/VBoxContainer"]
+[node name="PowerUpBar" type="HBoxContainer" parent="HUD/Bottom/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 script = ExtResource("3_rqouv")
-bullet_levels = Array[Texture2D]([ExtResource("3_7etx6"), ExtResource("5_guou4"), ExtResource("6_h86da"), ExtResource("7_nf4o3")])
+textures = Array[Texture2D]([ExtResource("8_1k3y3"), ExtResource("9_j6oyo"), ExtResource("10_is16u"), ExtResource("11_pny1g"), ExtResource("13_byunk"), ExtResource("14_0pjq1"), ExtResource("15_3ehjm"), ExtResource("16_fjvje"), ExtResource("12_2pyig")])
 
 [node name="Healthbar" type="HBoxContainer" parent="HUD/Bottom/MarginContainer/VBoxContainer"]
 layout_mode = 2
