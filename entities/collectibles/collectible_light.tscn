@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh0nyar03jk3k"]
+[gd_scene load_steps=7 format=3 uid="uid://bh0nyar03jk3k"]
 
 [ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_j1jfk"]
 [ext_resource type="Texture2D" uid="uid://8vqpof7pm60g" path="res://assets/placeholder/light.png" id="2_suy4k"]
@@ -47,9 +47,10 @@ _data = {
 z_index = 30
 collision_layer = 16
 script = ExtResource("1_j1jfk")
-type = 4
+type = 8
 
 [node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("2_suy4k")
 
 [node name="shape" type="CollisionShape2D" parent="."]

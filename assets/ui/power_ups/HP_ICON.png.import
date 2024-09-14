@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tf7ccn56edt7"
-path="res://.godot/imported/divider-fade-005.png-2861e56e3d98f7b1555b55185c302e56.ctex"
+uid="uid://cjbowmsr4nv0h"
+path="res://.godot/imported/HP_ICON.png-3b4fbfbaa80008033de7941f3210ca10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/divider-fade-005.png"
-dest_files=["res://.godot/imported/divider-fade-005.png-2861e56e3d98f7b1555b55185c302e56.ctex"]
+source_file="res://assets/ui/power_ups/HP_ICON.png"
+dest_files=["res://.godot/imported/HP_ICON.png-3b4fbfbaa80008033de7941f3210ca10.ctex"]
 
 [params]
 

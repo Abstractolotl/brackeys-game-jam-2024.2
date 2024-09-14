@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://e8si8yw27d3x"]
+[gd_scene load_steps=11 format=3 uid="uid://y50kkmqi8jj"]
 
-[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_v0ujl"]
-[ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_wvisc"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_2qc0b"]
+[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_1u6ra"]
+[ext_resource type="Resource" uid="uid://de0nj3h7dq0x3" path="res://drops/pool_stone.tres" id="2_v4qjh"]
+[ext_resource type="Texture2D" uid="uid://cpnh5x0ecm00j" path="res://assets/map/objects/stone.png" id="3_ocmgv"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="4_y24jb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u80m1"]
-size = Vector2(21, 11)
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a0r7"]
+radius = 17.2627
 
 [sub_resource type="Animation" id="Animation_u1mmq"]
 length = 0.001
@@ -19,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [77]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -32,6 +33,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_et5sq"]
@@ -47,7 +60,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [80, 80, 81, 81]
+"values": [0, 0, 1, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -60,6 +73,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_u1t17"]
@@ -75,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [78, 77, 79, 77]
+"values": [0, 0, 0, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +109,7 @@ tracks/1/path = NodePath("sprite/flash:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -103,7 +128,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [77]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28j5f"]
@@ -118,31 +143,28 @@ _data = {
 z_index = 25
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_v0ujl")
+script = ExtResource("1_1u6ra")
+pool = ExtResource("2_v4qjh")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
-position = Vector2(-0.5, -9)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_wvisc")
-hframes = 7
-vframes = 12
-frame = 77
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("3_ocmgv")
+hframes = 2
 
 [node name="flash" type="ColorRect" parent="sprite"]
 modulate = Color(1, 1, 1, 0)
-offset_left = -19.5
-offset_top = -20.0
-offset_right = 20.5
-offset_bottom = 20.0
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 22.0
+offset_bottom = 26.0
 
 [node name="health" type="Node" parent="."]
-script = ExtResource("3_2qc0b")
+script = ExtResource("4_y24jb")
 health = 3.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_u80m1")
+shape = SubResource("CircleShape2D_7a0r7")
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {

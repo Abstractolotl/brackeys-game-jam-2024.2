@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv67prp8yfjpo"
-path="res://.godot/imported/time_day.png-78a6c0aa6ab7138d5f9cd383d2863687.ctex"
+uid="uid://crcnn8dqsjcij"
+path="res://.godot/imported/PIERCE_ICON.png-7a882ae3f77648022936f894fcf16f4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/time_day.png"
-dest_files=["res://.godot/imported/time_day.png-78a6c0aa6ab7138d5f9cd383d2863687.ctex"]
+source_file="res://assets/ui/power_ups/PIERCE_ICON.png"
+dest_files=["res://.godot/imported/PIERCE_ICON.png-7a882ae3f77648022936f894fcf16f4a.ctex"]
 
 [params]
 

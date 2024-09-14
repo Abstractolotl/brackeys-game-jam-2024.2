@@ -8,19 +8,21 @@ class_name Player
 @export var bullet: PackedScene
 
 var sprite: AnimatedSprite2D
+var sprite2: AnimatedSprite2D
 var emitter: BulletEmitter
 var dash_charge: float = 1
-var dashing: bool    = false
+var dashing: bool = false
 var health: HealthComponent
 
 signal player_health_changed(max_health: float, health: float)
-signal bullet_update(projectiles: int, fire_rate: float)
+signal power_up(power_up_type: int)
 
 func _ready() -> void:
-	sprite = $body_mask/sprite
+	sprite = $sprite
+	sprite2 = $foot_mask/sprite
 	emitter = $emitter
 	health = $health
-	if bullet_update:
+	if power_up:
 		pass # so the compiler stops complaining
 
 func _physics_process(_delta) -> void:
@@ -31,24 +33,34 @@ func _physics_process(_delta) -> void:
 	
 	if direction.y < 0:
 		sprite.play("walking_back")
+		sprite2.play("walking_back")
 		if sprite.flip_h:
 			sprite.flip_h = false
+			sprite2.flip_h = false
 	elif direction.y > 0:
 		sprite.play("walking_front")
+		sprite2.play("walking_front")
 		if sprite.flip_h:
 			sprite.flip_h = false
+			sprite2.flip_h = false
 	elif direction.x > 0:
 		sprite.play("walking_side")
+		sprite2.play("walking_side")
 		if sprite.flip_h:
 			sprite.flip_h = false
+			sprite2.flip_h = false
 	elif direction.x < 0:
 		sprite.play("walking_side")
+		sprite2.play("walking_side")
 		if not sprite.flip_h:
 			sprite.flip_h = true
+			sprite2.flip_h = true
 	else:
 		sprite.play("idle")
+		sprite2.play("idle")
 		if sprite.flip_h:
 			sprite.flip_h = false
+			sprite2.flip_h = false
 			
 	if Input.is_action_pressed("move_dash") && dash_charge > 0:
 		dash(direction)

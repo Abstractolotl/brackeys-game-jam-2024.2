@@ -1,14 +1,15 @@
 extends Area2D
 
 enum CollectibleType {
+	DAMAGE,
+	EXPLOSION,
+	HP,
+	HP_GEN,
+	MOVE_SPEED,
+	PIERCE,
 	FIRE_RATE,
 	PROJECTILES,
-	DAMAGE,
-	MOVE_SPEED,
-	LIGHT,
-	HP,
-	PIERCE,
-	EXPLOSION
+	LIGHT
 }
 
 
@@ -27,7 +28,8 @@ func on_collision(body: Node2D) -> void:
 	queue_free()
 
 	var player = body as Player
-
+	
+	player.power_up.emit(type)
 	match type:
 		CollectibleType.FIRE_RATE:
 			_increase_fire_rate(player)
@@ -48,12 +50,10 @@ func on_collision(body: Node2D) -> void:
 	
 func _increase_fire_rate(player: Player) -> void:
 	player.emitter.set_fire_rate(player.emitter._fire_rate + 2)
-	player.bullet_update.emit(player.emitter.num_projectiles, (player.emitter._fire_rate - player.emitter.start_fire_rate) / 2)
 
 
 func _increase_projectiles(player: Player) -> void:
 	player.emitter.num_projectiles = player.emitter.num_projectiles + 1
-	player.bullet_update.emit(player.emitter.num_projectiles, (player.emitter._fire_rate - player.emitter.start_fire_rate) / 2)
 
 func _increase_damage(player: Player) -> void:
 	player.emitter.damage += 1
@@ -71,8 +71,6 @@ func _increase_hp(player: Player) -> void:
 
 func _increase_pierce(player: Player) -> void:
 	player.emitter.pierce += 1
-	player.bullet_update.emit(player.emitter.num_projectiles, (player.emitter._fire_rate - player.emitter.start_fire_rate) / 2)
 
 func _increase_explosion(player: Player) -> void:
-	player.emitter.explosion_chance += 0.1
-	player.bullet_update.emit(player.emitter.num_projectiles, (player.emitter._fire_rate - player.emitter.start_fire_rate) / 2)
+	player.emitter.explosion_chance += 0.025
