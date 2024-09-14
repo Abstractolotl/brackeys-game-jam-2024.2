@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/ingame_hud.gd" id="1_wqdty"]
 [ext_resource type="Script" path="res://scripts/ui/animated_texture_rect.gd" id="2_0l26t"]
-[ext_resource type="PackedScene" uid="uid://w4uhvou4x3k8" path="res://scenes/ui/damage_number.tscn" id="2_t8bg2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/damage_number.tscn" id="2_t8bg2"]
 [ext_resource type="Texture2D" uid="uid://b4jefrr16j2u5" path="res://assets/ui/bullet_1.png" id="3_7etx6"]
 [ext_resource type="Texture2D" uid="uid://bpdw4838k8wie" path="res://assets/ui/time_animated.png" id="3_hv2m4"]
 [ext_resource type="Script" path="res://scripts/ui/health_bar.gd" id="3_k02ls"]
@@ -315,6 +315,14 @@ health_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Healthbar")
 time_bar = NodePath("HUD/Top/VBoxContainer/TimeBar")
 damage_number = ExtResource("2_t8bg2")
 
+[node name="DamageNumbers" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="vignette" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_1h818")
 layout_mode = 1
@@ -326,14 +334,6 @@ grow_vertical = 2
 script = ExtResource("17_yfvvk")
 
 [node name="HUD" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DamageNumbers" type="Control" parent="HUD"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

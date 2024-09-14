@@ -6,7 +6,7 @@ class_name BulletEmitter
 
 var _fire_rate: float = start_fire_rate
 var _fire_time: float = 1.0 / _fire_rate
-var _fire_speed: float = 500.0
+var _fire_speed: float = 1500.0
 
 var fire_target: Vector2 = Vector2()
 
@@ -37,7 +37,6 @@ func random_offset() -> Vector2:
 
 func instantiate_bullet() -> void:
 	get_tree().get_current_scene().shake.emit(0, 0.2)
-	var direction_angle: float = (fire_target - global_position).normalized().angle()
 
 	var spread: float = 20.0
 	var radius: int = 320
@@ -47,16 +46,16 @@ func instantiate_bullet() -> void:
 	if teta * radius * num_projectiles > max_spread:
 		teta = max_spread / radius / num_projectiles
 
-	var offset_y = cos(teta * num_projectiles * 0.5) * radius
 
+	var split_angle = 90.0 / (num_projectiles + 1)
 	for i in range(num_projectiles):
-		var child_x = sin(teta * i - teta * num_projectiles * 0.5) * radius
-		var child_y = cos(teta * i - teta * num_projectiles * 0.5) * radius
-		var new_dir = Vector2(offset_y + child_y, child_x)
-		
 		var bullet  = bullet_scene.instantiate()
 		get_tree().get_root().add_child(bullet)
-		bullet.shoot(global_position, fire_target + random_offset(), Vector2.from_angle(direction_angle + new_dir.angle() + random_angle()), _fire_speed)
+
+		var AAAAAAA = -45 + split_angle * (i + 1)
+		var angle = Vector2.from_angle(random_angle() - deg_to_rad(AAAAAAA) + ((fire_target - global_position).normalized().angle()))
+
+		bullet.shoot(global_position, fire_target + random_offset(), angle, _fire_speed * (randf() * 0.5 + 0.75) )
 
 
 func _process(delta: float) -> void:

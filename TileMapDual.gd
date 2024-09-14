@@ -203,8 +203,7 @@ func _update_displayed_tile(_display_cell: Vector2i) -> void:
 	var my_random_number = rng.randf_range(0.0, 1.0)
 	if (_coords_atlas == Vector2i(2,1) && my_random_number < random_detail_chance):
 		var source = self.tile_set.get_source(1)
-		var len = source.get_tiles_count()
-		var my_random_number_2 = rng.randi_range(0, len - 1)
+		var my_random_number_2 = rng.randi_range(0, source.get_tiles_count() - 1)
 		
 		self.set_cell(_display_cell, 1, source.get_tile_id(my_random_number_2))
 	else:

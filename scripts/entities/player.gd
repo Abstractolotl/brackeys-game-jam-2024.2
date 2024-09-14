@@ -7,6 +7,8 @@ class_name Player
 
 @export var bullet: PackedScene
 
+var sprite: AnimatedSprite2D
+
 var emitter: BulletEmitter
 
 var dash_charge: float = 1
@@ -18,9 +20,11 @@ signal player_damaged(health: float)
 signal bullet_update(projectiles: int, fire_rate: float)
 
 func _ready() -> void:
+	sprite = $body_mask/sprite
 	emitter = $emitter
 	camera = $camera
-	print("stfu", bullet_update)
+	if bullet_update:
+		pass # so the compiler stops complaining
 
 func _physics_process(_delta) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -29,25 +33,25 @@ func _physics_process(_delta) -> void:
 		return
 	
 	if direction.y < 0:
-		$sprite.play("walking_back")
-		if $sprite.flip_h:
-			$sprite.flip_h = false
+		sprite.play("walking_back")
+		if sprite.flip_h:
+			sprite.flip_h = false
 	elif direction.y > 0:
-		$sprite.play("walking_front")
-		if $sprite.flip_h:
-			$sprite.flip_h = false
+		sprite.play("walking_front")
+		if sprite.flip_h:
+			sprite.flip_h = false
 	elif direction.x > 0:
-		$sprite.play("walking_side")
-		if $sprite.flip_h:
-			$sprite.flip_h = false
+		sprite.play("walking_side")
+		if sprite.flip_h:
+			sprite.flip_h = false
 	elif direction.x < 0:
-		$sprite.play("walking_side")
-		if not $sprite.flip_h:
-			$sprite.flip_h = true
+		sprite.play("walking_side")
+		if not sprite.flip_h:
+			sprite.flip_h = true
 	else:
-		$sprite.play("idle")
-		if $sprite.flip_h:
-			$sprite.flip_h = false
+		sprite.play("idle")
+		if sprite.flip_h:
+			sprite.flip_h = false
 			
 	if Input.is_action_pressed("move_dash") && dash_charge > 0:
 		dash(direction)
@@ -84,7 +88,6 @@ func is_moving() -> bool:
 
 
 func start_rain():
-	print("Rain started")
 	$rain.visible = true
 	
 func _process(_delta: float) -> void:
@@ -96,7 +99,6 @@ func shoot():
 
 
 func _on_health_component_health_changed(_amount: float, new_health: float) -> void:
-	print("Player health: ", new_health)
 	player_damaged.emit(new_health)
 	$animation.play("hit")
 	get_tree().get_current_scene().shake.emit(0, 1)

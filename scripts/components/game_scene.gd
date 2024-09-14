@@ -4,7 +4,7 @@ signal shake(amount: float, min: float)
 signal night_start()
 
 func spawn_bullet(bullet: Node):
-	call_deferred("add", bullet)
+	add.call_deferred(bullet)
 
 func add(node: Node): 
 	get_parent().add_child(node)
@@ -53,6 +53,8 @@ var blend_stepts = 150.0;
 var day_time = 6.0;
 
 func _ready() -> void:
+	if shake:
+		pass
 	env = $enviroment/world
 	night = env.environment.adjustment_color_correction
 	env.environment.adjustment_color_correction = blend_textures(base, night, 0)
