@@ -49,7 +49,8 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_1ny53"]
-colors = PackedColorArray(0.121569, 0.129412, 0.419608, 1, 0.498412, 0.465313, 0.419837, 1)
+offsets = PackedFloat32Array(0.00490196, 1)
+colors = PackedColorArray(0, 0, 0.168627, 1, 0.870588, 0.913725, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_o64lb"]
 gradient = SubResource("Gradient_1ny53")
@@ -62,8 +63,9 @@ glow_enabled = true
 glow_intensity = 0.96
 glow_bloom = 0.34
 adjustment_enabled = true
-adjustment_contrast = 0.8
-adjustment_saturation = 1.82
+adjustment_brightness = 0.87
+adjustment_contrast = 1.2
+adjustment_saturation = 0.73
 adjustment_color_correction = SubResource("GradientTexture1D_o64lb")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w1w3j"]
@@ -230,6 +232,7 @@ position = Vector2(500, 179)
 [node name="enemy" parent="." instance=ExtResource("8_v71sb")]
 position = Vector2(536, 259)
 
+[connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]
 [connection signal="night_start" from="." to="EnemySpawner" method="_on_game_night_start"]
 [connection signal="player_health_changed" from="player" to="hud-layer/IngameHud" method="_on_player_player_damaged"]

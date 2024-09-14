@@ -14,6 +14,10 @@ func add(node: Node):
 var env: WorldEnvironment
 
 var night: Texture
+var night_brightness: float = 1.0
+var night_contrast: float = 1.0
+var night_saturation: float = 1.0
+
 @export var base: Texture
 @export var enemy_scene: PackedScene = preload("res://entities/enemy.tscn")
 @export var player: Node2D
@@ -55,9 +59,12 @@ func _ready() -> void:
 		pass
 	env = $enviroment/world
 	night = env.environment.adjustment_color_correction
+	night_brightness = env.environment.adjustment_brightness
+	night_contrast = env.environment.adjustment_contrast
+	night_saturation = env.environment.adjustment_saturation
 	env.environment.adjustment_color_correction = blend_textures(base, night, 0)
 	hud.vignette.update_vignette(0)
-	player.global_position = Vector2(1, 1) * (randf() * 3900 + 50)
+	#player.global_position = Vector2(1, 1) * (randf() * 3900 + 50)
 	get_viewport().get_camera_2d().global_position = player.global_position
 
 var timer: float = 0.0;
@@ -72,6 +79,9 @@ func _process(delta: float) -> void:
 			night_start.emit()
 		last_blend = progress
 		env.environment.adjustment_color_correction = blend_textures(base, night, progress)
+		env.environment.adjustment_brightness = lerp(1.0, night_brightness, progress)
+		env.environment.adjustment_contrast = lerp(1.0, night_contrast, progress)
+		env.environment.adjustment_saturation = lerp(1.0, night_saturation, progress)
 		hud.vignette.update_vignette(progress)
 
 	hud._on_time_progress(progress)

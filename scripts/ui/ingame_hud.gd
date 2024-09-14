@@ -14,6 +14,7 @@ var vignette: Vignette
 
 func _ready() -> void:
 	vignette = $vignette
+	$AnimationPlayer.play("tutorial")
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -89,3 +90,6 @@ func _on_back_to_menu_button_up() -> void:
 func do_thunder():
 	AudioManager.play_sound(thunder_sound, "Effects", 5, false, 0.1)
 	$AnimationPlayer.play("thunder")
+
+func show_start_night():
+	$AnimationPlayer.play("night_begin")
