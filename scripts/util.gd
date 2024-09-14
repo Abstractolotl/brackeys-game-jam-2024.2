@@ -18,3 +18,9 @@ static func clamped_range_mapping(value: float, min_threshold: float, max_thresh
 	# Otherwise, map the value linearly between min_threshold and max_threshold
 	else:
 		return (value - min_threshold) / (max_threshold - min_threshold)
+
+enum Spacing {
+	EVEN,
+	RANDOM,
+	GROUPED
+}

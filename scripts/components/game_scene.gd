@@ -9,10 +9,6 @@ func spawn_bullet(bullet: Node):
 func add(node: Node): 
 	get_parent().add_child(node)
 
-var spawn_rate: float            = 3.0
-var spawn_time: float            = 1.0 / spawn_rate
-var time_since_last_spawn: float = 0.0
-
 var env: WorldEnvironment
 
 @export var base: Texture
@@ -62,7 +58,6 @@ func _ready() -> void:
 
 var timer: float = 0.0;
 func _process(delta: float) -> void:
-	time_since_last_spawn += delta
 	timer += delta
 
 	var progress = min(floor((timer / day_time) * blend_stepts) / blend_stepts, 1.0)
@@ -74,18 +69,3 @@ func _process(delta: float) -> void:
 		hud.vignette.update_vignette(progress)
 
 	hud._on_time_progress(progress)
-
-	if last_blend < 1.0:
-		return
-
-	if fmod(timer, 5) < delta:
-		spawn_rate += 1
-		spawn_time = 1.0 / spawn_rate
-	
-	if time_since_last_spawn >= spawn_time:
-		time_since_last_spawn = 0
-
-		var enemy: Enemy = enemy_scene.instantiate()
-		enemy.player = player
-		enemy.global_position = Vector2(randi() % 800, randi() % 600)
-		$enemies.add_child(enemy)
