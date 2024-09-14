@@ -4,7 +4,7 @@ signal shake(amount: float, min: float)
 signal night_start()
 
 func spawn_bullet(bullet: Node):
-	call_deferred("add", bullet)
+	add.call_deferred(bullet)
 
 func add(node: Node): 
 	get_parent().add_child(node)

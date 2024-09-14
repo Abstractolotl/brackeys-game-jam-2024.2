@@ -23,7 +23,8 @@ func _ready() -> void:
 	sprite = $body_mask/sprite
 	emitter = $emitter
 	camera = $camera
-	print("stfu", bullet_update)
+	if bullet_update:
+		pass # so the compiler stops complaining
 
 func _physics_process(_delta) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -87,7 +88,6 @@ func is_moving() -> bool:
 
 
 func start_rain():
-	print("Rain started")
 	$rain.visible = true
 	
 func _process(_delta: float) -> void:
@@ -99,7 +99,6 @@ func shoot():
 
 
 func _on_health_component_health_changed(_amount: float, new_health: float) -> void:
-	print("Player health: ", new_health)
 	player_damaged.emit(new_health)
 	$animation.play("hit")
 	get_tree().get_current_scene().shake.emit(0, 1)

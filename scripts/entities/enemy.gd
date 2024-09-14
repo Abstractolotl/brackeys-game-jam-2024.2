@@ -43,7 +43,7 @@ func _on_hit(_amount: float, new_health: float):
 			if randf() < 0.5:
 				var instance = explosion.instantiate()
 				instance.global_position = global_position
-				get_tree().get_current_scene().call_deferred("add_child", instance)
+				get_tree().get_current_scene().add_child.call_deferred(instance)
 
 			queue_free()
 		return
@@ -52,7 +52,7 @@ func _on_hit(_amount: float, new_health: float):
 		animation.play("death", 0)
 		dead = true
 		get_tree().get_current_scene().shake.emit(1, 0)
-		call_deferred("on_death")
+		on_death.call_deferred()
 	else:
 		animation.play("hit")#
 		get_tree().get_current_scene().shake.emit(0.2, 0.5)
