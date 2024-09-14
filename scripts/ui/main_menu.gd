@@ -29,7 +29,7 @@ func _on_credits_button_down() -> void:
 	await $AnimationPlayer.animation_finished
 	
 	$Credits.visible = false
-	$Menu.visibl
+	$Menu.visible = true
 
 
 func _on_credits_button_up() -> void:

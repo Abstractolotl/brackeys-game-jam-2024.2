@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b5rstsf26htl4" path="res://assets/placeholder/circle_512.png" id="7_5bdh8"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="9_hlaq6"]
 [ext_resource type="Shader" path="res://scenes/game/vignette.gdshader" id="10_mtgdq"]
-[ext_resource type="Script" path="res://scenes/ui/vignette.gd" id="11_0wyci"]
+[ext_resource type="Script" path="res://scripts/components/vignette.gd" id="11_0wyci"]
 [ext_resource type="Texture2D" uid="uid://8f0g426rngsg" path="res://assets/placeholder/rain.png" id="12_c2wvm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pusqk"]
