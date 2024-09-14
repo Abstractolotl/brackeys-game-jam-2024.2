@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dixpu63gxvf0y"]
+[gd_scene load_steps=13 format=3 uid="uid://dixpu63gxvf0y"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_sxe5i"]
 [ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_b36x4"]
-[ext_resource type="Resource" uid="uid://cgv8i7mr4ujwr" path="res://drops/pool_barrel.tres" id="2_y1omr"]
+[ext_resource type="Resource" uid="uid://bf5qrt3t1yhgn" path="res://drops/pool_barrel.tres" id="2_y1omr"]
+[ext_resource type="AudioStream" uid="uid://defq1vlfhgc5x" path="res://assets/audio/tree_hit.mp3" id="3_c6jpe"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_tn4vf"]
+[ext_resource type="AudioStream" uid="uid://dd45nwblgn4yq" path="res://assets/audio/vase_destroy.mp3" id="4_2834h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qwgpl"]
 radius = 9.05539
@@ -169,6 +171,8 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_sxe5i")
 pool = ExtResource("2_y1omr")
+hit_sound = ExtResource("3_c6jpe")
+death_sound = ExtResource("4_2834h")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2

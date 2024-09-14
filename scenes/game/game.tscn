@@ -8,9 +8,9 @@
 [ext_resource type="Script" path="res://scripts/components/shaking_camera.gd" id="5_ou4b0"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_l7ubj"]
 [ext_resource type="Script" path="res://scripts/spawn_wave.gd" id="7_nbuwj"]
-[ext_resource type="PackedScene" path="res://entities/tnt_sheep.tscn" id="8_v71sb"]
+[ext_resource type="PackedScene" uid="uid://dm4eotsgosloq" path="res://entities/tnt_sheep.tscn" id="8_v71sb"]
 [ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="8_xvp2e"]
-[ext_resource type="PackedScene" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
+[ext_resource type="PackedScene" uid="uid://buta64k6cf8ht" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
 [ext_resource type="PackedScene" uid="uid://kdnjehrf013m" path="res://entities/big_sheep.tscn" id="11_c4uil"]
 [ext_resource type="PackedScene" path="res://entities/fast_sheep.tscn" id="13_al30p"]
 
@@ -211,6 +211,9 @@ script = ExtResource("6_l7ubj")
 player = NodePath("../player")
 spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60"), SubResource("Resource_7jm0e")])
 spawn_radius = 500.0
+
+[node name="enemy" parent="." instance=ExtResource("9_4txbp")]
+position = Vector2(789, 273)
 
 [connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]

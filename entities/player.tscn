@@ -1,15 +1,16 @@
-[gd_scene load_steps=46 format=3 uid="uid://dxvu6i0n3nbb2"]
+[gd_scene load_steps=47 format=3 uid="uid://dxvu6i0n3nbb2"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/character/front_walking.png" id="2_7l8jn"]
 [ext_resource type="PackedScene" uid="uid://csn3x0tpuv25t" path="res://entities/bullet.tscn" id="2_hwf6v"]
 [ext_resource type="Texture2D" uid="uid://dxojeh6kq1w5m" path="res://assets/bullet.png" id="3_2h4qv"]
+[ext_resource type="AudioStream" uid="uid://cmy2rx5kug5pm" path="res://assets/audio/player_hit.mp3" id="3_b7suj"]
 [ext_resource type="PackedScene" uid="uid://cvcppfmu75p4d" path="res://scenes/ui/indicator.tscn" id="3_t3yoh"]
 [ext_resource type="Texture2D" uid="uid://b74xs5a8cyrli" path="res://assets/character/back_walking.png" id="4_ktx18"]
 [ext_resource type="Texture2D" uid="uid://u4vjpstit333" path="res://assets/character/side_walking.png" id="5_i23s8"]
 [ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="5_l2s0a"]
 [ext_resource type="Texture2D" uid="uid://b5rstsf26htl4" path="res://assets/placeholder/circle_512.png" id="7_5bdh8"]
-[ext_resource type="AudioStream" uid="uid://cr7pbiqrwx2wj" path="res://assets/audio/shoot.mp3" id="9_d62jx"]
+[ext_resource type="AudioStream" uid="uid://cr3o4ofm7770i" path="res://assets/audio/bubble.mp3" id="9_81x66"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="9_hlaq6"]
 [ext_resource type="Shader" path="res://scenes/game/vignette.gdshader" id="10_mtgdq"]
 [ext_resource type="Script" path="res://scripts/components/vignette.gd" id="11_0wyci"]
@@ -258,8 +259,10 @@ z_index = 25
 collision_mask = 3
 script = ExtResource("1_meqr6")
 bullet = ExtResource("2_hwf6v")
+player_hit_sound = ExtResource("3_b7suj")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+clip_children = 2
 use_parent_material = true
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_eppqp")
@@ -267,7 +270,6 @@ animation = &"walking_side"
 speed_scale = 3.0
 
 [node name="flash" type="ColorRect" parent="sprite"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -19.5
 offset_top = -20.0
@@ -314,7 +316,7 @@ shape = SubResource("CircleShape2D_qd31t")
 rotation = 0.785398
 script = ExtResource("5_l2s0a")
 bullet_scene = ExtResource("2_hwf6v")
-sound_shoot = ExtResource("9_d62jx")
+sound_shoot = ExtResource("9_81x66")
 
 [node name="light" type="PointLight2D" parent="."]
 visible = false

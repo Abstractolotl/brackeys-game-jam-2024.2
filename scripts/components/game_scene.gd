@@ -46,13 +46,12 @@ func blend_textures(texture1: Texture2D, texture2: Texture2D, alpha: float) -> T
 
 	# Create a new texture from the blended image
 	var new_texture: ImageTexture = ImageTexture.create_from_image(image1)
-
 	return new_texture
 
 
 var last_blend = 0.0;
 var blend_stepts = 150.0;
-var day_time = 30.0;
+var day_time = 180.0;
 
 func _ready() -> void:
 	if shake:
