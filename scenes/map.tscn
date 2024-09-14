@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dgmr7tbnwflkw"]
+[gd_scene load_steps=34 format=4 uid="uid://dgmr7tbnwflkw"]
 
 [ext_resource type="Texture2D" uid="uid://cr8hvp1tdvbou" path="res://assets/map/ground_overview.png" id="1_c645q"]
 [ext_resource type="Texture2D" uid="uid://d2xxmeivyt1i4" path="res://assets/map/dirt.png" id="2_3gfpx"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="12_0rauq"]
 [ext_resource type="PackedScene" uid="uid://717sy8ext5ee" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
 [ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="13_cmst0"]
-[ext_resource type="PackedScene" uid="uid://c1h7msdrad287" path="res://entities/destructables/bush.tscn" id="14_btk5i"]
+[ext_resource type="PackedScene" path="res://entities/destructables/bush.tscn" id="14_btk5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l7ck2"]
 texture = ExtResource("1_c645q")

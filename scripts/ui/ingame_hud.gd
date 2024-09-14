@@ -87,5 +87,5 @@ func _on_back_to_menu_button_up() -> void:
 	exit_to_menu()
 
 func do_thunder():
-	AudioManager.play_sound(thunder_sound, "Effects", 10, false, 0.1)
+	AudioManager.play_sound(thunder_sound, "Effects", 5, false, 0.1)
 	$AnimationPlayer.play("thunder")
