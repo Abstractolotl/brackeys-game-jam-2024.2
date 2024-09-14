@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chbd7bp1q46o6"]
+[gd_scene load_steps=23 format=3 uid="uid://chbd7bp1q46o6"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_vr8am"]
 [ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_hai0q"]
@@ -46,10 +46,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_qhq3b"]
 resource_name = "dead"
-length = 0.0333367
+length = 0.1333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -59,7 +71,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/1/type = "value"
@@ -69,31 +81,27 @@ tracks/1/path = NodePath("sprite/flash:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1268),
+"transitions": PackedFloat32Array(1, 1.27456),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(0.105475, 7.78214e-06, 0.102661, 0.619608)]
 }
-
-[sub_resource type="Animation" id="Animation_rxfgc"]
-resource_name = "hiz"
-length = 0.133337
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/flash:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1258),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_l15dk"]
 resource_name = "walk"
-length = 0.66667
+length = 0.3667
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -108,13 +116,98 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_dqoso"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_rxfgc"]
+resource_name = "hurt"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 0.574349),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dram2"]
 _data = {
 "RESET": SubResource("Animation_5wxjw"),
 "death": SubResource("Animation_qhq3b"),
-"hit": SubResource("Animation_rxfgc"),
+"hurt": SubResource("Animation_rxfgc"),
+"idle": SubResource("Animation_dqoso"),
 "walk": SubResource("Animation_l15dk")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w4ppi"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kdfbw"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h7jlt"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yqmma"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_0eh6k"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_0ch16"]
+mix_mode = 1
+break_loop_at_end = true
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ebg8k"]
+mix_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cmg75"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_q1bn8"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_w1yvx"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7p0nh"]
+graph_offset = Vector2(-684, -24)
+"nodes/Animation Death/node" = SubResource("AnimationNodeAnimation_w4ppi")
+"nodes/Animation Death/position" = Vector2(320, 740)
+"nodes/Animation Hurt/node" = SubResource("AnimationNodeAnimation_kdfbw")
+"nodes/Animation Hurt/position" = Vector2(360, 520)
+"nodes/Animation Idle/node" = SubResource("AnimationNodeAnimation_h7jlt")
+"nodes/Animation Idle/position" = Vector2(340, 140)
+"nodes/Animation Walk/node" = SubResource("AnimationNodeAnimation_yqmma")
+"nodes/Animation Walk/position" = Vector2(300, 300)
+nodes/Death/node = SubResource("AnimationNodeOneShot_0ch16")
+nodes/Death/position = Vector2(1280, 300)
+"nodes/Death 2/node" = SubResource("AnimationNodeBlend2_0eh6k")
+"nodes/Death 2/position" = Vector2(1160, 560)
+nodes/Hurt/node = SubResource("AnimationNodeOneShot_ebg8k")
+nodes/Hurt/position = Vector2(960, 200)
+nodes/RESET/node = SubResource("AnimationNodeAnimation_cmg75")
+nodes/RESET/position = Vector2(-60, 300)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_q1bn8")
+nodes/TimeScale/position = Vector2(500, 300)
+nodes/Walk/node = SubResource("AnimationNodeBlend2_w1yvx")
+nodes/Walk/position = Vector2(680, 100)
+nodes/output/position = Vector2(1600, 280)
+node_connections = [&"Death 2", 0, &"Hurt", &"Death 2", 1, &"Animation Death", &"Hurt", 0, &"Walk", &"Hurt", 1, &"Animation Hurt", &"TimeScale", 0, &"Animation Walk", &"Walk", 0, &"Animation Idle", &"Walk", 1, &"TimeScale", &"output", 0, &"Death 2"]
 
 [node name="enemy" type="RigidBody2D"]
 z_index = 25
@@ -153,6 +246,19 @@ health = 3.0
 libraries = {
 "": SubResource("AnimationLibrary_dram2")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_7p0nh")
+anim_player = NodePath("../animation_player")
+parameters/Death/active = false
+parameters/Death/internal_active = false
+parameters/Death/request = 0
+"parameters/Death 2/blend_amount" = 0
+parameters/Hurt/active = false
+parameters/Hurt/internal_active = false
+parameters/Hurt/request = 0
+parameters/TimeScale/scale = 1.5
+parameters/Walk/blend_amount = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="health_changed" from="health" to="." method="_on_hit"]

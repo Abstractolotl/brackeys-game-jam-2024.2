@@ -6,6 +6,8 @@ var player: Node2D
 @export var speed: float = 100
 @export var explosion: PackedScene
 
+@onready var animation_tree: AnimationTree = $AnimationTree
+
 var animation: AnimationPlayer
 var health: HealthComponent
 var sprite: Sprite2D
@@ -18,7 +20,7 @@ func _ready():
 	animation = $animation_player
 	health = $health
 	sprite = $sprite
-	animation.play("walk")
+	animation_tree["parameters/Walk/blend_amount"] = 1.0
 
 func _process(_delta):
 	if health.health <= 0:
@@ -49,12 +51,13 @@ func _on_hit(_amount: float, new_health: float):
 		return
 
 	if new_health <= 0:
-		animation.play("death", 0)
+		animation_tree.set("parameters/Death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		animation_tree["parameters/Death 2/blend_amount"] = 1.0
 		dead = true
 		get_tree().get_current_scene().shake.emit(1, 0)
 		call_deferred("on_death")
 	else:
-		animation.play("hit")#
+		animation_tree.set("parameters/Hurt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		get_tree().get_current_scene().shake.emit(0.2, 0.5)
 
 func on_death():
