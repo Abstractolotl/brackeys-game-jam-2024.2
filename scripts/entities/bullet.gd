@@ -46,7 +46,7 @@ func on_collision_body(body: Node2D):
 	if health_component:
 		health_component.hit(damage)
 		if body is RigidBody2D:
-			body.apply_impulse(Vector2.from_angle(rotation) * 1000, Vector2(0, 0))
+			body.apply_impulse(Vector2.from_angle(rotation) * 200, Vector2(0, 0))
 			
 func _play_hit_sound():
 	pass
