@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bwva31xchx53y"]
+[gd_scene load_steps=53 format=3 uid="uid://bwva31xchx53y"]
 
 [ext_resource type="Script" path="res://scripts/ui/ingame_hud.gd" id="1_wqdty"]
 [ext_resource type="Script" path="res://scripts/ui/animated_texture_rect.gd" id="2_0l26t"]
@@ -223,6 +223,58 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(427.5, 747)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HUD:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6e3b4"]
+resource_name = "death"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Death:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.580392, 0, 0.0117647, 0), Color(0.580392, 0, 0.0117647, 0.286275)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Death/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HUD:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_smc22"]
 resource_name = "pause_start"
@@ -283,6 +335,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t8xun"]
 _data = {
 "RESET": SubResource("Animation_xv5j4"),
+"death": SubResource("Animation_6e3b4"),
 "pause_start": SubResource("Animation_smc22"),
 "pause_stop": SubResource("Animation_djifv")
 }
@@ -392,6 +445,58 @@ libraries = {
 "": SubResource("AnimationLibrary_t8xun")
 }
 
+[node name="Death" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.580392, 0, 0.0117647, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Death"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -89.0
+offset_right = 201.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Death/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("14_k517a")
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "[center]You Died[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="BackToMenu" type="Button" parent="Death/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0.584314, 0.584314, 0.584314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_color = Color(0.690196, 0.713726, 0.713726, 1)
+theme_override_fonts/font = ExtResource("14_k517a")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f7fpr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bu82q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tmtcp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tmtcp")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ixrl")
+text = "Back To Menu"
+
 [node name="Pause" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -481,5 +586,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tmtcp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7ixrl")
 text = "Exit To Menu"
 
+[connection signal="button_down" from="Death/VBoxContainer/BackToMenu" to="." method="exit_to_menu"]
 [connection signal="button_down" from="Pause/TextureRect/CenterContainer/VBoxContainer/Resume" to="." method="resume"]
 [connection signal="button_down" from="Pause/TextureRect/CenterContainer/VBoxContainer/BackToMenu" to="." method="exit_to_menu"]
