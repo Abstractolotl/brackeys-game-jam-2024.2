@@ -1,20 +1,24 @@
 extends HBoxContainer
-class_name LevelBar
+class_name PowerUpBar
 
-@export var bullet_levels: Array[Texture2D]
-@export var bullet_fire_rate: Array[Texture2D]
+@export var textures: Array[Texture2D]
 
-var bullet_level: TextureRect
-var fire_rate: TextureRect
+enum PowerUp {
+	DAMAGE,
+	EXPLOSION,
+	HEALTH,
+	HEALTH_GEN,
+	SPEED,
+	PIERCE,
+	FIRE_RATE,
+	PROJECTILES,
+	LIGHT
+}
 
-func _ready() -> void:
-	bullet_level = TextureRect.new()
-	bullet_level.texture = bullet_levels[0]
-	add_child(bullet_level)
+var collected_powerups = {}
 
-func update_bullet_level(level: int):
-	if bullet_levels.size() < level:
-		return
-			
-	if bullet_level != null:
-		bullet_level.texture = bullet_levels[level - 1]
+func add_power_up(power_up: PowerUp):
+	var texture = textures[power_up]
+	var rect = TextureRect.new()
+	rect.texture = texture
+	add_child(rect)

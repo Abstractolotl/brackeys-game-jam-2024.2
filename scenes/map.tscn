@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dixpu63gxvf0y" path="res://entities/destructables/barrel.tscn" id="11_34j5k"]
 [ext_resource type="PackedScene" uid="uid://bhmbjoyq5bse7" path="res://entities/scenerie/bush.tscn" id="11_bv3cp"]
 [ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="12_0rauq"]
-[ext_resource type="PackedScene" uid="uid://y50kkmqi8jj" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
+[ext_resource type="PackedScene" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
 [ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="13_cmst0"]
 [ext_resource type="Resource" uid="uid://bsjyo8htu7crr" path="res://drops/pool_chest.tres" id="14_yeear"]
 

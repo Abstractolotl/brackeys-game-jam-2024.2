@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4jefrr16j2u5"
-path="res://.godot/imported/bullet_1.png-7b0b074873961c9bc81aa9b9749d237b.ctex"
+uid="uid://dntg6w4kmp8ui"
+path="res://.godot/imported/LIFE_GEN_ICON.png-560e77aae17c0cd5b6289a809c811eaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/bullet_1.png"
-dest_files=["res://.godot/imported/bullet_1.png-7b0b074873961c9bc81aa9b9749d237b.ctex"]
+source_file="res://assets/ui/power_ups/LIFE_GEN_ICON.png"
+dest_files=["res://.godot/imported/LIFE_GEN_ICON.png-560e77aae17c0cd5b6289a809c811eaa.ctex"]
 
 [params]
 

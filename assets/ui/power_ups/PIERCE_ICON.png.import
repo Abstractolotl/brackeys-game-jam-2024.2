@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpdw4838k8wie"
-path="res://.godot/imported/time_animated.png-7582258062f46b64714ea2e9211860ba.ctex"
+uid="uid://crcnn8dqsjcij"
+path="res://.godot/imported/PIERCE_ICON.png-7a882ae3f77648022936f894fcf16f4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/time_animated.png"
-dest_files=["res://.godot/imported/time_animated.png-7582258062f46b64714ea2e9211860ba.ctex"]
+source_file="res://assets/ui/power_ups/PIERCE_ICON.png"
+dest_files=["res://.godot/imported/PIERCE_ICON.png-7a882ae3f77648022936f894fcf16f4a.ctex"]
 
 [params]
 
