@@ -1,11 +1,18 @@
 extends RigidBody2D
 class_name Enemy
 
+enum EnemyType {
+	NORMAL,
+	RANGED,
+	TNT
+}
 
 var player: Node2D
 @export var speed: float = 100
 @export var size: float = 1
 @export var explosion: PackedScene
+
+@export var enemy_type: EnemyType
 
 @export var side_texture: Texture
 @export var up_texture: Texture
@@ -18,6 +25,7 @@ var health: HealthComponent
 var sprite: Sprite2D
 
 var dead = false
+var fuse = 0
 
 var last_position: Vector2
 
@@ -29,21 +37,50 @@ func _ready():
 	health = $health
 	sprite = $sprite
 	
-	last_position = position
+	last_position = global_position
 
 
 func _process(_delta):
 	if dead:
 		return
 	
+	var direction = (player.global_position - global_position).normalized()
+	var force = direction * (speed * mass)
+	
+	self.apply_force(force)
+	
+	
 	var move_direction = linear_velocity.normalized()
 	var velocity = linear_velocity.length()
-	velocity = (position-last_position).length() / _delta
-	last_position = position
+	velocity = (global_position-last_position).length() / _delta
+	last_position = global_position
 	animation_tree.set("parameters/BlendSpace2D/blend_position", move_direction)
 	animation_tree.set("parameters/TimeScale/scale", Util.clamped_range_mapping(velocity, 10, 200) * 4)
 	
 	animation_tree["parameters/Walk/blend_amount"] = 1.0 if velocity > 10 else 0.0
+	
+	_handle_attack(_delta)
+	
+	
+
+func _handle_attack(_delta: float):
+	var distance = (player.global_position - global_position).length()
+	
+	match enemy_type:
+		EnemyType.NORMAL:
+			pass
+		EnemyType.RANGED:
+			pass
+		EnemyType.TNT:
+			if (fuse == 0 and distance > 100) or fuse == -1:
+				return
+			fuse += _delta
+			if fuse > 1:
+				var ex = explosion.instantiate()
+				ex.global_position = global_position
+				get_tree().current_scene.add_child.call_deferred(ex)
+				queue_free()
+				fuse = -1
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -51,8 +88,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		return
 
 	var direction = (player.global_position - global_position).normalized()
-	state.linear_velocity = direction * speed
-	pass
+	#state.linear_velocity = direction * speed
 
 
 func _on_hit(_amount: float, new_health: float):

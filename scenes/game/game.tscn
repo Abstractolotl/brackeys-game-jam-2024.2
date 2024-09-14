@@ -70,7 +70,7 @@ spacing = 0
 enemy = ExtResource("8_v71sb")
 min_wave = 0
 max_wave = 10
-weight = 2
+weight = 20
 
 [sub_resource type="Resource" id="Resource_akclu"]
 script = ExtResource("7_nbuwj")

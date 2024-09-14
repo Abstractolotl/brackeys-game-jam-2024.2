@@ -89,7 +89,7 @@ func _spawn_wave_even(wave: SpawnWave, amount: int):
 	for i in range(amount):
 		var angle = angle_offset + (angle_between * i)
 		var relative_pos = Vector2.from_angle(angle).normalized() * spawn_radius
-		var spawn_position = player.position + relative_pos
+		var spawn_position = player.global_position + relative_pos
 		spawn_enemy(spawn_position, wave.enemy)
 
 
@@ -97,14 +97,14 @@ func _spawn_wave_random(wave: SpawnWave, amount: int):
 	for i in range(amount):
 		var angle = random.randf_range(0, 2 * PI)
 		var relative_pos = Vector2.from_angle(angle).normalized() * spawn_radius
-		var spawn_position = player.position + relative_pos
+		var spawn_position = player.global_position + relative_pos
 		spawn_enemy(spawn_position, wave.enemy)
 
 
 func _spawn_wave_grouped(wave: SpawnWave, amount: int):
 	var angle = random.randf_range(0, 2 * PI)
 	var relative_pos = Vector2.from_angle(angle).normalized() * spawn_radius
-	var spawn_position = player.position + relative_pos
+	var spawn_position = player.global_position + relative_pos
 	for i in range(amount):
 		spawn_enemy(spawn_position, wave.enemy)
 

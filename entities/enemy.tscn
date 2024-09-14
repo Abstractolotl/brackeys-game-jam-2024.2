@@ -378,6 +378,7 @@ lock_rotation = true
 linear_damp = 3.0
 angular_damp = 3.0
 script = ExtResource("1_vr8am")
+speed = 400.0
 explosion = ExtResource("2_hai0q")
 side_texture = ExtResource("4_nqvnl")
 up_texture = ExtResource("4_5nk17")
