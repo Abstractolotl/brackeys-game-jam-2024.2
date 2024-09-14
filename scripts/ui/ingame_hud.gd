@@ -24,7 +24,7 @@ func show_damage_number(position: Vector2, damage: float):
 	var damageNumber = damage_number.instantiate()
 	damageNumber.damage = damage
 	damageNumber.damage_position = position
-	$"HUD/DamageNumbers".add_child(damageNumber)
+	$DamageNumbers.add_child(damageNumber)
 
 func pause():
 	$Pause.visible = true

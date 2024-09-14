@@ -180,8 +180,7 @@ hframes = 2
 script = ExtResource("3_1m64a")
 
 [node name="shape" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(1, 0)
+position = Vector2(0, -19)
 shape = SubResource("CircleShape2D_2dkih")
 
 [node name="animation" type="AnimationPlayer" parent="."]
