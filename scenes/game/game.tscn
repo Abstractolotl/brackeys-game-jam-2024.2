@@ -126,3 +126,4 @@ spawn_radius = 500.0
 [connection signal="night_start" from="." to="player" method="start_rain"]
 [connection signal="night_start" from="." to="EnemySpawner" method="_on_game_night_start"]
 [connection signal="player_health_changed" from="player" to="hud-layer/IngameHud" method="_on_player_player_damaged"]
+[connection signal="power_up" from="player" to="hud-layer/IngameHud" method="_on_player_power_up"]

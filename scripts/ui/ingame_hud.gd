@@ -64,7 +64,7 @@ func _on_player_bullet_update(projectiles: int, _fire_rate: float) -> void:
 	power_ups.update_bullet_level(projectiles)
 
 func _on_time_progress(percentage: float) -> void:
-	var frame_amount = 10
+	var frame_amount = 11
 	var frame = min(int(round(frame_amount * percentage)), frame_amount-1)
 	time_bar.go_to_frame(frame)
 
