@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bltpe62v8m6ht"]
+[gd_scene load_steps=11 format=3 uid="uid://bltpe62v8m6ht"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_2nfdq"]
 [ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_twrpb"]
+[ext_resource type="Resource" uid="uid://cxypirwb1a16c" path="res://drops/pool_vase.tres" id="2_w7gf7"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_c3h8n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ky2m7"]
@@ -119,6 +120,7 @@ z_index = 25
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_2nfdq")
+pool = ExtResource("2_w7gf7")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
@@ -139,6 +141,7 @@ offset_bottom = 26.0
 [node name="health" type="Node" parent="."]
 script = ExtResource("3_c3h8n")
 health = 3.0
+max_health = 3.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

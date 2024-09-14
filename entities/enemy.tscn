@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://chbd7bp1q46o6"]
+[gd_scene load_steps=25 format=3 uid="uid://chbd7bp1q46o6"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_vr8am"]
 [ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_hai0q"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://d3onlgklqrg67" path="res://assets/enemies/sheep_up.png" id="4_5nk17"]
 [ext_resource type="Texture2D" uid="uid://csrtv4wjftrld" path="res://assets/enemies/sheep_side.png" id="4_nqvnl"]
 [ext_resource type="Texture2D" uid="uid://hw7kw1yxl8ma" path="res://assets/enemies/sheep_down.png" id="5_wdp1l"]
+[ext_resource type="AudioStream" uid="uid://bvqcebfry6t0c" path="res://assets/audio/sheep.mp3" id="3_t5b25"]
+[ext_resource type="AudioStream" uid="uid://b5fdl0wdqktpu" path="res://assets/audio/hit.mp3" id="4_4qnd6"]
+[ext_resource type="Texture2D" uid="uid://csrtv4wjftrld" path="res://assets/zombie_schaf2.png" id="4_nqvnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]
 radius = 9.0
@@ -383,6 +386,8 @@ explosion = ExtResource("2_hai0q")
 side_texture = ExtResource("4_nqvnl")
 up_texture = ExtResource("4_5nk17")
 down_texture = ExtResource("5_wdp1l")
+audio_dead = ExtResource("3_t5b25")
+audio_hit = ExtResource("4_4qnd6")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2

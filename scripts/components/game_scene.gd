@@ -3,6 +3,8 @@ extends Node2D
 signal shake(amount: float, min: float)
 signal night_start()
 
+@export var rain_sound: AudioStream
+
 func spawn_bullet(bullet: Node):
 	add.call_deferred(bullet)
 
@@ -11,8 +13,8 @@ func add(node: Node):
 
 var env: WorldEnvironment
 
-@export var base: Texture
 var night: Texture
+@export var base: Texture
 @export var enemy_scene: PackedScene = preload("res://entities/enemy.tscn")
 @export var player: Node2D
 @export var hud: IngameHud
@@ -55,6 +57,8 @@ func _ready() -> void:
 	night = env.environment.adjustment_color_correction
 	env.environment.adjustment_color_correction = blend_textures(base, night, 0)
 	hud.vignette.update_vignette(0)
+	player.global_position = Vector2(1, 1) * (randf() * 3900 + 50)
+	get_viewport().get_camera_2d().global_position = player.global_position
 
 var timer: float = 0.0;
 func _process(delta: float) -> void:
@@ -63,6 +67,8 @@ func _process(delta: float) -> void:
 	var progress = min(floor((timer / day_time) * blend_stepts) / blend_stepts, 1.0)
 	if progress != last_blend:
 		if progress == 1.0:
+			AudioManager.play_sound(rain_sound, "Weather", 0, true)
+			hud.do_thunder()
 			night_start.emit()
 		last_blend = progress
 		env.environment.adjustment_color_correction = blend_textures(base, night, progress)

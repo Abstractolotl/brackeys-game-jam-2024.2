@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DropPool" load_steps=7 format=3 uid="uid://cgv8i7mr4ujwr"]
+
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_h5jwn"]
+[ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="2_47rrs"]
+[ext_resource type="Resource" uid="uid://b8ria10880wa8" path="res://drops/drop_enemy_5.tres" id="2_taol1"]
+[ext_resource type="Resource" uid="uid://ld8m2oav7k3r" path="res://drops/drop_hpup_5.tres" id="3_lkavm"]
+[ext_resource type="Resource" uid="uid://0pgre133okkk" path="res://drops/drop_nothing_40.tres" id="4_t0f5q"]
+[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://drops/drop_projectiles_5.tres" id="5_c8sfj"]
+
+[resource]
+script = ExtResource("2_47rrs")
+drops = Array[ExtResource("1_h5jwn")]([ExtResource("2_taol1"), ExtResource("3_lkavm"), ExtResource("4_t0f5q"), ExtResource("5_c8sfj")])

@@ -29,10 +29,10 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
-	pass
-
+	spawn_radius = get_viewport().size.x / get_viewport().get_camera_2d().zoom.x
 
 func spawn_wave(wave: SpawnWave):
+	get_tree().current_scene.hud.do_thunder()
 	if wave.enemy == null:
 		print("wave " + str(wave_counter) + ": skipped")
 		return

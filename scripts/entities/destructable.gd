@@ -6,6 +6,9 @@ var animation: AnimationPlayer
 @export var leftover: PackedScene
 @export var remain: bool = true
 
+@export var hit_sound: AudioStream
+@export var death_sound: AudioStream
+
 var dead = false
 
 func _ready():
@@ -13,6 +16,8 @@ func _ready():
 	animation.play("RESET")
 
 func on_death():
+	if death_sound:
+		AudioManager.play_sound(death_sound, "Effects", -5, false, 0.25)
 	if animation.current_animation == "hit":
 		await animation.animation_finished
 	
@@ -22,9 +27,10 @@ func on_death():
 		if drop.scene:
 			var drop_instance = drop.scene.instantiate()
 			get_parent().add_child.call_deferred(drop_instance)
-			drop_instance.global_position = global_position + Vector2.from_angle(randf() * 2 * PI) * 25
+			drop_instance.global_position = global_position + Vector2.from_angle(randf() * 2 * PI) * 75
 
 	if leftover:
+		await animation.animation_finished
 		var leftover_instance = leftover.instantiate()
 		get_parent().add_child.call_deferred(leftover_instance)
 		leftover_instance.global_position = global_position
@@ -46,5 +52,7 @@ func hit(_amount: float, new_health: float):
 		on_hit.call_deferred()
 
 func on_hit():
+	if hit_sound:
+		AudioManager.play_sound(hit_sound, "Effects", -5)
 	animation.stop()
 	animation.play("hit")

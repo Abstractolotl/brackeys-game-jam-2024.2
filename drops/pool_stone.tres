@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DropPool" load_steps=5 format=3 uid="uid://drraynulovf4y"]
 
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_diapj"]
-[ext_resource type="Resource" uid="uid://bkwkrqcoowskj" path="res://drops/drop_firerate_5.tres" id="2_6vnhd"]
 [ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://drops/drop_projectiles_5.tres" id="3_amjvd"]
+[ext_resource type="Resource" uid="uid://ld8m2oav7k3r" path="res://drops/drop_hpup_5.tres" id="3_nieqx"]
 [ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="4_y7b7k"]
 
 [resource]
 script = ExtResource("4_y7b7k")
-drops = Array[ExtResource("1_diapj")]([ExtResource("2_6vnhd"), ExtResource("3_amjvd")])
+drops = Array[ExtResource("1_diapj")]([ExtResource("3_amjvd"), ExtResource("3_nieqx")])

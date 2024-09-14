@@ -26,7 +26,7 @@ func set_bus_mute(bus_name: String, mute: bool):
 		print("Bus not found: " + bus_name)
 
 # Function to play a sound on a specific bus
-func play_sound(audio_stream: AudioStream, bus_name: String, volume_db: float = 0, loop: bool = false) -> AudioStreamPlayer:
+func play_sound(audio_stream: AudioStream, bus_name: String, volume_db: float = 0, loop: bool = false, seek: float = 0) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
 	player.volume_db = volume_db
 	player.stream = audio_stream
@@ -41,7 +41,7 @@ func play_sound(audio_stream: AudioStream, bus_name: String, volume_db: float = 
 	
 	# Add the player to the scene tree and play the sound
 	add_child(player)
-	player.play()
+	player.play(seek)
 
 	# Connect the finished signal to remove the player after the sound finishes
 	if loop:

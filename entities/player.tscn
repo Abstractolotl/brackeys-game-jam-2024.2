@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dxvu6i0n3nbb2"]
+[gd_scene load_steps=46 format=3 uid="uid://dxvu6i0n3nbb2"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_meqr6"]
 [ext_resource type="Texture2D" uid="uid://cirj646a7r7tb" path="res://assets/character/front_walking.png" id="2_7l8jn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://u4vjpstit333" path="res://assets/character/side_walking.png" id="5_i23s8"]
 [ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="5_l2s0a"]
 [ext_resource type="Texture2D" uid="uid://b5rstsf26htl4" path="res://assets/placeholder/circle_512.png" id="7_5bdh8"]
+[ext_resource type="AudioStream" uid="uid://cr7pbiqrwx2wj" path="res://assets/audio/shoot.mp3" id="9_d62jx"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="9_hlaq6"]
 [ext_resource type="Shader" path="res://scenes/game/vignette.gdshader" id="10_mtgdq"]
 [ext_resource type="Script" path="res://scripts/components/vignette.gd" id="11_0wyci"]
@@ -313,6 +314,7 @@ shape = SubResource("CircleShape2D_qd31t")
 rotation = 0.785398
 script = ExtResource("5_l2s0a")
 bullet_scene = ExtResource("2_hwf6v")
+sound_shoot = ExtResource("9_d62jx")
 
 [node name="light" type="PointLight2D" parent="."]
 visible = false

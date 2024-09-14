@@ -1,14 +1,10 @@
 [gd_resource type="Resource" script_class="DropPool" load_steps=5 format=3 uid="uid://diwcfr23ilbi7"]
 
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_ihrfl"]
-[ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="2_itjpb"]
+[ext_resource type="Resource" uid="uid://siwt1x50kwlf" path="res://drops/drop_nothing_90.tres" id="2_xcrql"]
+[ext_resource type="Resource" uid="uid://cydheuqmitee4" path="res://drops/drop_projectiles_5.tres" id="3_13sa8"]
 [ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="5_jumif"]
-
-[sub_resource type="Resource" id="Resource_mcwmv"]
-script = ExtResource("1_ihrfl")
-weight = 25.0
-scene = ExtResource("2_itjpb")
 
 [resource]
 script = ExtResource("5_jumif")
-drops = Array[ExtResource("1_ihrfl")]([SubResource("Resource_mcwmv")])
+drops = Array[ExtResource("1_ihrfl")]([ExtResource("2_xcrql"), ExtResource("3_13sa8")])

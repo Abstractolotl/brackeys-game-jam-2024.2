@@ -5,6 +5,8 @@ class_name IngameHud
 @export var health_bar: HealthBar
 @export var time_bar: AnimatedTextureRect
 
+
+@export var thunder_sound: AudioStream
 @export var damage_number: PackedScene
 
 var death_screen: bool = false
@@ -14,9 +16,6 @@ func _ready() -> void:
 	vignette = $vignette
 
 func _process(_delta: float) -> void:
-	if death_screen:
-		return
-		
 	if Input.is_action_just_pressed("pause"):
 		if get_tree().paused:
 			resume()
@@ -61,8 +60,11 @@ func _on_player_player_damaged(max_health: float, health: float) -> void:
 	health_bar.update(max_health, health)
 
 
+func _on_player_bullet_update(projectiles: int, _fire_rate: float) -> void:
+	power_ups.update_bullet_level(projectiles)
+
 func _on_time_progress(percentage: float) -> void:
-	var frame_amount = 10
+	var frame_amount = 11
 	var frame = min(int(round(frame_amount * percentage)), frame_amount-1)
 	time_bar.go_to_frame(frame)
 
@@ -83,3 +85,7 @@ func _on_back_to_menu_button_down() -> void:
 func _on_back_to_menu_button_up() -> void:
 	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
 	exit_to_menu()
+
+func do_thunder():
+	AudioManager.play_sound(thunder_sound, "Effects", 10, false, 0.1)
+	$AnimationPlayer.play("thunder")

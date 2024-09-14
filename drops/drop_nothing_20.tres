@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Drop" load_steps=2 format=3 uid="uid://drvomgmp43qnf"]
+
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_lqsbf"]
+
+[resource]
+script = ExtResource("1_lqsbf")
+weight = 20.0
