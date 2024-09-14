@@ -7,13 +7,16 @@ class_name IngameHud
 
 @export var damage_number: PackedScene
 
+var death_screen: bool = false
 var vignette: Vignette
 
 func _ready() -> void:
 	vignette = $vignette
 
-
 func _process(_delta: float) -> void:
+	if death_screen:
+		return
+		
 	if Input.is_action_just_pressed("pause"):
 		if get_tree().paused:
 			resume()
@@ -25,6 +28,12 @@ func show_damage_number(position: Vector2, damage: float):
 	damageNumber.damage = damage
 	damageNumber.damage_position = Vector2(position.x + randf_range(-15.0, 15.0), position.y +  randf_range(-15.0, 15.0))
 	$DamageNumbers.add_child(damageNumber)
+
+
+func show_death_screen() -> void:
+	death_screen = true
+	get_tree().paused = true
+	$AnimationPlayer.play("death")
 
 func pause():
 	$Pause.visible = true
