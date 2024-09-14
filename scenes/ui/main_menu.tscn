@@ -838,6 +838,14 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7bdt0")
 text = "Credits
 "
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 686.0
+offset_right = 325.0
+offset_bottom = 709.0
+text = "Warning: unbalanced sounds & flashes"
+
 [connection signal="value_changed" from="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer/Master/Slider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer/Effects/Slider" to="." method="_on_effects_slider_value_changed"]
 [connection signal="value_changed" from="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer/Music/Slider" to="." method="_on_music_slider_value_changed"]

@@ -161,6 +161,7 @@ script = ExtResource("1_wkw0m")
 pool = ExtResource("2_2fs8t")
 leftover = ExtResource("3_7p5d4")
 hit_sound = ExtResource("4_oanvx")
+death_sound = ExtResource("4_oanvx")
 
 [node name="sprites" type="Node2D" parent="."]
 y_sort_enabled = true

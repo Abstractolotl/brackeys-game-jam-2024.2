@@ -1,12 +1,14 @@
 extends Area2D
 
 var animation: AnimationPlayer
+@export var explosion_sound: AudioStream
 @export var damage: float = 1
 
 func _ready():
 	animation = $animation
 	animation.play("explosion")
 	get_tree().get_current_scene().shake.emit(0, 0.5)
+	AudioManager.play_sound(explosion_sound, "Effects", -10)
 
 func _on_animation_finished(_name: StringName):
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DropPool" load_steps=7 format=3 uid="uid://cgv8i7mr4ujwr"]
+[gd_resource type="Resource" script_class="DropPool" load_steps=7 format=3 uid="uid://bf5qrt3t1yhgn"]
 
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="1_h5jwn"]
 [ext_resource type="Script" path="res://scripts/entities/drop_pool.gd" id="2_47rrs"]
