@@ -12,6 +12,7 @@ var vignette: Vignette
 
 func _ready() -> void:
 	vignette = $vignette
+	show_death_screen()
 
 func _process(_delta: float) -> void:
 	if death_screen:
@@ -62,7 +63,7 @@ func _on_player_player_damaged(max_health: float, health: float) -> void:
 
 
 func _on_time_progress(percentage: float) -> void:
-	var frame_amount = 23
+	var frame_amount = 10
 	var frame = min(int(round(frame_amount * percentage)), frame_amount-1)
 	time_bar.go_to_frame(frame)
 
