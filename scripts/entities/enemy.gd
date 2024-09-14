@@ -37,7 +37,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.linear_velocity = direction * speed
 	pass
 
-func _on_hit(amount: float, new_health: float):
+func _on_hit(_amount: float, new_health: float):
 	if dead:
 		if new_health < -5:
 			if randf() < 0.5:
