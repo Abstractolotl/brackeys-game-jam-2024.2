@@ -46,7 +46,7 @@ func blend_textures(texture1: Texture2D, texture2: Texture2D, alpha: float) -> T
 
 var last_blend = 0.0;
 var blend_stepts = 150.0;
-var day_time = 90.0;
+var day_time = 3.0;
 
 func _ready() -> void:
 	if shake:
