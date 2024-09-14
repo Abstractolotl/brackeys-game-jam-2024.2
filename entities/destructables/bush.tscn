@@ -1,78 +1,81 @@
-[gd_scene load_steps=11 format=3 uid="uid://uq3g40cetn3y"]
+[gd_scene load_steps=14 format=3 uid="uid://c1h7msdrad287"]
 
-[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_eucxq"]
-[ext_resource type="Resource" uid="uid://diwcfr23ilbi7" path="res://drops/pool_base.tres" id="2_6kvvy"]
-[ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_fqhgu"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_bf3lb"]
+[ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_1xawk"]
+[ext_resource type="Texture2D" uid="uid://7tnu7msw1t5k" path="res://assets/map/objects/bush1.png" id="2_65mhy"]
+[ext_resource type="Resource" uid="uid://iwvfa860ygfc" path="res://drops/pool_bush.tres" id="2_76cuv"]
+[ext_resource type="Script" path="res://scripts/components/random_texture.gd" id="3_20gew"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_yse8w"]
+[ext_resource type="Texture2D" uid="uid://b8jp6ahpphugo" path="res://assets/map/objects/bush2.png" id="4_qxiem"]
+[ext_resource type="Texture2D" uid="uid://bsc1fl8yw5rs" path="res://assets/map/objects/bush3.png" id="5_3y251"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7a0r7"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ky2m7"]
+radius = 12.0
 
 [sub_resource type="Animation" id="Animation_u1mmq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("sprite/flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [49]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/flash:modulate")
+tracks/1/path = NodePath("shape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("shape:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_et5sq"]
 resource_name = "death"
-length = 0.400003
+length = 0.133337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("sprite/flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [52, 53, 54, 54]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/flash:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -89,46 +92,46 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_u1t17"]
 resource_name = "hit"
-length = 0.400003
+length = 0.133337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("sprite/flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [50, 49, 51, 49]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/flash:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_cgs3m"]
 resource_name = "idle"
-length = 0.001
+length = 0.133337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("sprite/flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [49]
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28j5f"]
@@ -143,17 +146,15 @@ _data = {
 z_index = 25
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_eucxq")
-pool = ExtResource("2_6kvvy")
+script = ExtResource("1_1xawk")
+pool = ExtResource("2_76cuv")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
-position = Vector2(-4, -11)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_fqhgu")
-hframes = 7
-vframes = 12
-frame = 49
+position = Vector2(-2, -9)
+texture = ExtResource("2_65mhy")
+script = ExtResource("3_20gew")
+textures = Array[Texture2D]([ExtResource("2_65mhy"), ExtResource("4_qxiem"), ExtResource("5_3y251")])
 
 [node name="flash" type="ColorRect" parent="sprite"]
 modulate = Color(1, 1, 1, 0)
@@ -163,13 +164,13 @@ offset_right = 22.0
 offset_bottom = 26.0
 
 [node name="health" type="Node" parent="."]
-script = ExtResource("3_bf3lb")
-health = 5.0
-max_health = 5.0
+script = ExtResource("3_yse8w")
+health = 3.0
+max_health = 3.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_7a0r7")
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ky2m7")
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {

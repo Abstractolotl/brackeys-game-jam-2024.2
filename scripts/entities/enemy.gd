@@ -7,6 +7,9 @@ var player: Node2D
 @export var explosion: PackedScene
 
 @onready var animation_tree: AnimationTree = $AnimationTree
+@export var audio_dead: AudioStream
+@export var audio_hit: AudioStream
+
 
 var animation: AnimationPlayer
 var health: HealthComponent
@@ -40,6 +43,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	pass
 
 func _on_hit(_amount: float, new_health: float):
+	AudioManager.play_sound(audio_hit, "Effects")
 	if dead:
 		if new_health < -5:
 			queue_free()
@@ -57,6 +61,7 @@ func _on_hit(_amount: float, new_health: float):
 
 func on_death():
 	lock_rotation = false
+	AudioManager.play_sound(audio_dead, "Effects")
 
 
 func _on_body_entered(body: Node) -> void:

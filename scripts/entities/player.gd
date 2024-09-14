@@ -14,10 +14,16 @@ var dash_charge: float = 1
 var dashing: bool = false
 var health: HealthComponent
 
+@export var is_hud = false
+
 signal player_health_changed(max_health: float, health: float)
 signal bullet_update(projectiles: int, fire_rate: float)
 
 func _ready() -> void:
+	if is_hud:
+		$indicator.visible = false
+		scale = get_viewport().get_camera_2d().zoom
+
 	sprite = $sprite
 	sprite2 = $foot_mask/sprite
 	emitter = $emitter
@@ -26,6 +32,9 @@ func _ready() -> void:
 		pass # so the compiler stops complaining
 
 func _physics_process(_delta) -> void:
+	if is_hud:
+		return
+
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if dashing:
@@ -100,6 +109,12 @@ func start_rain():
 	$rain.visible = true
 	
 func _process(_delta: float) -> void:
+	if is_hud:
+		var camera = get_viewport().get_camera_2d()
+		var player = get_tree().current_scene.player
+		position = (player - camera.global_position) * camera.zoom + (get_viewport_rect().size / 2.0)
+		return
+	
 	if Input.is_action_pressed("fire")	:
 		shoot()
 	

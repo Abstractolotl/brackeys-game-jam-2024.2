@@ -1,20 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=20 format=3 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
 [ext_resource type="PackedScene" uid="uid://bwva31xchx53y" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
+[ext_resource type="AudioStream" uid="uid://bcy6s6mb6vb8h" path="res://assets/audio/rain_background.mp3" id="2_xhitu"]
 [ext_resource type="PackedScene" uid="uid://dxvu6i0n3nbb2" path="res://entities/player.tscn" id="4_4h4at"]
 [ext_resource type="PackedScene" uid="uid://dgmr7tbnwflkw" path="res://scenes/map.tscn" id="5_b502t"]
 [ext_resource type="Script" path="res://scripts/components/shaking_camera.gd" id="5_ou4b0"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_l7ubj"]
 [ext_resource type="Script" path="res://scripts/spawn_wave.gd" id="7_nbuwj"]
 [ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="8_xvp2e"]
-[ext_resource type="PackedScene" uid="uid://dixpu63gxvf0y" path="res://entities/destructables/barrel.tscn" id="9_hqitx"]
-[ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="9_mumr7"]
-[ext_resource type="PackedScene" uid="uid://d11qjn0wl4i2a" path="res://entities/destructables/box.tscn" id="10_qg1f4"]
-[ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="11_553xu"]
-[ext_resource type="PackedScene" uid="uid://uq3g40cetn3y" path="res://entities/destructables/sign.tscn" id="12_ncxaf"]
-[ext_resource type="PackedScene" uid="uid://bltpe62v8m6ht" path="res://entities/destructables/vase.tscn" id="13_toqro"]
-[ext_resource type="PackedScene" uid="uid://dqnthy2jx7juo" path="res://entities/destructables/waypointer.tscn" id="14_yb61s"]
 
 [sub_resource type="Gradient" id="Gradient_bk4he"]
 
@@ -22,27 +16,6 @@
 gradient = SubResource("Gradient_bk4he")
 width = 256
 height = 1
-
-[sub_resource type="Animation" id="Animation_gkjo3"]
-resource_name = "night"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("world:environment")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6ror"]
-_data = {
-"night": SubResource("Animation_gkjo3")
-}
 
 [sub_resource type="Gradient" id="Gradient_1ny53"]
 colors = PackedColorArray(0.121569, 0.129412, 0.419608, 1, 0.498412, 0.465313, 0.419837, 1)
@@ -108,16 +81,12 @@ weight = 3
 y_sort_enabled = true
 position = Vector2(0, 1)
 script = ExtResource("1_ga03w")
+rain_sound = ExtResource("2_xhitu")
 base = SubResource("GradientTexture2D_5als6")
 player = NodePath("player")
 hud = NodePath("hud-layer/IngameHud")
 
 [node name="enviroment" type="Node" parent="."]
-
-[node name="animation" type="AnimationPlayer" parent="enviroment"]
-libraries = {
-"": SubResource("AnimationLibrary_v6ror")
-}
 
 [node name="world" type="WorldEnvironment" parent="enviroment"]
 environment = SubResource("Environment_kj3vu")
@@ -132,11 +101,13 @@ scale = Vector2(1.00407, 1.01292)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="player" parent="." instance=ExtResource("4_4h4at")]
-position = Vector2(436, 254)
-collision_mask = 2
-
 [node name="Map" parent="." instance=ExtResource("5_b502t")]
+
+[node name="player" parent="." instance=ExtResource("4_4h4at")]
+position = Vector2(55, 53)
+collision_mask = 2
+floor_max_angle = 3.14159
+floor_snap_length = 5.0
 
 [node name="enemies" type="Node2D" parent="."]
 
@@ -152,26 +123,6 @@ player = NodePath("../player")
 spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg")])
 spawn_radius = 500.0
 
-[node name="tree" parent="." instance=ExtResource("9_mumr7")]
-position = Vector2(717, 429)
-
-[node name="destructable" parent="." instance=ExtResource("9_hqitx")]
-position = Vector2(421, 241)
-
-[node name="destructable2" parent="." instance=ExtResource("10_qg1f4")]
-position = Vector2(423, 320)
-
-[node name="destructable3" parent="." instance=ExtResource("11_553xu")]
-position = Vector2(732, 317)
-
-[node name="destructable4" parent="." instance=ExtResource("12_ncxaf")]
-position = Vector2(574, 368)
-
-[node name="destructable5" parent="." instance=ExtResource("13_toqro")]
-position = Vector2(466, 422)
-
-[node name="destructable6" parent="." instance=ExtResource("14_yb61s")]
-position = Vector2(500, 179)
-
 [connection signal="night_start" from="." to="player" method="start_rain"]
 [connection signal="night_start" from="." to="EnemySpawner" method="_on_game_night_start"]
+[connection signal="player_health_changed" from="player" to="hud-layer/IngameHud" method="_on_player_player_damaged"]

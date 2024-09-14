@@ -49,9 +49,7 @@ func on_collision_body(body: Node2D):
 			body.apply_impulse(Vector2.from_angle(rotation) * 1000, Vector2(0, 0))
 			
 func _play_hit_sound():
-	var distance = (position - origin).length()
-	var volume_modifier = - (Util.clamped_range_mapping(distance, 150, 500) * 10)
-	AudioManager.play_sound(load("res://assets/audio/hit.mp3"), "Effects", volume_modifier)
+	pass
 		
 func _physics_process(delta: float) -> void:
 	flightTime += delta
@@ -70,4 +68,3 @@ func spawn_explosion():
 	var instance = explosion_scene.instantiate()
 	instance.global_position = global_position
 	get_tree().get_current_scene().add_child.call_deferred(instance)
-

@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://bwva31xchx53y"]
+[gd_scene load_steps=54 format=3 uid="uid://bwva31xchx53y"]
 
 [ext_resource type="Script" path="res://scripts/ui/ingame_hud.gd" id="1_wqdty"]
 [ext_resource type="Script" path="res://scripts/ui/animated_texture_rect.gd" id="2_0l26t"]
+[ext_resource type="AudioStream" uid="uid://c774ar81oolsl" path="res://assets/audio/thunder.mp3" id="2_5jqlg"]
 [ext_resource type="PackedScene" uid="uid://w4uhvou4x3k8" path="res://scenes/ui/damage_number.tscn" id="2_t8bg2"]
 [ext_resource type="Texture2D" uid="uid://b4jefrr16j2u5" path="res://assets/ui/bullet_1.png" id="3_7etx6"]
 [ext_resource type="Texture2D" uid="uid://bpdw4838k8wie" path="res://assets/ui/time_animated.png" id="3_hv2m4"]
@@ -223,6 +224,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(427.5, 747)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../vignette:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Flash:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_smc22"]
 resource_name = "pause_start"
@@ -280,11 +305,40 @@ tracks/1/keys = {
 "values": [Vector2(427.5, 185), Vector2(427.5, 747)]
 }
 
+[sub_resource type="Animation" id="Animation_4444v"]
+resource_name = "thunder"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../vignette:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t8xun"]
 _data = {
 "RESET": SubResource("Animation_xv5j4"),
 "pause_start": SubResource("Animation_smc22"),
-"pause_stop": SubResource("Animation_djifv")
+"pause_stop": SubResource("Animation_djifv"),
+"thunder": SubResource("Animation_4444v")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7fpr"]
@@ -313,7 +367,17 @@ script = ExtResource("1_wqdty")
 level_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Levelbar")
 health_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Healthbar")
 time_bar = NodePath("HUD/Top/VBoxContainer/TimeBar")
+thunder_sound = ExtResource("2_5jqlg")
 damage_number = ExtResource("2_t8bg2")
+
+[node name="Flash" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DamageNumbers" type="Control" parent="."]
 layout_mode = 1

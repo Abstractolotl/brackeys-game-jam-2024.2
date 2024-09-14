@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck2vqr3ogymw4"]
+[gd_scene load_steps=7 format=3 uid="uid://ck2vqr3ogymw4"]
 
 [ext_resource type="Script" path="res://scripts/entities/collectible.gd" id="1_lvcdj"]
-[ext_resource type="Texture2D" uid="uid://cjcukbccuex0f" path="res://assets/placeholder/move_up.png" id="2_75v0e"]
+[ext_resource type="Texture2D" uid="uid://cibfv68nxrgtg" path="res://assets/collectibles/collectible_speed.png" id="2_eu27n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tofxt"]
 radius = 24.0
@@ -50,7 +50,8 @@ script = ExtResource("1_lvcdj")
 type = 3
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_75v0e")
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_eu27n")
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tofxt")

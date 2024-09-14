@@ -3,6 +3,7 @@ class_name BulletEmitter
 
 @export var bullet_scene: PackedScene
 @export var start_fire_rate: float = 3.0
+@export var sound_shoot: AudioStream
 
 var _fire_rate: float = start_fire_rate
 var _fire_time: float = 1.0 / _fire_rate
@@ -41,6 +42,7 @@ func random_offset() -> Vector2:
 	return Vector2(randf() - 0.5, randf() - 0.5) * spread_offset
 
 func instantiate_bullet() -> void:
+	AudioManager.play_sound(sound_shoot, "Effects", -25, false, 0.25)
 	get_tree().get_current_scene().shake.emit(0, 0.2)
 
 	var split_angle = max_spread_angle / (num_projectiles + 1)

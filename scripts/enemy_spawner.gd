@@ -15,6 +15,9 @@ var wave_counter: int = 0
 
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
+func _ready() -> void:
+	spawn_radius = get_viewport().size.x / get_viewport().get_camera_2d().zoom.x
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -30,6 +33,7 @@ func _process(delta: float) -> void:
 
 
 func spawn_wave(wave: SpawnWave):
+	get_tree().current_scene.hud.do_thunder()
 	if wave.enemy == null:
 		print("skipped wave")
 		return
