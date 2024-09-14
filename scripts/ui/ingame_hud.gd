@@ -12,7 +12,6 @@ var vignette: Vignette
 
 func _ready() -> void:
 	vignette = $vignette
-	show_death_screen()
 
 func _process(_delta: float) -> void:
 	if death_screen:
