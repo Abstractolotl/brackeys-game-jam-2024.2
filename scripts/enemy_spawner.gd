@@ -3,7 +3,7 @@ extends Node
 
 @export var player: Player
 @export var spawn_waves: Array[SpawnWave]
-@export var spawn_radius: float = 300
+@export var spawn_radius: float = 450
 
 var is_night: bool = false
 var wave_length_seconds: int = 5
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
-	spawn_radius = get_viewport().size.x / get_viewport().get_camera_2d().zoom.x
+	pass#spawn_enemy(player.global_position + Vector2(10, 0), load("res://entities/tnt_sheep.tscn"))
 
 func spawn_wave(wave: SpawnWave):
 	get_tree().current_scene.hud.do_thunder()

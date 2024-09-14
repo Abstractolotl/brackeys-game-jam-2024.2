@@ -5,8 +5,8 @@ class_name BulletEmitter
 @export var start_fire_rate: float = 3.0
 @export var sound_shoot: AudioStream
 
-var _fire_rate: float = start_fire_rate
-var _fire_time: float = 1.0 / _fire_rate
+var _fire_rate: float
+var _fire_time: float
 var _fire_speed: float = 1500.0
 var damage = 1.0
 var pierce = 0
@@ -22,6 +22,10 @@ var spread_offset: float = 25
 var num_projectiles: int = 1
 
 var time_since_last_fire: float = _fire_time
+
+func _ready() -> void:
+	_fire_rate = start_fire_rate
+	_fire_time = 1.0 / _fire_rate
 
 func set_fire_rate(rate: float) -> void:
 	_fire_rate = rate
