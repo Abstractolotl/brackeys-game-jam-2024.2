@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 func show_damage_number(position: Vector2, damage: float):
 	var damageNumber = damage_number.instantiate()
 	damageNumber.damage = damage
-	damageNumber.damage_position = position
+	damageNumber.damage_position = Vector2(position.x + randf_range(-15.0, 15.0), position.y +  randf_range(-15.0, 15.0))
 	$DamageNumbers.add_child(damageNumber)
 
 func pause():
