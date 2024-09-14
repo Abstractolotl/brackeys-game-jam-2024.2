@@ -61,7 +61,7 @@ func _on_player_player_damaged(max_health: float, health: float) -> void:
 
 
 func _on_player_bullet_update(projectiles: int, _fire_rate: float) -> void:
-	level_bar.update_bullet_level(projectiles)
+	power_ups.update_bullet_level(projectiles)
 
 func _on_time_progress(percentage: float) -> void:
 	var frame_amount = 10
