@@ -54,7 +54,7 @@ func _on_master_slider_value_changed(value: float) -> void:
 
 
 func _on_effects_slider_value_changed(value: float) -> void:
-	if value <= -13:
+	if value <= -23:
 		AudioManager.set_bus_mute("Effects", true)
 	else:
 		AudioManager.set_bus_mute("Effects", false)

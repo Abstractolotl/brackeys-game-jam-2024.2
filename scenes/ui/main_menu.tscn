@@ -677,8 +677,9 @@ size_flags_vertical = 1
 theme_override_constants/center_grabber = -1
 theme_override_icons/grabber = ExtResource("9_jufi4")
 theme_override_icons/grabber_highlight = ExtResource("9_jufi4")
-min_value = -13.0
-max_value = 7.0
+min_value = -23.0
+max_value = -10.0
+value = -10.0
 scrollable = false
 
 [node name="Music" type="HBoxContainer" parent="Menu/Border/Clip Mask/Options/VBoxContainer2/VBoxContainer"]
