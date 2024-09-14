@@ -50,7 +50,7 @@ func blend_textures(texture1: Texture2D, texture2: Texture2D, alpha: float) -> T
 
 var last_blend = 0.0;
 var blend_stepts = 150.0;
-var day_time = 120.0;
+var day_time = 30.0;
 
 func _ready() -> void:
 	if shake:
@@ -89,3 +89,6 @@ func _process(delta: float) -> void:
 		enemy.player = player
 		enemy.global_position = Vector2(randi() % 800, randi() % 600)
 		$enemies.add_child(enemy)
+
+func update_light(amount: float):
+	hud.vignette.update_light(amount)

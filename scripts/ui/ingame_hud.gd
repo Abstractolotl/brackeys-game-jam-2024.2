@@ -43,8 +43,8 @@ func exit_to_menu() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
-func _on_player_player_damaged(health: float) -> void:
-	health_bar.update(health)
+func _on_player_player_damaged(max_health: float, health: float) -> void:
+	health_bar.update(max_health, health)
 
 
 func _on_player_bullet_update(projectiles: int, _fire_rate: float) -> void:
