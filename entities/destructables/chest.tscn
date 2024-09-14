@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_2qc0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u80m1"]
-size = Vector2(34, 26)
+size = Vector2(21, 11)
 
 [sub_resource type="Animation" id="Animation_u1mmq"]
 length = 0.001
@@ -115,15 +115,15 @@ _data = {
 }
 
 [node name="destructable" type="StaticBody2D"]
-z_index = 24
+z_index = 25
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_v0ujl")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
-position = Vector2(-3, -9)
-scale = Vector2(2, 2)
+position = Vector2(-0.5, -9)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_wvisc")
 hframes = 7
 vframes = 12
@@ -141,7 +141,7 @@ script = ExtResource("3_2qc0b")
 health = 3.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -8)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_u80m1")
 
 [node name="animation" type="AnimationPlayer" parent="."]

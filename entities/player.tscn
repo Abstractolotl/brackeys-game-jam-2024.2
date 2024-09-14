@@ -185,14 +185,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qd31t"]
-radius = 14.0357
+radius = 7.28011
 
 [sub_resource type="Animation" id="Animation_ckorq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("body_mask/sprite/flash:modulate")
+tracks/0/path = NodePath("sprite/flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -208,7 +208,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("body_mask/sprite/flash:modulate")
+tracks/0/path = NodePath("sprite/flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -254,27 +254,18 @@ particles_anim_loop = false
 
 [node name="player" type="CharacterBody2D"]
 z_index = 25
-y_sort_enabled = true
 collision_mask = 3
 script = ExtResource("1_meqr6")
 bullet = ExtResource("2_hwf6v")
 
-[node name="body_mask" type="ColorRect" parent="."]
-clip_children = 1
-offset_left = -20.0
-offset_top = -46.0
-offset_right = 20.0
-offset_bottom = -6.0
-
-[node name="sprite" type="AnimatedSprite2D" parent="body_mask"]
-clip_children = 2
+[node name="sprite" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
-position = Vector2(20, 30)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_eppqp")
 animation = &"walking_side"
 speed_scale = 3.0
 
-[node name="flash" type="ColorRect" parent="body_mask/sprite"]
+[node name="flash" type="ColorRect" parent="sprite"]
 visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -19.5
@@ -282,7 +273,15 @@ offset_top = -20.0
 offset_right = 20.5
 offset_bottom = 20.0
 
+[node name="body_mask" type="ColorRect" parent="."]
+clip_children = 1
+offset_left = -20.0
+offset_top = -46.0
+offset_right = 20.0
+offset_bottom = 4.0
+
 [node name="foot_mask" type="ColorRect" parent="."]
+visible = false
 clip_children = 1
 z_index = 2
 z_as_relative = false
@@ -291,7 +290,7 @@ offset_top = -6.0
 offset_right = 21.0
 offset_bottom = 4.0
 
-[node name="sprite2" type="AnimatedSprite2D" parent="foot_mask"]
+[node name="sprite" type="AnimatedSprite2D" parent="foot_mask"]
 clip_children = 2
 use_parent_material = true
 position = Vector2(19, -10)
@@ -301,13 +300,10 @@ speed_scale = 3.0
 
 [node name="shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.392157)
-z_index = 1
-z_as_relative = false
 scale = Vector2(0.34375, 0.125)
 texture = ExtResource("3_2h4qv")
 
 [node name="shape" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_qd31t")
 

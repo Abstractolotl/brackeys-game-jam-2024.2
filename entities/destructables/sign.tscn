@@ -148,8 +148,8 @@ pool = ExtResource("2_6kvvy")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
-position = Vector2(-5, -12)
-scale = Vector2(2, 2)
+position = Vector2(-4, -11)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_fqhgu")
 hframes = 7
 vframes = 12
@@ -167,6 +167,7 @@ script = ExtResource("3_bf3lb")
 health = 3.0
 
 [node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_7a0r7")
 
 [node name="animation" type="AnimationPlayer" parent="."]
