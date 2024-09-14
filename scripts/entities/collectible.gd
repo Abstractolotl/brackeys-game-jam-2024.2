@@ -16,7 +16,8 @@ enum CollectibleType {
 var animation: AnimationPlayer
 
 func _ready() -> void:
-	pass
+	animation = $animation
+	animation.play("spawn")
 	
 func on_collision(body: Node2D) -> void:
 	if !(body is Player):

@@ -100,4 +100,3 @@ target_node = NodePath("../player")
 noise = SubResource("FastNoiseLite_w1w3j")
 
 [connection signal="night_start" from="." to="player" method="start_rain"]
-[connection signal="player_health_changed" from="player" to="hud-layer/IngameHud" method="_on_player_player_damaged"]

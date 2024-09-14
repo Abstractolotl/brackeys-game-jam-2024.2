@@ -11,7 +11,6 @@ var sprite: AnimatedSprite2D
 var emitter: BulletEmitter
 var dash_charge: float = 1
 var dashing: bool    = false
-var camera: Camera2D
 var health: HealthComponent
 
 signal player_health_changed(max_health: float, health: float)
@@ -20,7 +19,6 @@ signal bullet_update(projectiles: int, fire_rate: float)
 func _ready() -> void:
 	sprite = $body_mask/sprite
 	emitter = $emitter
-	camera = $camera
 	health = $health
 	if bullet_update:
 		pass # so the compiler stops complaining
