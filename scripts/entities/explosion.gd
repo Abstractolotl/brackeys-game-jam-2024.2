@@ -1,6 +1,7 @@
 extends Area2D
 
 var animation: AnimationPlayer
+@export var damage: float = 1
 
 func _ready():
 	animation = $animation
@@ -14,7 +15,7 @@ func on_collision(body: Node2D):
 	var health = Util.find_health_component(body)
 
 	if health:
-		health.hit(1)
+		health.hit(damage)
 		
 
 	if body is RigidBody2D:

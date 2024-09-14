@@ -21,14 +21,28 @@ var player: Node2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var audio_dead: AudioStream
 @export var audio_hit: AudioStream
+@export var damage_modifier: float = 1.0
+
+# only for normal or ranged type
+@export var cooldown: float = 1.0
 
 
 var animation: AnimationPlayer
 var health: HealthComponent
 var sprite: Sprite2D
+var bullet_emitter: BulletEmitter
 
 var dead = false
-var fuse = 0
+
+# only for tnt type
+var fuse: float = 0.0
+
+# only for ranged type
+var cross_wanted_distance: int = 0
+
+# only for normal and ranged type
+var last_attack: float = 10.0
+
 
 var last_position: Vector2
 
@@ -39,6 +53,8 @@ func _ready():
 	animation = $animation_player
 	health = $health
 	sprite = $sprite
+	if enemy_type == EnemyType.RANGED:
+		bullet_emitter = $BulletEmitter
 	
 	last_position = global_position
 
@@ -50,7 +66,30 @@ func _process(_delta):
 	var direction = (player.global_position - global_position).normalized()
 	var force = direction * (speed * mass)
 	
-	self.apply_force(force)
+	if enemy_type == EnemyType.RANGED:
+		var min_shooting_distance = 100
+		var max_shooting_distance = 200
+		var wanted_distance = 150
+		var distance = (player.global_position - global_position).length()
+		if cross_wanted_distance > 0:
+			if distance > wanted_distance:
+				cross_wanted_distance = 0
+			else:
+				self.apply_force(-force)
+		elif cross_wanted_distance < 0:
+			if distance < wanted_distance:
+				cross_wanted_distance = 0
+			else:
+				self.apply_force(force)
+		elif distance < min_shooting_distance:
+			cross_wanted_distance = 1
+		elif distance > max_shooting_distance:
+			cross_wanted_distance = -1
+		else:
+			bullet_emitter.shoot(player.global_position)
+			
+	else:
+		self.apply_force(force)
 	
 	
 	var move_direction = linear_velocity.normalized()
@@ -71,15 +110,19 @@ func _handle_attack(_delta: float):
 	
 	match enemy_type:
 		EnemyType.NORMAL:
-			pass
-		EnemyType.RANGED:
-			pass
+			last_attack += _delta
+			if distance < 40:
+				if last_attack > cooldown:
+					player.health.hit(1 * damage_modifier)
+					last_attack = 0
 		EnemyType.TNT:
 			if (fuse == 0 and distance > 100) or fuse == -1:
 				return
 			fuse += _delta
+			animation_tree["parameters/Explode/blend_amount"] = fuse
 			if fuse > 1:
 				var ex = explosion.instantiate()
+				ex.damage = 1 * damage_modifier
 				ex.global_position = global_position
 				get_tree().current_scene.add_child.call_deferred(ex)
 				queue_free()

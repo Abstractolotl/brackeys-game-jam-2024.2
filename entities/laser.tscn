@@ -5,28 +5,33 @@
 [ext_resource type="Texture2D" uid="uid://dxojeh6kq1w5m" path="res://assets/bullet.png" id="3_3yqkx"]
 [ext_resource type="Texture2D" uid="uid://ce0qcb407mfwg" path="res://assets/bullet_glow.png" id="4_m5ai4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fakyq"]
-radius = 4.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udnpc"]
+radius = 3.0
+height = 70.29
 
 [node name="bullet" type="Area2D"]
-modulate = Color(0.00784314, 0.34902, 0.866667, 1)
+modulate = Color(0.737255, 0, 0, 1)
 z_index = 10
+scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_qi5ro")
 explosion_scene = ExtResource("2_vv3wi")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(1.25, 0.15)
 texture = ExtResource("3_3yqkx")
 
 [node name="glow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.294118)
-scale = Vector2(0.175, 0.175)
+position = Vector2(5, 0)
+scale = Vector2(1.325, 0.175)
 texture = ExtResource("4_m5ai4")
 
 [node name="colider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fakyq")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_udnpc")
 
 [connection signal="area_entered" from="." to="." method="on_collision"]
 [connection signal="body_entered" from="." to="." method="on_collision_body"]
