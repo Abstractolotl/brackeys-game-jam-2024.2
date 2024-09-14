@@ -7,6 +7,11 @@ class_name BulletEmitter
 var _fire_rate: float = start_fire_rate
 var _fire_time: float = 1.0 / _fire_rate
 var _fire_speed: float = 1500.0
+var damage = 1.0
+var pierce = 0
+var explosion_chance = 0.0
+
+var max_spread_angle = 300.0
 
 var fire_target: Vector2 = Vector2()
 
@@ -38,25 +43,20 @@ func random_offset() -> Vector2:
 func instantiate_bullet() -> void:
 	get_tree().get_current_scene().shake.emit(0, 0.2)
 
-	var spread: float = 20.0
-	var radius: int = 320
-	var teta: float = spread / radius;
-	var max_spread: float = 50.0
-
-	if teta * radius * num_projectiles > max_spread:
-		teta = max_spread / radius / num_projectiles
-
-
-	var split_angle = 90.0 / (num_projectiles + 1)
+	var split_angle = max_spread_angle / (num_projectiles + 1)
 	for i in range(num_projectiles):
 		var bullet  = bullet_scene.instantiate()
 		get_tree().get_root().add_child(bullet)
 
-		var AAAAAAA = -45 + split_angle * (i + 1)
+		var AAAAAAA = (-max_spread_angle * 0.5) + split_angle * (i + 1)
 		var angle = Vector2.from_angle(random_angle() - deg_to_rad(AAAAAAA) + ((fire_target - global_position).normalized().angle()))
-
+		set_bullet_properties(bullet)
 		bullet.shoot(global_position, fire_target + random_offset(), angle, _fire_speed * (randf() * 0.5 + 0.75) )
 
+func set_bullet_properties(bullet: Bullet) -> void:
+	bullet.damage = damage * (randf() * 0.5 + 0.75)
+	bullet.pierce = pierce
+	bullet.explosion_chance = explosion_chance
 
 func _process(delta: float) -> void:
 	time_since_last_fire += delta

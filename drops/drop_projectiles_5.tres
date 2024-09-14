@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://cydheuqmitee4"]
 
-[ext_resource type="PackedScene" uid="uid://bc7nphewe46at" path="res://entities/collectible_projectile.tscn" id="1_shs1p"]
+[ext_resource type="PackedScene" uid="uid://bc7nphewe46at" path="res://entities/collectibles/collectible_projectile.tscn" id="1_shs1p"]
 [ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_7uikh"]
 
 [resource]

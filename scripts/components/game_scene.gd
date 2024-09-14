@@ -46,7 +46,7 @@ func blend_textures(texture1: Texture2D, texture2: Texture2D, alpha: float) -> T
 
 var last_blend = 0.0;
 var blend_stepts = 150.0;
-var day_time = 120.0;
+var day_time = 30.0;
 
 func _ready() -> void:
 	if shake:
@@ -69,3 +69,6 @@ func _process(delta: float) -> void:
 		hud.vignette.update_vignette(progress)
 
 	hud._on_time_progress(progress)
+
+func update_light(amount: float):
+	hud.vignette.update_light(amount)

@@ -42,11 +42,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func _on_hit(_amount: float, new_health: float):
 	if dead:
 		if new_health < -5:
-			if randf() < 0.5:
-				var instance = explosion.instantiate()
-				instance.global_position = global_position
-				get_tree().get_current_scene().add_child.call_deferred(instance)
-
 			queue_free()
 		return
 

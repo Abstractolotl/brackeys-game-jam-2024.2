@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://csn3x0tpuv25t"]
+[gd_scene load_steps=6 format=3 uid="uid://csn3x0tpuv25t"]
 
 [ext_resource type="Texture2D" uid="uid://dxojeh6kq1w5m" path="res://assets/bullet.png" id="1_c382i"]
 [ext_resource type="Script" path="res://scripts/entities/bullet.gd" id="1_h66d6"]
 [ext_resource type="Texture2D" uid="uid://ce0qcb407mfwg" path="res://assets/bullet_glow.png" id="2_nuelx"]
+[ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_vy7ry"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fakyq"]
 radius = 4.0
@@ -13,6 +14,7 @@ z_index = 10
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_h66d6")
+explosion_scene = ExtResource("2_vy7ry")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bwva31xchx53y" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
 [ext_resource type="PackedScene" uid="uid://dxvu6i0n3nbb2" path="res://entities/player.tscn" id="4_4h4at"]
 [ext_resource type="PackedScene" uid="uid://dgmr7tbnwflkw" path="res://scenes/map.tscn" id="5_b502t"]
+[ext_resource type="Script" path="res://scripts/components/shaking_camera.gd" id="5_ou4b0"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_l7ubj"]
 [ext_resource type="Script" path="res://scripts/spawn_wave.gd" id="7_nbuwj"]
 [ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="8_xvp2e"]
@@ -56,6 +57,8 @@ adjustment_saturation = 1.82
 adjustment_color_correction = SubResource("GradientTexture1D_o64lb")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fwm4j"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w1w3j"]
 
 [sub_resource type="Resource" id="Resource_7jkih"]
 script = ExtResource("7_nbuwj")
@@ -130,12 +133,15 @@ material = SubResource("CanvasItemMaterial_fwm4j")
 position = Vector2(201, 29)
 collision_mask = 2
 
-[node name="collectible" parent="." instance=ExtResource("13_iki0u")]
-position = Vector2(714, 192)
-
 [node name="Map" parent="." instance=ExtResource("5_b502t")]
 
 [node name="enemies" type="Node2D" parent="."]
+
+[node name="camera" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
+zoom = Vector2(2, 2)
+script = ExtResource("5_ou4b0")
+target_node = NodePath("../player")
+noise = SubResource("FastNoiseLite_w1w3j")
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_l7ubj")

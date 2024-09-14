@@ -1,8 +1,13 @@
 extends Node
 class_name HealthComponent
 
-@export var health: float = 10.0
+@export var health: float = 10
+@export var max_health: float = 10.0
+
 signal health_changed(amount: float, new_health: float)
+
+func _ready() -> void:
+	health = max_health
 
 func hit(amount: float):
 	if not get_parent() is Player:
