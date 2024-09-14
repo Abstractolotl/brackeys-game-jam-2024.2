@@ -75,11 +75,17 @@ func _process(_delta):
 			if distance > wanted_distance:
 				cross_wanted_distance = 0
 			else:
+				if distance > min_shooting_distance:
+					force /= 2
+					
 				self.apply_force(-force)
 		elif cross_wanted_distance < 0:
 			if distance < wanted_distance:
 				cross_wanted_distance = 0
 			else:
+				if distance < max_shooting_distance:
+					force /= 2
+				
 				self.apply_force(force)
 		elif distance < min_shooting_distance:
 			cross_wanted_distance = 1
