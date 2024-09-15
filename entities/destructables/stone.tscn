@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://717sy8ext5ee"]
+[gd_scene load_steps=13 format=3 uid="uid://717sy8ext5ee"]
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_1u6ra"]
 [ext_resource type="Resource" uid="uid://drraynulovf4y" path="res://drops/pool_stone.tres" id="2_v4qjh"]
 [ext_resource type="Texture2D" uid="uid://cpnh5x0ecm00j" path="res://assets/map/objects/stone.png" id="3_ocmgv"]
+[ext_resource type="AudioStream" uid="uid://c2pvqsu4ru5o5" path="res://assets/audio/stone_hit.mp3" id="3_thur1"]
+[ext_resource type="AudioStream" uid="uid://pyxv3neyjrdc" path="res://assets/audio/stone-dropping-6843.mp3" id="4_qh4dh"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="4_y24jb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7a0r7"]
@@ -145,6 +147,8 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_1u6ra")
 pool = ExtResource("2_v4qjh")
+hit_sound = ExtResource("3_thur1")
+death_sound = ExtResource("4_qh4dh")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2

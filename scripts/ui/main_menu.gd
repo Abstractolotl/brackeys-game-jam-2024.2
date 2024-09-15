@@ -7,7 +7,7 @@ extends Control
 var watching_credits = false
 
 func _ready() -> void:
-	AudioManager.play_sound(background_music, "Music", -2.5, true)
+	AudioManager.play_sound(background_music, "Music", -5, true)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and watching_credits:

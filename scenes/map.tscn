@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/spawn_area.gd" id="10_fkp5y"]
 [ext_resource type="Texture2D" uid="uid://cicfgk8kp3rli" path="res://assets/map/path.png" id="10_ys02v"]
 [ext_resource type="PackedScene" uid="uid://dixpu63gxvf0y" path="res://entities/destructables/barrel.tscn" id="11_34j5k"]
-[ext_resource type="PackedScene" uid="uid://bhmbjoyq5bse7" path="res://entities/scenerie/bush.tscn" id="11_bv3cp"]
+[ext_resource type="PackedScene" uid="uid://bhmbjoyq5bse7" path="res://entities/destructables/bush.tscn" id="11_bv3cp"]
 [ext_resource type="PackedScene" uid="uid://c346hw01e8u83" path="res://entities/destructables/tree.tscn" id="12_0rauq"]
 [ext_resource type="PackedScene" uid="uid://717sy8ext5ee" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
 [ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="13_cmst0"]
@@ -707,6 +707,19 @@ min_amount = 6
 max_amount = 12
 min_distance = 150.0
 
+[node name="bush_spawn_area16" type="ReferenceRect" parent="SpawnAreas/Bushes"]
+offset_left = 1967.0
+offset_top = 360.0
+offset_right = 2541.0
+offset_bottom = 1169.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("14_btk5i")
+min_amount = 6
+max_amount = 12
+min_distance = 150.0
+
 [node name="bush_spawn_area8" type="ReferenceRect" parent="SpawnAreas/Bushes"]
 offset_left = 832.0
 offset_top = 1142.0
@@ -862,6 +875,9 @@ to_spawn = ExtResource("14_btk5i")
 min_amount = 2
 max_amount = 5
 min_distance = 150.0
+
+[node name="destructable" parent="SpawnAreas/Bushes" instance=ExtResource("14_btk5i")]
+position = Vector2(867, 379)
 
 [node name="Barrels" type="Node" parent="SpawnAreas"]
 
