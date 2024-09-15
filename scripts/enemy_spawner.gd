@@ -7,7 +7,7 @@ extends Node
 @export var spawn_radius: float = 450
 
 var is_night: bool = false
-var wave_length_seconds: int = 5
+var wave_length_seconds: float = 5.0
 
 var since_last_tick: float = 0.0
 
@@ -25,12 +25,13 @@ func _process(delta: float) -> void:
 	while since_last_wave > wave_length_seconds:
 		since_last_wave -= wave_length_seconds
 		wave_counter += 1
+		wave_length_seconds = Util.interpolate(wave_counter, 30, 300, 5, 2)
 		var wave = _choose_wave(wave_counter)
 		spawn_wave(wave)
 
 
 func _ready() -> void:
-	pass#spawn_enemy(player.global_position + Vector2(10, 0), load("res://entities/tnt_sheep.tscn"))
+	spawn_enemy(player.global_position + Vector2(10, 0), load("res://entities/ranged_sheep.tscn"))
 
 func spawn_wave(wave: SpawnWave):
 	get_tree().current_scene.hud.do_thunder()
@@ -55,6 +56,10 @@ func spawn_wave(wave: SpawnWave):
 	if wave.spacing == Util.Spacing.GROUPED:
 		print("wave " + str(wave_counter) + ": grouped")
 		_spawn_wave_grouped(wave, amount)
+		
+	if wave.spacing == Util.Spacing.IN_FRONT:
+		print("wave " + str(wave_counter) + ": in front")
+		_spawn_wave_in_front(wave, amount)
 
 
 func _choose_wave(wave_number: int):		
@@ -104,6 +109,14 @@ func _spawn_wave_random(wave: SpawnWave, amount: int):
 
 func _spawn_wave_grouped(wave: SpawnWave, amount: int):
 	var angle = random.randf_range(0, 2 * PI)
+	var relative_pos = Vector2.from_angle(angle).normalized() * spawn_radius
+	var spawn_position = player.global_position + relative_pos
+	for i in range(amount):
+		spawn_enemy(spawn_position, wave.enemy)
+
+
+func _spawn_wave_in_front(wave: SpawnWave, amount: int):
+	var angle = player.velocity.normalized().angle() + randf_range(-PI/4, PI/4)
 	var relative_pos = Vector2.from_angle(angle).normalized() * spawn_radius
 	var spawn_position = player.global_position + relative_pos
 	for i in range(amount):
