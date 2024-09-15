@@ -46,6 +46,8 @@ func on_death():
 		leftover_instance.global_position = global_position
 		queue_free()
 
+	$health.queue_free()    
+	
 	await animation.animation_finished
 	if not remain:
 		queue_free()
