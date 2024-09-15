@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dgmr7tbnwflkw"]
+[gd_scene load_steps=36 format=4 uid="uid://dgmr7tbnwflkw"]
 
 [ext_resource type="Texture2D" uid="uid://cr8hvp1tdvbou" path="res://assets/map/ground_overview.png" id="1_c645q"]
 [ext_resource type="Texture2D" uid="uid://d2xxmeivyt1i4" path="res://assets/map/dirt.png" id="2_3gfpx"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://717sy8ext5ee" path="res://entities/destructables/stone.tscn" id="13_a0r2e"]
 [ext_resource type="PackedScene" uid="uid://e8si8yw27d3x" path="res://entities/destructables/chest.tscn" id="13_cmst0"]
 [ext_resource type="PackedScene" uid="uid://ivs0etnbitk6" path="res://entities/destructables/bush.tscn" id="14_btk5i"]
+[ext_resource type="PackedScene" uid="uid://uq3g40cetn3y" path="res://entities/destructables/sign.tscn" id="18_8g5h1"]
+[ext_resource type="PackedScene" uid="uid://dqnthy2jx7juo" path="res://entities/destructables/waypointer.tscn" id="19_mfkdn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l7ck2"]
 texture = ExtResource("1_c645q")
@@ -1196,3 +1198,144 @@ min_distance = 300.0
 
 [node name="chest" parent="SpawnAreas/HiddenArea" instance=ExtResource("13_cmst0")]
 position = Vector2(5253, 1935)
+
+[node name="Signs" type="Node" parent="SpawnAreas"]
+
+[node name="bush_spawn_area10" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 2075.0
+offset_top = 433.0
+offset_right = 2444.0
+offset_bottom = 646.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("18_8g5h1")
+max_amount = 3
+min_distance = 300.0
+
+[node name="bush_spawn_area11" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 589.0
+offset_top = 1231.0
+offset_right = 958.0
+offset_bottom = 1444.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("18_8g5h1")
+max_amount = 3
+min_distance = 300.0
+
+[node name="bush_spawn_area12" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 3610.0
+offset_top = 1682.0
+offset_right = 3979.0
+offset_bottom = 1895.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("18_8g5h1")
+max_amount = 3
+min_distance = 300.0
+
+[node name="bush_spawn_area13" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 2802.0
+offset_top = 2745.0
+offset_right = 3171.0
+offset_bottom = 2958.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("18_8g5h1")
+max_amount = 3
+min_distance = 300.0
+
+[node name="bush_spawn_area14" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 4027.0
+offset_top = 2763.0
+offset_right = 4724.0
+offset_bottom = 3302.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("18_8g5h1")
+max_amount = 3
+min_distance = 300.0
+
+[node name="bush_spawn_area15" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 4121.0
+offset_top = 1462.0
+offset_right = 4818.0
+offset_bottom = 2001.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("18_8g5h1")
+max_amount = 3
+min_distance = 300.0
+
+[node name="bush_spawn_area16" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 4384.0
+offset_top = 698.0
+offset_right = 5081.0
+offset_bottom = 1237.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("18_8g5h1")
+max_amount = 3
+min_distance = 300.0
+
+[node name="bush_spawn_area17" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 3206.0
+offset_top = 268.0
+offset_right = 3528.0
+offset_bottom = 460.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("19_mfkdn")
+min_distance = 300.0
+
+[node name="bush_spawn_area18" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 1212.0
+offset_top = 990.0
+offset_right = 1534.0
+offset_bottom = 1182.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("19_mfkdn")
+min_distance = 300.0
+
+[node name="bush_spawn_area19" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 3748.0
+offset_top = 1860.0
+offset_right = 4070.0
+offset_bottom = 2052.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("19_mfkdn")
+min_distance = 300.0
+
+[node name="bush_spawn_area20" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 3644.0
+offset_top = 1821.0
+offset_right = 3966.0
+offset_bottom = 2013.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("19_mfkdn")
+min_distance = 300.0
+
+[node name="bush_spawn_area21" type="ReferenceRect" parent="SpawnAreas/Signs"]
+offset_left = 3806.0
+offset_top = 2402.0
+offset_right = 4128.0
+offset_bottom = 2594.0
+border_color = Color(0, 0, 1, 1)
+border_width = 2.0
+script = ExtResource("10_fkp5y")
+to_spawn = ExtResource("19_mfkdn")
+min_distance = 300.0

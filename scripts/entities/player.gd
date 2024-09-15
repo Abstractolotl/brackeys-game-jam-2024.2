@@ -1,7 +1,7 @@
 extends CharacterBody2D 
 class_name Player
 
-@export var speed: int = 400
+@export var speed: int = 200
 @export var dash_multiplier: float = 2.0
 @export var dash_time: float = 0.1
 

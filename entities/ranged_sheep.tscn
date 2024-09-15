@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c1k7s8gwtiowj" path="res://assets/enemies/ranged_sheep_down.png" id="5_h3sv1"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="6_8enuq"]
 [ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="7_ycnn6"]
-[ext_resource type="PackedScene" uid="uid://cvt6rdi23wxhj" path="res://entities/laser.tscn" id="8_n25sf"]
+[ext_resource type="PackedScene" path="res://entities/laser.tscn" id="8_n25sf"]
 [ext_resource type="AudioStream" uid="uid://cr7pbiqrwx2wj" path="res://assets/audio/shoot.mp3" id="9_p76yb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]

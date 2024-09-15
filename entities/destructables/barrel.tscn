@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/entities/destructable.gd" id="1_sxe5i"]
 [ext_resource type="Texture2D" uid="uid://brgriht0ougup" path="res://assets/placeholder/aaaa.png" id="2_b36x4"]
-[ext_resource type="Resource" uid="uid://cgv8i7mr4ujwr" path="res://drops/pool_barrel.tres" id="2_y1omr"]
+[ext_resource type="Resource" uid="uid://bf5qrt3t1yhgn" path="res://drops/pool_barrel.tres" id="2_y1omr"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="3_tn4vf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qwgpl"]
