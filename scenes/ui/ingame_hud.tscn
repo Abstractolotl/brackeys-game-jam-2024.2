@@ -1,14 +1,15 @@
-[gd_scene load_steps=57 format=3 uid="uid://bwva31xchx53y"]
+[gd_scene load_steps=59 format=3 uid="uid://bwva31xchx53y"]
 
 [ext_resource type="Script" path="res://scripts/ui/ingame_hud.gd" id="1_wqdty"]
 [ext_resource type="Script" path="res://scripts/ui/animated_texture_rect.gd" id="2_0l26t"]
 [ext_resource type="AudioStream" uid="uid://c774ar81oolsl" path="res://assets/audio/thunder.mp3" id="2_5jqlg"]
+[ext_resource type="AudioStream" uid="uid://di81ul7a7lgii" path="res://assets/audio/death.mp3" id="2_cwr2r"]
 [ext_resource type="PackedScene" uid="uid://w4uhvou4x3k8" path="res://scenes/ui/damage_number.tscn" id="2_t8bg2"]
 [ext_resource type="Script" path="res://scripts/ui/health_bar.gd" id="3_k02ls"]
 [ext_resource type="Script" path="res://scripts/ui/level_bar.gd" id="3_rqouv"]
 [ext_resource type="Texture2D" uid="uid://dla3ug2fgyo5i" path="res://assets/ui/heart_full.png" id="4_67ldf"]
 [ext_resource type="Texture2D" uid="uid://dgnsv3gggf5gg" path="res://assets/ui/keys/keyboard_w.png" id="4_777tn"]
-[ext_resource type="FontFile" uid="uid://r6no4c58ohsl" path="res://assets/poppins-black.ttf" id="4_uiss2"]
+[ext_resource type="FontFile" uid="uid://r6no4c58ohsl" path="res://assets/fonts/poppins-black.ttf" id="4_uiss2"]
 [ext_resource type="Texture2D" uid="uid://du3t06s1vkbsk" path="res://assets/ui/keys/keyboard_a.png" id="5_dvpyc"]
 [ext_resource type="Texture2D" uid="uid://cyg23bfejy1xl" path="res://assets/ui/heart_half.png" id="5_n1vqy"]
 [ext_resource type="Texture2D" uid="uid://cginav7kcknxv" path="res://assets/ui/keys/keyboard_s.png" id="6_etm3f"]
@@ -132,21 +133,6 @@ font_size = 96
 [sub_resource type="LabelSettings" id="LabelSettings_x8gu3"]
 font = ExtResource("4_uiss2")
 font_size = 36
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7fpr"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bu82q"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmtcp"]
-texture = ExtResource("15_0obi7")
-texture_margin_left = 15.0
-texture_margin_top = 15.0
-texture_margin_right = 15.0
-texture_margin_bottom = 15.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ixrl"]
 
 [sub_resource type="Animation" id="Animation_xv5j4"]
 length = 0.001
@@ -342,89 +328,45 @@ tracks/15/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Death:color")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.580392, 0, 0.0117647, 0)]
+}
 
-[sub_resource type="Animation" id="Animation_smc22"]
-resource_name = "pause_start"
+[sub_resource type="Animation" id="Animation_ttswq"]
+resource_name = "death"
 length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
+tracks/0/path = NodePath("../Death:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.686275)]
+"values": [Color(0.580392, 0, 0.0117647, 0), Color(0.580392, 0, 0.0117647, 0.313726)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:position")
+tracks/1/path = NodePath("../Death/VBoxContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.233333),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(427.5, 747), Vector2(427.5, 185)]
-}
-
-[sub_resource type="Animation" id="Animation_djifv"]
-resource_name = "pause_stop"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0.686275), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(427.5, 185), Vector2(427.5, 747)]
-}
-
-[sub_resource type="Animation" id="Animation_4444v"]
-resource_name = "thunder"
-length = 0.400003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../vignette:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Flash:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_e4h3u"]
@@ -563,6 +505,90 @@ tracks/10/keys = {
 "values": [Vector2(1280, 144), Vector2(1280, 144), Vector2(1280, 144), Vector2(1280, 144)]
 }
 
+[sub_resource type="Animation" id="Animation_smc22"]
+resource_name = "pause_start"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.686275)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(427.5, 747), Vector2(427.5, 185)]
+}
+
+[sub_resource type="Animation" id="Animation_djifv"]
+resource_name = "pause_stop"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.686275), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(427.5, 185), Vector2(427.5, 747)]
+}
+
+[sub_resource type="Animation" id="Animation_4444v"]
+resource_name = "thunder"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../vignette:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_0kp0i"]
 resource_name = "tutorial"
 length = 3.0
@@ -606,12 +632,28 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t8xun"]
 _data = {
 "RESET": SubResource("Animation_xv5j4"),
+"death": SubResource("Animation_ttswq"),
 "night_begin": SubResource("Animation_e4h3u"),
 "pause_start": SubResource("Animation_smc22"),
 "pause_stop": SubResource("Animation_djifv"),
 "thunder": SubResource("Animation_4444v"),
 "tutorial": SubResource("Animation_0kp0i")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7fpr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bu82q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmtcp"]
+texture = ExtResource("15_0obi7")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ixrl"]
 
 [node name="IngameHud" type="Control" node_paths=PackedStringArray("power_ups", "health_bar", "time_bar")]
 layout_mode = 3
@@ -624,6 +666,7 @@ script = ExtResource("1_wqdty")
 power_ups = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/PowerUpBar")
 health_bar = NodePath("HUD/Bottom/MarginContainer/VBoxContainer/Healthbar")
 time_bar = NodePath("HUD/Top/VBoxContainer/TimeBar")
+death_sound = ExtResource("2_cwr2r")
 thunder_sound = ExtResource("2_5jqlg")
 damage_number = ExtResource("2_t8bg2")
 
@@ -721,8 +764,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.2
-offset_top = -148.0
-offset_bottom = -148.0
+offset_top = -153.0
+offset_bottom = -153.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
@@ -732,8 +775,8 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 153.0
-offset_bottom = 153.0
+offset_top = 159.0
+offset_bottom = 159.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
@@ -745,10 +788,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -561.0
-offset_top = -66.0
-offset_right = 565.0
-offset_bottom = 69.0
+offset_left = -602.0
+offset_top = -114.0
+offset_right = 524.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "THE STORM HAS BEGUN"
@@ -835,58 +878,6 @@ offset_bottom = 677.0
 text = "Shoot"
 label_settings = SubResource("LabelSettings_x8gu3")
 
-[node name="Death" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.580392, 0, 0.0117647, 0)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Death"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -201.0
-offset_top = -89.0
-offset_right = 201.0
-offset_bottom = 89.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Death/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("14_k517a")
-theme_override_font_sizes/normal_font_size = 75
-bbcode_enabled = true
-text = "[center]You Died[/center]"
-fit_content = true
-scroll_active = false
-
-[node name="BackToMenu" type="Button" parent="Death/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_disabled_color = Color(0.584314, 0.584314, 0.584314, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0.91664, 0.91664, 0.91664, 1)
-theme_override_colors/font_color = Color(0.690196, 0.713726, 0.713726, 1)
-theme_override_fonts/font = ExtResource("14_k517a")
-theme_override_font_sizes/font_size = 25
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f7fpr")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_bu82q")
-theme_override_styles/hover = SubResource("StyleBoxTexture_tmtcp")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_tmtcp")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7ixrl")
-text = "Back To Menu"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Pause")
 libraries = {
@@ -894,6 +885,7 @@ libraries = {
 }
 
 [node name="Pause" type="ColorRect" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -982,5 +974,60 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tmtcp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7ixrl")
 text = "Exit To Menu"
 
+[node name="Death" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.580392, 0, 0.0117647, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Death"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -89.0
+offset_right = 201.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Death/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("14_k517a")
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "[center]You Died[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="BackToMenu" type="Button" parent="Death/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0.584314, 0.584314, 0.584314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_color = Color(0.690196, 0.713726, 0.713726, 1)
+theme_override_fonts/font = ExtResource("14_k517a")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f7fpr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bu82q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tmtcp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tmtcp")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ixrl")
+text = "Back To Menu"
+
 [connection signal="button_down" from="Pause/TextureRect/CenterContainer/VBoxContainer/Resume" to="." method="resume"]
 [connection signal="button_down" from="Pause/TextureRect/CenterContainer/VBoxContainer/BackToMenu" to="." method="exit_to_menu"]
+[connection signal="button_up" from="Death/VBoxContainer/BackToMenu" to="." method="exit_to_menu"]

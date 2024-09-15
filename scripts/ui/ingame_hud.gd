@@ -5,7 +5,7 @@ class_name IngameHud
 @export var health_bar: HealthBar
 @export var time_bar: AnimatedTextureRect
 
-
+@export var death_sound: AudioStream
 @export var thunder_sound: AudioStream
 @export var damage_number: PackedScene
 
@@ -31,6 +31,10 @@ func show_damage_number(position: Vector2, damage: float):
 
 
 func show_death_screen() -> void:
+	AudioManager.stop_busses(["Effects", "Enemies", "Weather"])
+	AudioManager.play_sound(death_sound, "Effects")
+	
+	$Death.visible = true
 	death_screen = true
 	get_tree().paused = true
 	$AnimationPlayer.play("death")
@@ -49,6 +53,7 @@ func resume():
 
 
 func exit_to_menu() -> void:
+	AudioManager.stop_all()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
@@ -59,6 +64,10 @@ func _on_player_power_up(type: int):
 
 func _on_player_player_damaged(max_health: float, health: float) -> void:
 	health_bar.update(max_health, health)
+
+
+func _on_player_death() -> void:
+	show_death_screen()
 
 
 func _on_player_bullet_update(projectiles: int, _fire_rate: float) -> void:

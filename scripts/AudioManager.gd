@@ -1,5 +1,10 @@
 extends Node
 
+func _ready() -> void:
+	# Should not be affected by pausing
+	process_mode = PROCESS_MODE_ALWAYS
+	set_bus_volume("Effects", -10)
+
 # Function to set the volume of a bus by name
 func set_bus_volume(bus_name: String, volume_db: float):
 	var bus_index = AudioServer.get_bus_index(bus_name)
@@ -51,6 +56,23 @@ func play_sound(audio_stream: AudioStream, bus_name: String, volume_db: float = 
 	
 	return player
 
+
+func stop_all():
+	for child in get_children():
+		child.queue_free()
+
+
+func stop_bus(bus_name: String):
+	for child in get_children():
+		if child.bus == bus_name:
+			child.queue_free()
+
+
+func stop_busses(busses: Array[String]):
+	for child in get_children():
+		if busses.has(child.bus):
+			child.queue_free()
+
 # Function to clean up finished sound players
 func _on_sound_finished(player: AudioStreamPlayer):
 	if is_instance_valid(player):
@@ -59,6 +81,3 @@ func _on_sound_finished(player: AudioStreamPlayer):
 func _on_sound_loop(player: AudioStreamPlayer):
 	if is_instance_valid(player):
 		player.play()
-		
-func _ready() -> void:
-	set_bus_volume("Effects", -10)

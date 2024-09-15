@@ -101,6 +101,11 @@ region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eppqp"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pusqk")
@@ -263,7 +268,7 @@ bullet = ExtResource("2_hwf6v")
 use_parent_material = true
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_eppqp")
-animation = &"walking_side"
+animation = &"death"
 speed_scale = 3.0
 
 [node name="flash" type="ColorRect" parent="sprite"]

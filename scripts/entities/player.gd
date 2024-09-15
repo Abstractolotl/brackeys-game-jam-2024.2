@@ -16,6 +16,7 @@ var health: HealthComponent
 
 @export var is_hud = false
 
+signal player_death()
 signal player_health_changed(max_health: float, health: float)
 signal power_up(power_up_type: int)
 
@@ -127,3 +128,5 @@ func _on_health_component_health_changed(_amount: float, new_health: float) -> v
 	if _amount > 0:
 		$animation.play("hit")
 		get_tree().get_current_scene().shake.emit(0, 1)
+	if new_health <= 0.0:
+		player_death.emit()
