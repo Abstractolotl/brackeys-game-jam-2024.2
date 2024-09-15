@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=33 format=3 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
 [ext_resource type="PackedScene" uid="uid://bwva31xchx53y" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
@@ -11,9 +11,9 @@
 [ext_resource type="Script" path="res://scripts/spawn_wave.gd" id="7_nbuwj"]
 [ext_resource type="PackedScene" uid="uid://ttgr2idxlck2" path="res://entities/tnt_sheep.tscn" id="8_v71sb"]
 [ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="8_xvp2e"]
-[ext_resource type="PackedScene" uid="uid://c60bv7bsi0qtf" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
+[ext_resource type="PackedScene" uid="uid://buta64k6cf8ht" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
 [ext_resource type="PackedScene" uid="uid://kdnjehrf013m" path="res://entities/big_sheep.tscn" id="11_c4uil"]
-[ext_resource type="PackedScene" uid="uid://coij331qruipu" path="res://entities/fast_sheep.tscn" id="13_al30p"]
+[ext_resource type="PackedScene" path="res://entities/fast_sheep.tscn" id="13_al30p"]
 
 [sub_resource type="Gradient" id="Gradient_bk4he"]
 
@@ -65,6 +65,26 @@ adjustment_color_correction = SubResource("GradientTexture1D_o64lb")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w1w3j"]
 
+[sub_resource type="Resource" id="Resource_7jkih"]
+script = ExtResource("7_nbuwj")
+amount_min = 1
+amount_max = 4
+spacing = 0
+enemy = ExtResource("8_v71sb")
+min_wave = 0
+max_wave = 10
+weight = 2
+
+[sub_resource type="Resource" id="Resource_akclu"]
+script = ExtResource("7_nbuwj")
+amount_min = 1
+amount_max = 5
+spacing = 2
+enemy = ExtResource("9_4txbp")
+min_wave = 0
+max_wave = 10
+weight = 2
+
 [sub_resource type="Resource" id="Resource_ryg7r"]
 script = ExtResource("7_nbuwj")
 amount_min = 3
@@ -72,7 +92,7 @@ amount_max = 5
 spacing = 1
 enemy = ExtResource("8_xvp2e")
 min_wave = 0
-max_wave = 20
+max_wave = 10
 weight = 2
 
 [sub_resource type="Resource" id="Resource_hysmg"]
@@ -81,8 +101,8 @@ amount_min = 1
 amount_max = 1
 spacing = 1
 enemy = ExtResource("11_c4uil")
-min_wave = 25
-max_wave = 25
+min_wave = 5
+max_wave = 5
 weight = 100000
 
 [sub_resource type="Resource" id="Resource_5b3c4"]
@@ -92,8 +112,8 @@ amount_max = 0
 spacing = 1
 enemy = ExtResource("8_xvp2e")
 min_wave = 0
-max_wave = 10
-weight = 1
+max_wave = 4
+weight = 4
 
 [sub_resource type="Resource" id="Resource_lm6pa"]
 script = ExtResource("7_nbuwj")
@@ -101,19 +121,19 @@ amount_min = 1
 amount_max = 1
 spacing = 1
 enemy = ExtResource("11_c4uil")
-min_wave = 30
+min_wave = 5
 max_wave = -1
 weight = 1
 
 [sub_resource type="Resource" id="Resource_6f2w4"]
 script = ExtResource("7_nbuwj")
 amount_min = 1
-amount_max = 4
+amount_max = 10
 spacing = 1
 enemy = ExtResource("8_v71sb")
-min_wave = 30
+min_wave = 10
 max_wave = -1
-weight = 2
+weight = 1
 
 [sub_resource type="Resource" id="Resource_ky5lg"]
 script = ExtResource("7_nbuwj")
@@ -137,63 +157,13 @@ weight = 1
 
 [sub_resource type="Resource" id="Resource_7jm0e"]
 script = ExtResource("7_nbuwj")
-amount_min = 2
+amount_min = 1
 amount_max = 5
 spacing = 1
 enemy = ExtResource("13_al30p")
-min_wave = 40
+min_wave = 10
 max_wave = -1
 weight = 2
-
-[sub_resource type="Resource" id="Resource_w71l3"]
-script = ExtResource("7_nbuwj")
-amount_min = 1
-amount_max = 4
-spacing = 1
-enemy = ExtResource("13_al30p")
-min_wave = 45
-max_wave = -1
-weight = 1
-
-[sub_resource type="Resource" id="Resource_8faus"]
-script = ExtResource("7_nbuwj")
-amount_min = 5
-amount_max = 15
-spacing = 1
-enemy = ExtResource("8_xvp2e")
-min_wave = 20
-max_wave = -1
-weight = 1
-
-[sub_resource type="Resource" id="Resource_y1xry"]
-script = ExtResource("7_nbuwj")
-amount_min = 1
-amount_max = 15
-spacing = 1
-enemy = ExtResource("13_al30p")
-min_wave = 50
-max_wave = -1
-weight = 2
-
-[sub_resource type="Resource" id="Resource_lf035"]
-script = ExtResource("7_nbuwj")
-amount_min = 1
-amount_max = 3
-spacing = 3
-enemy = ExtResource("13_al30p")
-min_wave = 48
-max_wave = 60
-weight = 1
-
-[sub_resource type="Resource" id="Resource_h8mew"]
-script = ExtResource("7_nbuwj")
-amount_min = 2
-amount_max = 7
-spacing = 3
-enemy = ExtResource("13_al30p")
-min_wave = 60
-max_wave = -1
-weight = 1
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("player", "hud")]
 y_sort_enabled = true
@@ -245,9 +215,9 @@ noise = SubResource("FastNoiseLite_w1w3j")
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_l7ubj")
 map_borders = Array[int]([0, -40, 5300, 4000])
-player = NodePath("../player")
-spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60"), SubResource("Resource_7jm0e"), SubResource("Resource_w71l3"), SubResource("Resource_8faus"), SubResource("Resource_y1xry"), SubResource("Resource_lf035"), SubResource("Resource_h8mew")])
+spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60"), SubResource("Resource_7jm0e")])
 spawn_radius = 500.0
+player = NodePath("../player")
 
 [connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]

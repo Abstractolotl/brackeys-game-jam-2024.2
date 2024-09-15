@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://buta64k6cf8ht"]
+[gd_scene load_steps=40 format=3 uid="uid://buta64k6cf8ht"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy.gd" id="1_hyxw3"]
 [ext_resource type="PackedScene" uid="uid://cilgi430hlwre" path="res://entities/explosion.tscn" id="2_cnvmf"]
@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ct2x1mgtvpcex" path="res://assets/enemies/dead_sheep.png" id="6_daoam"]
 [ext_resource type="AudioStream" uid="uid://bvqcebfry6t0c" path="res://assets/audio/sheep.mp3" id="7_5tsni"]
 [ext_resource type="Script" path="res://scripts/components/bullet_emitter.gd" id="7_ycnn6"]
-[ext_resource type="PackedScene" uid="uid://cvt6rdi23wxhj" path="res://entities/laser.tscn" id="8_n25sf"]
+[ext_resource type="PackedScene" path="res://entities/laser.tscn" id="8_n25sf"]
 [ext_resource type="AudioStream" uid="uid://b5fdl0wdqktpu" path="res://assets/audio/hit.mp3" id="8_sxo3h"]
-[ext_resource type="AudioStream" uid="uid://cr7pbiqrwx2wj" path="res://assets/audio/laser.mp3" id="9_p76yb"]
+[ext_resource type="AudioStream" uid="uid://cr7pbiqrwx2wj" path="res://assets/audio/shoot.mp3" id="9_2cs8d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]
 radius = 9.0
@@ -205,6 +205,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_8x7ia"]
+resource_name = "nothing"
+
 [sub_resource type="Animation" id="Animation_wn66t"]
 resource_name = "walk_down"
 length = 0.6
@@ -327,9 +330,6 @@ tracks/1/keys = {
 "method": &"face_up"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_8x7ia"]
-resource_name = "nothing"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dram2"]
 _data = {
