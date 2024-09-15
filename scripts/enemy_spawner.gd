@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
-	pass#spawn_enemy(player.global_position + Vector2(10, 0), load("res://entities/tnt_sheep.tscn"))
+	spawn_enemy(player.global_position + Vector2(10, 0), load("res://entities/ranged_sheep.tscn"))
 
 func spawn_wave(wave: SpawnWave):
 	get_tree().current_scene.hud.do_thunder()

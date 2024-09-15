@@ -17,6 +17,7 @@ var player: Node2D
 @export var side_texture: Texture
 @export var up_texture: Texture
 @export var down_texture: Texture
+@export var dead_texture: Texture
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var audio_dead: AudioStream
@@ -33,6 +34,7 @@ var sprite: Sprite2D
 var bullet_emitter: BulletEmitter
 
 var dead = false
+var dead_dead = false
 
 # only for tnt type
 var fuse: float = 0.0
@@ -140,15 +142,16 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func _on_hit(_amount: float, new_health: float):
 	AudioManager.play_sound(audio_hit, "Effects")
 	if dead:
-		if new_health < -5:
-			queue_free()
-		# TODO: clean up body after x seconds
 		return
 
 	if new_health <= 0:
 		animation_tree.set("parameters/Death/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		animation_tree["parameters/Death 2/blend_amount"] = 1.0
 		dead = true
+		set_collision_layer_value(4, false)
+		set_collision_mask_value(1, false)
+		set_collision_mask_value(2, false)
+		set_collision_mask_value(3, false)
+		set_collision_mask_value(4, false)
 		get_tree().get_current_scene().shake.emit(1, 0)
 		on_death.call_deferred()
 	else:
@@ -157,7 +160,6 @@ func _on_hit(_amount: float, new_health: float):
 
 
 func on_death():
-	lock_rotation = false
 	AudioManager.play_sound(audio_dead, "Effects")
 
 
@@ -167,20 +169,32 @@ func _on_body_entered(body: Node) -> void:
 
 
 func face_left() -> void:
+	if dead_dead:
+		return
 	sprite.flip_h = false
 	sprite.texture = side_texture
 
 
 func face_right() -> void:
+	if dead_dead:
+		return
 	sprite.flip_h = true
 	sprite.texture = side_texture
 
 
 func face_up() -> void:
+	if dead_dead:
+		return
 	sprite.flip_h = false
 	sprite.texture = up_texture
 
 
 func face_down() -> void:
+	if dead_dead:
+		return
 	sprite.flip_h = false
 	sprite.texture = down_texture
+	
+func set_dead_dead() -> void:
+	dead_dead = true
+	sprite.texture = dead_texture
