@@ -47,6 +47,7 @@ var last_attack: float = 10.0
 
 
 var last_position: Vector2
+var time_alive = 0
 
 
 func _ready():
@@ -62,6 +63,9 @@ func _ready():
 
 
 func _process(_delta):
+	time_alive += _delta
+	if time_alive > 30:
+		queue_free()
 	if dead:
 		return
 	
