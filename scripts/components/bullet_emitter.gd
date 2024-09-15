@@ -46,7 +46,7 @@ func random_offset() -> Vector2:
 	return Vector2(randf() - 0.5, randf() - 0.5) * spread_offset
 
 func instantiate_bullet() -> void:
-	AudioManager.play_sound(sound_shoot, "Effects", -25, false, 0.25)
+	AudioManager.play_sound(sound_shoot, "Effects")
 	get_tree().get_current_scene().shake.emit(0, 0.2)
 
 	var split_angle = max_spread_angle / (num_projectiles + 1)

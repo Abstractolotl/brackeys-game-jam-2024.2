@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_664mw"]
 [ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="1_xe5mc"]
 [ext_resource type="Texture2D" uid="uid://bapiake7hxktn" path="res://assets/ui/menu_background.png" id="2_0cnwb"]
-[ext_resource type="AudioStream" uid="uid://dxulnlah4srlo" path="res://assets/audio/menu_loop.mp3" id="2_6y8og"]
 [ext_resource type="PackedScene" uid="uid://d1n0wucsi6d0" path="res://scenes/game/game.tscn" id="2_hp3u6"]
+[ext_resource type="AudioStream" uid="uid://b0mxpyg2i0xya" path="res://assets/audio/title-music.mp3" id="2_kdbpv"]
 [ext_resource type="AudioStream" uid="uid://p6l470mjnqlm" path="res://assets/audio/credits.mp3" id="3_s4o7m"]
 [ext_resource type="Texture2D" uid="uid://x0lkwr6nm8dp" path="res://assets/ui/menu_border.png" id="3_te7ni"]
 [ext_resource type="Texture2D" uid="uid://bwn1tnisgwslh" path="res://assets/ui/menu_slider.png" id="4_bk5v8"]
@@ -141,7 +141,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(3.03333, 20),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(382.5, 804), Vector2(382.5, -648)]
+"values": [Vector2(382.5, 804), Vector2(383, -680)]
 }
 
 [sub_resource type="Animation" id="Animation_ajqqs"]
@@ -215,7 +215,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_664mw")
-background_music = ExtResource("2_6y8og")
+background_music = ExtResource("2_kdbpv")
 credits_music = ExtResource("3_s4o7m")
 game_scene = ExtResource("2_hp3u6")
 
@@ -279,7 +279,7 @@ anchor_bottom = 0.5
 offset_left = -257.5
 offset_top = 444.0
 offset_right = 257.5
-offset_bottom = 1096.0
+offset_bottom = 1109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
@@ -418,7 +418,7 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
 bbcode_enabled = true
-text = "[left]by XtremeFreddy
+text = "[left]by SoulProdMusic
 "
 fit_content = true
 
@@ -533,6 +533,56 @@ text = "[left]by RibhavAgrawal
 "
 fit_content = true
 
+[node name="Stone Hit" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Hit"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Stone Hit"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Hit"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Liecio
+"
+fit_content = true
+
+[node name="Stone Destroy" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Destroy"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Stone Destroy"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Destroy"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Pixabay
+"
+fit_content = true
+
 [node name="Assets" type="VBoxContainer" parent="Credits/Credits"]
 layout_mode = 2
 
@@ -619,6 +669,32 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
 bbcode_enabled = true
 text = "[left]by kenney.nl
+"
+fit_content = true
+
+[node name="Destructables" type="HBoxContainer" parent="Credits/Credits/Assets"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Assets/Destructables"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Destructables
+"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Assets/Destructables"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by elthen
 "
 fit_content = true
 

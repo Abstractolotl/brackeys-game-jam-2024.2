@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Drop" load_steps=3 format=3 uid="uid://djrwp504tjhg7"]
+
+[ext_resource type="PackedScene" uid="uid://bwgiycrv55qk3" path="res://entities/collectibles/collectible_pierce.tscn" id="1_80y06"]
+[ext_resource type="Script" path="res://scripts/entities/drop.gd" id="2_51ym1"]
+
+[resource]
+script = ExtResource("2_51ym1")
+weight = 5.0
+scene = ExtResource("1_80y06")

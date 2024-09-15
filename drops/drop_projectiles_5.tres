@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("2_7uikh")
-weight = 5.0
+weight = 4.0
 scene = ExtResource("1_shs1p")
