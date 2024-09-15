@@ -219,6 +219,9 @@ player = NodePath("../player")
 spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60"), SubResource("Resource_7jm0e")])
 spawn_radius = 500.0
 
+[node name="enemy" parent="." instance=ExtResource("9_4txbp")]
+position = Vector2(789, 273)
+
 [connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]
 [connection signal="night_start" from="." to="EnemySpawner" method="_on_game_night_start"]

@@ -14,6 +14,8 @@ var dash_charge: float = 1
 var dashing: bool = false
 var health: HealthComponent
 
+@export var player_hit_sound: AudioStream
+
 @export var is_hud = false
 
 signal player_death()
@@ -127,6 +129,7 @@ func _on_health_component_health_changed(_amount: float, new_health: float) -> v
 	player_health_changed.emit(health.max_health, new_health)
 	if _amount > 0:
 		$animation.play("hit")
+		AudioManager.play_sound(player_hit_sound, "Effects")
 		get_tree().get_current_scene().shake.emit(0, 1)
 	if new_health <= 0.0:
 		player_death.emit()
