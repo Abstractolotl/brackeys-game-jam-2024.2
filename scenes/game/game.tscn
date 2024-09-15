@@ -198,6 +198,7 @@ size_flags_vertical = 4
 [node name="player" parent="." instance=ExtResource("4_4h4at")]
 position = Vector2(436, 254)
 collision_mask = 2
+player_hit_sound = null
 
 [node name="Map" parent="." instance=ExtResource("5_b502t")]
 position = Vector2(25, -30)
@@ -218,9 +219,6 @@ map_borders = Array[int]([0, -40, 5300, 4000])
 player = NodePath("../player")
 spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60"), SubResource("Resource_7jm0e")])
 spawn_radius = 500.0
-
-[node name="enemy" parent="." instance=ExtResource("9_4txbp")]
-position = Vector2(789, 273)
 
 [connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]
