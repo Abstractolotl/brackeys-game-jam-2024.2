@@ -1,6 +1,19 @@
 extends Control
 
+@export var background_music: AudioStream
+@export var credits_music: AudioStream
 @export var game_scene: PackedScene
+
+var watching_credits = false
+
+func _ready() -> void:
+	AudioManager.play_sound(background_music, "Music", -2.5, true)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause") and watching_credits:
+		$AnimationPlayer.play("RESET")
+		stop_credits()
+
 
 func _on_new_game_button_down() -> void:
 	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
@@ -9,6 +22,7 @@ func _on_new_game_button_down() -> void:
 func _on_new_game_button_up() -> void:
 	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
 	get_tree().change_scene_to_file(game_scene.resource_path)
+	AudioManager.stop_all()
 
 
 func _on_options_button_down() -> void:
@@ -21,15 +35,29 @@ func _on_options_button_up() -> void:
 
 
 func _on_credits_button_down() -> void:
+	if watching_credits:
+		return		
+	watching_credits = true
+	
 	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_start.mp3"), "Effects")
 	$Menu.visible = false
 	$Credits.visible = true
 	
+	AudioManager.stop_all()
+	AudioManager.play_sound(credits_music, "Music", -2.5, false)
+	
 	$AnimationPlayer.play("credits")
 	await $AnimationPlayer.animation_finished
 	
+	stop_credits()
+
+func stop_credits():
+	AudioManager.stop_all()
+	AudioManager.play_sound(background_music, "Music", -2.5, true)
+	
 	$Credits.visible = false
 	$Menu.visible = true
+	watching_credits = false
 
 
 func _on_credits_button_up() -> void:

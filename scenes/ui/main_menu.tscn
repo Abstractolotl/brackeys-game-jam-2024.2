@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://c380vbxqv0udv"]
+[gd_scene load_steps=22 format=3 uid="uid://c380vbxqv0udv"]
 
 [ext_resource type="Texture2D" uid="uid://c7heiblu3a45n" path="res://assets/ui/panel-border-031.png" id="1_37xfb"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_664mw"]
 [ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="1_xe5mc"]
 [ext_resource type="Texture2D" uid="uid://bapiake7hxktn" path="res://assets/ui/menu_background.png" id="2_0cnwb"]
+[ext_resource type="AudioStream" uid="uid://dxulnlah4srlo" path="res://assets/audio/menu_loop.mp3" id="2_6y8og"]
 [ext_resource type="PackedScene" uid="uid://d1n0wucsi6d0" path="res://scenes/game/game.tscn" id="2_hp3u6"]
+[ext_resource type="AudioStream" uid="uid://p6l470mjnqlm" path="res://assets/audio/credits.mp3" id="3_s4o7m"]
 [ext_resource type="Texture2D" uid="uid://x0lkwr6nm8dp" path="res://assets/ui/menu_border.png" id="3_te7ni"]
 [ext_resource type="Texture2D" uid="uid://bwn1tnisgwslh" path="res://assets/ui/menu_slider.png" id="4_bk5v8"]
 [ext_resource type="Texture2D" uid="uid://cuvmikuwaj71f" path="res://assets/logo.png" id="4_dknl3"]
@@ -116,7 +118,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_308n8"]
 resource_name = "credits"
-length = 15.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -136,10 +138,10 @@ tracks/1/path = NodePath("Credits/Credits:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3.03333, 15),
+"times": PackedFloat32Array(3.03333, 20),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(382.5, 804), Vector2(382.5, -358)]
+"values": [Vector2(382.5, 804), Vector2(382.5, -648)]
 }
 
 [sub_resource type="Animation" id="Animation_ajqqs"]
@@ -213,6 +215,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_664mw")
+background_music = ExtResource("2_6y8og")
+credits_music = ExtResource("3_s4o7m")
 game_scene = ExtResource("2_hp3u6")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -343,12 +347,98 @@ bbcode_enabled = true
 text = "[center]Music[/center]"
 fit_content = true
 
-[node name="Click" type="HBoxContainer" parent="Credits/Credits/Music"]
+[node name="Background" type="HBoxContainer" parent="Credits/Credits/Music"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Click"]
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Background"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Background"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Background"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by DziiTen
+"
+fit_content = true
+
+[node name="Credits" type="HBoxContainer" parent="Credits/Credits/Music"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Credits"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Credits"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Credits"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Hot_Dope
+"
+fit_content = true
+
+[node name="Menu Background" type="HBoxContainer" parent="Credits/Credits/Music"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Menu Background"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Menu Background"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Menu Background"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by XtremeFreddy
+"
+fit_content = true
+
+[node name="SoundEffects" type="VBoxContainer" parent="Credits/Credits"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]SoundEffects[/center]"
+fit_content = true
+
+[node name="Click" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Click"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
@@ -359,7 +449,7 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Click"]
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Click"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
@@ -368,12 +458,12 @@ text = "[left]by SoundReality
 "
 fit_content = true
 
-[node name="PowerUp" type="HBoxContainer" parent="Credits/Credits/Music"]
+[node name="PowerUp" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/PowerUp"]
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/PowerUp"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
@@ -384,7 +474,7 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/PowerUp"]
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/PowerUp"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
@@ -393,12 +483,37 @@ text = "[left]by https://sfxr.me
 "
 fit_content = true
 
-[node name="Hit" type="HBoxContainer" parent="Credits/Credits/Music"]
+[node name="Death" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Hit"]
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Death"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Death"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Death"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Pixabay
+"
+fit_content = true
+
+[node name="Hit" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Hit"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
@@ -409,7 +524,7 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Hit"]
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Hit"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
@@ -540,6 +655,31 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
 bbcode_enabled = true
 text = "[left]by Cyreal Google Fonts
+"
+fit_content = true
+
+[node name="Kenney High" type="HBoxContainer" parent="Credits/Credits/Fonts"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Fonts/Kenney High"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Kenney High"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Fonts/Kenney High"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by kenney.nl
 "
 fit_content = true
 

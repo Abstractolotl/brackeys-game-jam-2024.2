@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://w4uhvou4x3k8"]
 
 [ext_resource type="Script" path="res://scripts/components/damage_number.gd" id="1_lwf4e"]
-[ext_resource type="FontFile" uid="uid://boudmqvb2luv3" path="res://assets/fonts/Junge-Regular.ttf" id="2_n2nll"]
+[ext_resource type="FontFile" uid="uid://dfi41oxac7nv6" path="res://assets/fonts/Kenney High.ttf" id="2_tkefk"]
 
 [sub_resource type="Animation" id="Animation_lok8o"]
 length = 0.001
@@ -94,8 +94,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(1, 0.881667, 0.29, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/normal_font = ExtResource("2_n2nll")
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_tkefk")
+theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "0.0"
 fit_content = true

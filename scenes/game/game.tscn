@@ -1,17 +1,18 @@
-[gd_scene load_steps=32 format=3 uid="uid://d1n0wucsi6d0"]
+[gd_scene load_steps=33 format=3 uid="uid://d1n0wucsi6d0"]
 
 [ext_resource type="Script" path="res://scripts/components/game_scene.gd" id="1_ga03w"]
 [ext_resource type="PackedScene" uid="uid://bwva31xchx53y" path="res://scenes/ui/ingame_hud.tscn" id="1_ldqnk"]
+[ext_resource type="AudioStream" uid="uid://v34qfh0qdmp" path="res://assets/audio/background_loop.mp3" id="2_m1b7x"]
 [ext_resource type="AudioStream" uid="uid://bcy6s6mb6vb8h" path="res://assets/audio/rain_background.mp3" id="2_xhitu"]
 [ext_resource type="PackedScene" uid="uid://dxvu6i0n3nbb2" path="res://entities/player.tscn" id="4_4h4at"]
 [ext_resource type="PackedScene" uid="uid://dgmr7tbnwflkw" path="res://scenes/map.tscn" id="5_b502t"]
 [ext_resource type="Script" path="res://scripts/components/shaking_camera.gd" id="5_ou4b0"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_l7ubj"]
 [ext_resource type="Script" path="res://scripts/spawn_wave.gd" id="7_nbuwj"]
-[ext_resource type="PackedScene" path="res://entities/tnt_sheep.tscn" id="8_v71sb"]
+[ext_resource type="PackedScene" uid="uid://ttgr2idxlck2" path="res://entities/tnt_sheep.tscn" id="8_v71sb"]
 [ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="8_xvp2e"]
-[ext_resource type="PackedScene" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
-[ext_resource type="PackedScene" uid="uid://kdnjehrf013m" path="res://entities/big_sheep.tscn" id="11_c4uil"]
+[ext_resource type="PackedScene" uid="uid://c60bv7bsi0qtf" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
+[ext_resource type="PackedScene" path="res://entities/big_sheep.tscn" id="11_c4uil"]
 [ext_resource type="PackedScene" path="res://entities/fast_sheep.tscn" id="13_al30p"]
 
 [sub_resource type="Gradient" id="Gradient_bk4he"]
@@ -168,6 +169,7 @@ weight = 2
 y_sort_enabled = true
 position = Vector2(0, 1)
 script = ExtResource("1_ga03w")
+background = ExtResource("2_m1b7x")
 rain_sound = ExtResource("2_xhitu")
 base = SubResource("GradientTexture2D_5als6")
 player = NodePath("player")
@@ -202,12 +204,17 @@ position = Vector2(25, -30)
 
 [node name="camera" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
 zoom = Vector2(1.5, 1.5)
+limit_left = 23
+limit_top = -90
+limit_right = 5360
+limit_bottom = 4100
 script = ExtResource("5_ou4b0")
 target_node = NodePath("../player")
 noise = SubResource("FastNoiseLite_w1w3j")
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_l7ubj")
+map_borders = Array[int]([0, -40, 5300, 4000])
 player = NodePath("../player")
 spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60"), SubResource("Resource_7jm0e")])
 spawn_radius = 500.0
@@ -215,5 +222,6 @@ spawn_radius = 500.0
 [connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]
 [connection signal="night_start" from="." to="EnemySpawner" method="_on_game_night_start"]
+[connection signal="player_death" from="player" to="hud-layer/IngameHud" method="_on_player_death"]
 [connection signal="player_health_changed" from="player" to="hud-layer/IngameHud" method="_on_player_player_damaged"]
 [connection signal="power_up" from="player" to="hud-layer/IngameHud" method="_on_player_power_up"]

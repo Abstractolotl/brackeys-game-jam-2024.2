@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://r6no4c58ohsl"
-path="res://.godot/imported/poppins-black.ttf-560f41ddce01d7beccc5a631e2c7e35f.fontdata"
+path="res://.godot/imported/poppins-black.ttf-0df86238477a4a075750a1fb8c51914a.fontdata"
 
 [deps]
 
-source_file="res://assets/poppins-black.ttf"
-dest_files=["res://.godot/imported/poppins-black.ttf-560f41ddce01d7beccc5a631e2c7e35f.fontdata"]
+source_file="res://assets/fonts/poppins-black.ttf"
+dest_files=["res://.godot/imported/poppins-black.ttf-0df86238477a4a075750a1fb8c51914a.fontdata"]
 
 [params]
 

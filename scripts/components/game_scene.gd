@@ -3,6 +3,7 @@ extends Node2D
 signal shake(amount: float, min: float)
 signal night_start()
 
+@export var background: AudioStream
 @export var rain_sound: AudioStream
 
 func spawn_bullet(bullet: Node):
@@ -55,6 +56,8 @@ var blend_stepts = 150.0;
 var day_time = 30.0;
 
 func _ready() -> void:
+	AudioManager.play_sound(background, "Music", -3.0, true)
+	
 	if shake:
 		pass
 	env = $enviroment/world
