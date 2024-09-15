@@ -1,5 +1,6 @@
 extends Node
 
+@export var map_borders: Array[int]
 
 @export var player: Player
 @export var spawn_waves: Array[SpawnWave]
@@ -112,10 +113,21 @@ func _spawn_wave_grouped(wave: SpawnWave, amount: int):
 func spawn_enemy(spawn_position_global: Vector2, enemy_scene: PackedScene):
 	var enemy: Enemy = enemy_scene.instantiate()
 	enemy.player = player
-	enemy.global_position = spawn_position_global
+	enemy.global_position = move_into_map(spawn_position_global)
 	self.add_child(enemy)
 	return enemy
 
+
+func move_into_map(position: Vector2) -> Vector2:
+	var spawn_position = position
+
+	spawn_position.x = max(map_borders[0], spawn_position.x)
+	spawn_position.x = min(map_borders[2], spawn_position.x)
+	
+	spawn_position.y = max(map_borders[1], spawn_position.y)
+	spawn_position.y = min(map_borders[3], spawn_position.y)
+	
+	return spawn_position
 
 func _on_game_night_start() -> void:
 	is_night = true
