@@ -5,6 +5,9 @@ class_name IngameHud
 @export var health_bar: HealthBar
 @export var time_bar: AnimatedTextureRect
 
+@export var timer: RichTextLabel
+@export var death_time: RichTextLabel
+
 @export var death_sound: AudioStream
 @export var thunder_sound: AudioStream
 @export var damage_number: PackedScene
@@ -12,16 +15,24 @@ class_name IngameHud
 var death_screen: bool = false
 var vignette: Vignette
 
+var night: bool
+var night_time: float = 0.0
+
 func _ready() -> void:
 	vignette = $vignette
 	$AnimationPlayer.play("tutorial")
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		if get_tree().paused:
-			resume()
-		else:
-			pause()
+func _process(delta: float) -> void:
+	if not death_screen and not $AnimationPlayer.is_playing():
+		if night and not get_tree().paused:
+			night_time += delta
+			update_timer()
+		
+		if Input.is_action_just_pressed("pause"):
+			if get_tree().paused:
+				resume()
+			else:
+				pause()
 
 func show_damage_number(position: Vector2, damage: float):
 	var damageNumber = damage_number.instantiate()
@@ -38,6 +49,19 @@ func show_death_screen() -> void:
 	death_screen = true
 	get_tree().paused = true
 	$AnimationPlayer.play("death")
+
+
+func update_timer() -> void:
+	var time = night_time
+	if time >= 60:
+		var minutes = roundi(time / 60)
+		var seconds = roundi(time - (minutes * 60))
+		timer.text = "[center]" +  ("%02d" % minutes) + ":" + ("%02d" % seconds) +  "[/center]"
+		death_time.text = "[center]" +  ("%02d" % minutes) + ":" + ("%02d" % seconds) +  "[/center]"
+	else:
+		timer.text = "[center]00:" + ("%02d" % round(time)) +  "[/center]"
+		death_time.text = "[center]00:" + ("%02d" % round(time)) +  "[/center]"
+
 
 func pause():
 	$Pause.visible = true
@@ -96,9 +120,13 @@ func _on_back_to_menu_button_up() -> void:
 	AudioManager.play_sound(load("res://assets/audio/menu/menu_click_end.mp3"), "Effects")
 	exit_to_menu()
 
+
 func do_thunder():
 	AudioManager.play_sound(thunder_sound, "Effects", 5, false, 0.1)
 	$AnimationPlayer.play("thunder")
 
+
 func show_start_night():
 	$AnimationPlayer.play("night_begin")
+	night = true
+	timer.visible = true

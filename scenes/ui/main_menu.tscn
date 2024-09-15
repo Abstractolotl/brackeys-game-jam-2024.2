@@ -622,6 +622,32 @@ text = "[left]by kenney.nl
 "
 fit_content = true
 
+[node name="Destructables" type="HBoxContainer" parent="Credits/Credits/Assets"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/Assets/Destructables"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Destructables
+"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/Assets/Destructables"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by elthen
+"
+fit_content = true
+
 [node name="Fonts" type="VBoxContainer" parent="Credits/Credits"]
 layout_mode = 2
 
