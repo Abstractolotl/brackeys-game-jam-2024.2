@@ -30,23 +30,26 @@ var pierced_bodies = []
 func on_collision_body(body: Node2D):
 	if body in pierced_bodies:
 		return
-
 	pierced_bodies.append(body)
+
+	var health_component = Util.find_health_component(body)
 
 	if randf() < explosion_chance:
 		spawn_explosion()
 		queue_free()
 	
-	if pierced_bodies.size() > pierce:
+	if not health_component:
 		queue_free()
-	_play_hit_sound()
-	
-	var health_component = Util.find_health_component(body)
 
 	if health_component:
 		health_component.hit(damage)
 		if body is RigidBody2D:
 			body.apply_impulse(Vector2.from_angle(rotation) * 200, Vector2(0, 0))
+	
+	if pierced_bodies.size() > pierce:
+		queue_free()
+	_play_hit_sound()
+	
 			
 func _play_hit_sound():
 	pass
