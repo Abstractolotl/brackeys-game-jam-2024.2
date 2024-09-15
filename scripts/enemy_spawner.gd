@@ -30,9 +30,6 @@ func _process(delta: float) -> void:
 		spawn_wave(wave)
 
 
-func _ready() -> void:
-	spawn_enemy(player.global_position + Vector2(10, 0), load("res://entities/ranged_sheep.tscn"))
-
 func spawn_wave(wave: SpawnWave):
 	get_tree().current_scene.hud.do_thunder()
 	if wave.enemy == null:
