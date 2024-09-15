@@ -194,6 +194,7 @@ offset_bottom = -1.0
 scale = Vector2(1.00407, 1.01292)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+death_sound = null
 
 [node name="player" parent="." instance=ExtResource("4_4h4at")]
 position = Vector2(436, 254)
@@ -214,7 +215,7 @@ noise = SubResource("FastNoiseLite_w1w3j")
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_l7ubj")
-map_borders = Array[int]([0, -40, 5300, 4000])
+map_borders = Array[int]([0, -50, 5250, 400])
 player = NodePath("../player")
 spawn_waves = Array[ExtResource("7_nbuwj")]([SubResource("Resource_7jkih"), SubResource("Resource_akclu"), SubResource("Resource_ryg7r"), SubResource("Resource_hysmg"), SubResource("Resource_5b3c4"), SubResource("Resource_lm6pa"), SubResource("Resource_6f2w4"), SubResource("Resource_ky5lg"), SubResource("Resource_28m60"), SubResource("Resource_7jm0e")])
 spawn_radius = 500.0
@@ -222,6 +223,5 @@ spawn_radius = 500.0
 [connection signal="night_start" from="." to="hud-layer/IngameHud" method="show_start_night"]
 [connection signal="night_start" from="." to="player" method="start_rain"]
 [connection signal="night_start" from="." to="EnemySpawner" method="_on_game_night_start"]
-[connection signal="player_death" from="player" to="hud-layer/IngameHud" method="_on_player_death"]
 [connection signal="player_health_changed" from="player" to="hud-layer/IngameHud" method="_on_player_player_damaged"]
 [connection signal="power_up" from="player" to="hud-layer/IngameHud" method="_on_player_power_up"]
