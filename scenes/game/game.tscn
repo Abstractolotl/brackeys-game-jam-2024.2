@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ttgr2idxlck2" path="res://entities/tnt_sheep.tscn" id="8_v71sb"]
 [ext_resource type="PackedScene" uid="uid://chbd7bp1q46o6" path="res://entities/enemy.tscn" id="8_xvp2e"]
 [ext_resource type="PackedScene" uid="uid://c60bv7bsi0qtf" path="res://entities/ranged_sheep.tscn" id="9_4txbp"]
-[ext_resource type="PackedScene" path="res://entities/big_sheep.tscn" id="11_c4uil"]
-[ext_resource type="PackedScene" path="res://entities/fast_sheep.tscn" id="13_al30p"]
+[ext_resource type="PackedScene" uid="uid://kdnjehrf013m" path="res://entities/big_sheep.tscn" id="11_c4uil"]
+[ext_resource type="PackedScene" uid="uid://coij331qruipu" path="res://entities/fast_sheep.tscn" id="13_al30p"]
 
 [sub_resource type="Gradient" id="Gradient_bk4he"]
 

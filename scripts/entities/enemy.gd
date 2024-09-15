@@ -64,7 +64,7 @@ func _process(_delta):
 		return
 	
 	var direction = (player.global_position - global_position).normalized()
-	var force = direction * (speed * mass)
+	var force = direction * (speed * mass * _delta * 60)
 	
 	if enemy_type == EnemyType.RANGED:
 		var min_shooting_distance = 100
