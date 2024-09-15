@@ -141,7 +141,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(3.03333, 20),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(382.5, 804), Vector2(382.5, -648)]
+"values": [Vector2(382.5, 804), Vector2(383, -680)]
 }
 
 [sub_resource type="Animation" id="Animation_ajqqs"]
@@ -279,7 +279,7 @@ anchor_bottom = 0.5
 offset_left = -257.5
 offset_top = 444.0
 offset_right = 257.5
-offset_bottom = 1096.0
+offset_bottom = 1109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
@@ -530,6 +530,56 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
 bbcode_enabled = true
 text = "[left]by RibhavAgrawal
+"
+fit_content = true
+
+[node name="Stone Hit" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Hit"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Stone Hit"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Hit"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Liecio
+"
+fit_content = true
+
+[node name="Stone Destroy" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Destroy"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Stone Destroy"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Stone Destroy"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by Pixabay
 "
 fit_content = true
 
