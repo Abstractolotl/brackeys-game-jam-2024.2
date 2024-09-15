@@ -347,31 +347,6 @@ bbcode_enabled = true
 text = "[center]Music[/center]"
 fit_content = true
 
-[node name="Click" type="HBoxContainer" parent="Credits/Credits/Music"]
-layout_mode = 2
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Click"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
-theme_override_fonts/normal_font = ExtResource("1_xe5mc")
-bbcode_enabled = true
-text = "[right]Click"
-fit_content = true
-scroll_active = false
-shortcut_keys_enabled = false
-
-[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Click"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_xe5mc")
-bbcode_enabled = true
-text = "[left]by SoundReality
-"
-fit_content = true
-
 [node name="Background" type="HBoxContainer" parent="Credits/Credits/Music"]
 layout_mode = 2
 theme_override_constants/separation = 15
@@ -447,12 +422,48 @@ text = "[left]by XtremeFreddy
 "
 fit_content = true
 
-[node name="PowerUp" type="HBoxContainer" parent="Credits/Credits/Music"]
+[node name="SoundEffects" type="VBoxContainer" parent="Credits/Credits"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]SoundEffects[/center]"
+fit_content = true
+
+[node name="Click" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/PowerUp"]
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Click"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[right]Click"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Click"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_xe5mc")
+bbcode_enabled = true
+text = "[left]by SoundReality
+"
+fit_content = true
+
+[node name="PowerUp" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/PowerUp"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
@@ -463,7 +474,7 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/PowerUp"]
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/PowerUp"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
@@ -472,12 +483,12 @@ text = "[left]by https://sfxr.me
 "
 fit_content = true
 
-[node name="Death" type="HBoxContainer" parent="Credits/Credits/Music"]
+[node name="Death" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Death"]
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Death"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
@@ -488,7 +499,7 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Death"]
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Death"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
@@ -497,12 +508,12 @@ text = "[left]by Pixabay
 "
 fit_content = true
 
-[node name="Hit" type="HBoxContainer" parent="Credits/Credits/Music"]
+[node name="Hit" type="HBoxContainer" parent="Credits/Credits/SoundEffects"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Title" type="RichTextLabel" parent="Credits/Credits/Music/Hit"]
+[node name="Title" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Hit"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.593134, 0.593134, 0.593134, 1)
@@ -513,7 +524,7 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Members" type="RichTextLabel" parent="Credits/Credits/Music/Hit"]
+[node name="Members" type="RichTextLabel" parent="Credits/Credits/SoundEffects/Hit"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_xe5mc")
