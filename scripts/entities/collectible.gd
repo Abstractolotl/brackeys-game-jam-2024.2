@@ -49,17 +49,17 @@ func on_collision(body: Node2D) -> void:
 			_increase_explosion(player)
 	
 func _increase_fire_rate(player: Player) -> void:
-	player.emitter.set_fire_rate(player.emitter._fire_rate + 2)
+	player.emitter.set_fire_rate(player.emitter._fire_rate + 1)
 
 
 func _increase_projectiles(player: Player) -> void:
 	player.emitter.num_projectiles = player.emitter.num_projectiles + 1
 
 func _increase_damage(player: Player) -> void:
-	player.emitter.damage += 1
+	player.emitter.damage += 0.8
 
 func _increase_move_speed(player: Player) -> void:
-	player.speed += 50
+	player.speed += 25
 
 func _increase_light() -> void:
 	get_tree().get_current_scene().update_light(0.1)
