@@ -19,8 +19,19 @@ static func clamped_range_mapping(value: float, min_threshold: float, max_thresh
 	else:
 		return (value - min_threshold) / (max_threshold - min_threshold)
 
+
+static func interpolate(value, start_input=30, end_input=300, start_output=5, end_output=2):
+	if value <= start_input:
+		return start_output
+	elif value >= end_input:
+		return end_output
+	else:
+		# Linear interpolation formula
+		return start_output + (end_output - start_output) * (value - start_input) / (end_input - start_input)
+
 enum Spacing {
 	EVEN,
 	RANDOM,
-	GROUPED
+	GROUPED,
+	IN_FRONT
 }

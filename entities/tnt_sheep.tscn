@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dl4pcqsl2x8q1" path="res://assets/enemies/tnt_sheep_side.png" id="3_5uf8f"]
 [ext_resource type="Texture2D" uid="uid://bb6nbknrdgrl3" path="res://assets/enemies/tnt_sheep_up.png" id="4_5tiu7"]
 [ext_resource type="Texture2D" uid="uid://vocepfnbhkxr" path="res://assets/enemies/tnt_sheep_down.png" id="5_p5mkq"]
+[ext_resource type="Texture2D" uid="uid://3651lhd17hak" path="res://assets/enemies/dead_tnt_sheep.png" id="6_hcso8"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="6_jod6d"]
-[ext_resource type="AudioStream" uid="uid://bvqcebfry6t0c" path="res://assets/audio/sheep.mp3" id="6_t4gws"]
+[ext_resource type="AudioStream" uid="uid://bvqcebfry6t0c" path="res://assets/audio/sheep.mp3" id="7_6yswy"]
+[ext_resource type="AudioStream" uid="uid://b5fdl0wdqktpu" path="res://assets/audio/hit.mp3" id="7_dfhn2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s3n4"]
 radius = 9.0
@@ -75,10 +77,22 @@ tracks/4/keys = {
 "method": &"face_down"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_qhq3b"]
 resource_name = "dead"
-length = 0.1333
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,7 +115,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1268),
 "transitions": PackedFloat32Array(1, 1.27456),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.105475, 7.78214e-06, 0.102661, 0.619608)]
+"values": [Color(1, 1, 1, 1), Color(0.105882, 0, 0.101961, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -114,6 +128,52 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1.1, 1.1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.133333, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"set_dead_dead"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_so8b8"]
+resource_name = "explode"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 0.574349),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_so8b8"]
@@ -316,7 +376,12 @@ _data = {
 "walk_up": SubResource("Animation_igi11")
 }
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_ijioh"]
+
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_0fhi4"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vsgli"]
+animation = &"nothing"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w4ppi"]
 animation = &"death"
@@ -359,8 +424,6 @@ max_space = Vector2(1, 1.05)
 snap = Vector2(0.01, 0.01)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_0eh6k"]
-
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_0ch16"]
 mix_mode = 1
 break_loop_at_end = true
@@ -378,13 +441,17 @@ animation = &"RESET"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_w1yvx"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7p0nh"]
-graph_offset = Vector2(-224.888, 102.345)
+graph_offset = Vector2(41.112, 118.345)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_0fhi4")
 nodes/Add2/position = Vector2(1293.33, 373.333)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_ijioh")
+"nodes/Add2 2/position" = Vector2(1588.14, 503.035)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_yjlq5")
 nodes/Animation/position = Vector2(800, 400)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_vsgli")
+"nodes/Animation 2/position" = Vector2(980, 620)
 "nodes/Animation Death/node" = SubResource("AnimationNodeAnimation_w4ppi")
-"nodes/Animation Death/position" = Vector2(320, 740)
+"nodes/Animation Death/position" = Vector2(520, 840)
 "nodes/Animation Explode/node" = SubResource("AnimationNodeAnimation_gcxsn")
 "nodes/Animation Explode/position" = Vector2(733.333, 573.333)
 "nodes/Animation Hurt/node" = SubResource("AnimationNodeAnimation_kdfbw")
@@ -394,9 +461,7 @@ nodes/Animation/position = Vector2(800, 400)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_k0lur")
 nodes/BlendSpace2D/position = Vector2(173.333, 306.667)
 nodes/Death/node = SubResource("AnimationNodeOneShot_0ch16")
-nodes/Death/position = Vector2(1386.67, 146.667)
-"nodes/Death 2/node" = SubResource("AnimationNodeBlend2_0eh6k")
-"nodes/Death 2/position" = Vector2(1493.33, 480)
+nodes/Death/position = Vector2(1240, 660)
 nodes/Explode/node = SubResource("AnimationNodeBlend2_e1qio")
 nodes/Explode/position = Vector2(1026.67, 413.333)
 nodes/Hurt/node = SubResource("AnimationNodeOneShot_ebg8k")
@@ -407,8 +472,8 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_q1bn8")
 nodes/TimeScale/position = Vector2(500, 300)
 nodes/Walk/node = SubResource("AnimationNodeBlend2_w1yvx")
 nodes/Walk/position = Vector2(680, 100)
-nodes/output/position = Vector2(1600, 280)
-node_connections = [&"Add2", 0, &"Hurt", &"Add2", 1, &"Explode", &"Death 2", 0, &"Add2", &"Death 2", 1, &"Animation Death", &"Explode", 0, &"Animation", &"Explode", 1, &"Animation Explode", &"Hurt", 0, &"Walk", &"Hurt", 1, &"Animation Hurt", &"TimeScale", 0, &"BlendSpace2D", &"Walk", 0, &"Animation Idle", &"Walk", 1, &"TimeScale", &"output", 0, &"Death 2"]
+nodes/output/position = Vector2(1900, 320)
+node_connections = [&"Add2", 0, &"Hurt", &"Add2", 1, &"Explode", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Death", &"Death", 0, &"Animation 2", &"Death", 1, &"Animation Death", &"Explode", 0, &"Animation", &"Explode", 1, &"Animation Explode", &"Hurt", 0, &"Walk", &"Hurt", 1, &"Animation Hurt", &"TimeScale", 0, &"BlendSpace2D", &"Walk", 0, &"Animation Idle", &"Walk", 1, &"TimeScale", &"output", 0, &"Add2 2"]
 
 [node name="enemy" type="RigidBody2D"]
 z_index = 25
@@ -425,7 +490,9 @@ enemy_type = 2
 side_texture = ExtResource("3_5uf8f")
 up_texture = ExtResource("4_5tiu7")
 down_texture = ExtResource("5_p5mkq")
-audio_dead = ExtResource("6_t4gws")
+dead_texture = ExtResource("6_hcso8")
+audio_dead = ExtResource("7_6yswy")
+audio_hit = ExtResource("7_dfhn2")
 
 [node name="sprite" type="Sprite2D" parent="."]
 clip_children = 2
@@ -463,11 +530,11 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_7p0nh")
 anim_player = NodePath("../animation_player")
 parameters/Add2/add_amount = 1.0
+"parameters/Add2 2/add_amount" = 1.0
 parameters/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Death/active = false
 parameters/Death/internal_active = false
 parameters/Death/request = 0
-"parameters/Death 2/blend_amount" = 0
 parameters/Explode/blend_amount = 0.0
 parameters/Hurt/active = false
 parameters/Hurt/internal_active = false
