@@ -266,12 +266,17 @@ script = ExtResource("1_meqr6")
 bullet = ExtResource("2_hwf6v")
 player_hit_sound = ExtResource("3_b7suj")
 
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.392157)
+scale = Vector2(0.34375, 0.125)
+texture = ExtResource("3_2h4qv")
+
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 clip_children = 2
 use_parent_material = true
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_eppqp")
-animation = &"death"
+animation = &"idle"
 speed_scale = 3.0
 
 [node name="flash" type="ColorRect" parent="sprite"]
@@ -306,11 +311,6 @@ sprite_frames = SubResource("SpriteFrames_eppqp")
 animation = &"walking_side"
 speed_scale = 3.0
 
-[node name="shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.392157)
-scale = Vector2(0.34375, 0.125)
-texture = ExtResource("3_2h4qv")
-
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_qd31t")
@@ -331,6 +331,7 @@ texture = ExtResource("7_5bdh8")
 
 [node name="health" type="Node" parent="."]
 script = ExtResource("9_hlaq6")
+invincibility_time = 0.5
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
