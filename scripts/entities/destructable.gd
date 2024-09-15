@@ -9,6 +9,8 @@ var animation: AnimationPlayer
 @export var hit_sound: AudioStream
 @export var death_sound: AudioStream
 
+static var first_dop = false
+
 var dead = false
 
 func _ready():
@@ -22,12 +24,20 @@ func on_death():
 		await animation.animation_finished
 	
 	animation.play("death")
-	if pool:
-		var drop = pool.drop_from_pool()
-		if drop.scene:
-			var drop_instance = drop.scene.instantiate()
-			get_parent().add_child.call_deferred(drop_instance)
-			drop_instance.global_position = global_position + Vector2.from_angle(randf() * 2 * PI) * 75
+
+	if not first_dop:
+		print("First dop")
+		first_dop = true
+		var drop_instance = load("res://entities/collectibles/collectible_projectile.tscn").instantiate()
+		get_parent().add_child.call_deferred(drop_instance)
+		drop_instance.global_position = global_position + Vector2.from_angle(randf() * 2 * PI) * 75
+	else:
+		if pool:
+			var drop = pool.drop_from_pool()
+			if drop.scene:
+				var drop_instance = drop.scene.instantiate()
+				get_parent().add_child.call_deferred(drop_instance)
+				drop_instance.global_position = global_position + Vector2.from_angle(randf() * 2 * PI) * 75
 
 	if leftover:
 		await animation.animation_finished

@@ -153,7 +153,6 @@ hit_sound = ExtResource("3_nsswl")
 death_sound = ExtResource("3_nsswl")
 
 [node name="sprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 clip_children = 2
 position = Vector2(-2, -9)
 texture = ExtResource("2_65mhy")
